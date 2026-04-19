@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-order-by-structure.json",
+  "name": "OrderBy",
+  "description": "OrderBy schema from Amazon CodeGuru Profiler",
+  "type": "string",
+  "enum": [
+    "TimestampDescending",
+    "TimestampAscending"
+  ]
+}

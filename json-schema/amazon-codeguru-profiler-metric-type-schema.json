@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-metric-type-schema.json",
+  "title": "MetricType",
+  "description": "MetricType schema from Amazon CodeGuru Profiler",
+  "type": "string",
+  "enum": [
+    "AggregatedRelativeTotalTime"
+  ]
+}

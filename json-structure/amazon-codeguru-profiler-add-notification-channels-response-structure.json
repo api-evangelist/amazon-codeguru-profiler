@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-add-notification-channels-response-structure.json",
+  "name": "AddNotificationChannelsResponse",
+  "description": "The structure representing the AddNotificationChannelsResponse.",
+  "type": "object",
+  "properties": {
+    "notificationConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NotificationConfiguration"
+        },
+        {
+          "description": "The new notification configuration for this profiling group."
+        }
+      ]
+    }
+  }
+}

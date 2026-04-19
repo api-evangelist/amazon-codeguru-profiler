@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-recommendation-structure.json",
+  "name": "Recommendation",
+  "description": "A potential improvement that was found from analyzing the profiling data.",
+  "type": "object",
+  "properties": {
+    "allMatchesCount": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "How many different places in the profile graph triggered a match."
+        }
+      ]
+    },
+    "allMatchesSum": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Double"
+        },
+        {
+          "description": "How much of the total sample count is potentially affected."
+        }
+      ]
+    },
+    "endTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "End time of the profile that was used by this analysis. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC."
+        }
+      ]
+    },
+    "pattern": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Pattern"
+        },
+        {
+          "description": "The pattern that analysis recognized in the profile to make this recommendation."
+        }
+      ]
+    },
+    "startTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The start time of the profile that was used by this analysis. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC."
+        }
+      ]
+    },
+    "topMatches": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Matches"
+        },
+        {
+          "description": "List of the matches with most impact. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "allMatchesCount",
+    "allMatchesSum",
+    "endTime",
+    "pattern",
+    "startTime",
+    "topMatches"
+  ]
+}

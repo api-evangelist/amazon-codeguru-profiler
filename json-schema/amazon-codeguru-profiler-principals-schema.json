@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-principals-schema.json",
+  "title": "Principals",
+  "description": "Principals schema from Amazon CodeGuru Profiler",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Principal"
+  },
+  "minItems": 1,
+  "maxItems": 50
+}

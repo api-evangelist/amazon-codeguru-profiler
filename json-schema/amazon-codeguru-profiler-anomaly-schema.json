@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-anomaly-schema.json",
+  "title": "Anomaly",
+  "description": " Details about an anomaly in a specific metric of application profile. The anomaly is detected using analysis of the metric data over a period of time. ",
+  "type": "object",
+  "properties": {
+    "instances": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AnomalyInstances"
+        },
+        {
+          "description": " A list of the instances of the detected anomalies during the requested period. "
+        }
+      ]
+    },
+    "metric": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Metric"
+        },
+        {
+          "description": " Details about the metric that the analysis used when it detected the anomaly. The metric includes the name of the frame that was analyzed with the type and thread states used to derive the metric value for that frame. "
+        }
+      ]
+    },
+    "reason": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The reason for which metric was flagged as anomalous."
+        }
+      ]
+    }
+  },
+  "required": [
+    "instances",
+    "metric",
+    "reason"
+  ]
+}

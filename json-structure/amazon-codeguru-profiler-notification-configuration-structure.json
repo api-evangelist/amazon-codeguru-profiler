@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-notification-configuration-structure.json",
+  "name": "NotificationConfiguration",
+  "description": "The configuration for notifications stored for each profiling group. This includes up to to two channels and a list of event publishers associated with each channel.",
+  "type": "object",
+  "properties": {
+    "channels": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Channels"
+        },
+        {
+          "description": "List of up to two channels to be used for sending notifications for events detected from the application profile."
+        }
+      ]
+    }
+  }
+}

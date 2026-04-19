@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-frame-metric-datum-schema.json",
+  "title": "FrameMetricDatum",
+  "description": " Information about a frame metric and its values. ",
+  "type": "object",
+  "properties": {
+    "frameMetric": {
+      "$ref": "#/components/schemas/FrameMetric"
+    },
+    "values": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FrameMetricValues"
+        },
+        {
+          "description": " A list of values that are associated with a frame metric. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "frameMetric",
+    "values"
+  ]
+}

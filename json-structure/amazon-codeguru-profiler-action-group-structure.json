@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-action-group-structure.json",
+  "name": "ActionGroup",
+  "description": "ActionGroup schema from Amazon CodeGuru Profiler",
+  "type": "string",
+  "enum": [
+    "agentPermissions"
+  ]
+}

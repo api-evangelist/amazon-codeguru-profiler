@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-put-permission-response-structure.json",
+  "name": "PutPermissionResponse",
+  "description": "The structure representing the <code>putPermissionResponse</code>.",
+  "type": "object",
+  "properties": {
+    "policy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " The JSON-formatted resource-based policy on the profiling group that includes the added permissions. "
+        }
+      ]
+    },
+    "revisionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RevisionId"
+        },
+        {
+          "description": " A universally unique identifier (UUID) for the revision of the resource-based policy that includes the added permissions. The JSON-formatted policy is in the <code>policy</code> element of the response. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "policy",
+    "revisionId"
+  ]
+}

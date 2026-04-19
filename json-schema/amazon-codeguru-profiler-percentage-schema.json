@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-percentage-schema.json",
+  "title": "Percentage",
+  "description": "Percentage schema from Amazon CodeGuru Profiler",
+  "type": "number",
+  "format": "double",
+  "minimum": 0,
+  "maximum": 100
+}

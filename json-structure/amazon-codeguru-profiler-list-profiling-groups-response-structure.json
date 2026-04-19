@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-list-profiling-groups-response-structure.json",
+  "name": "ListProfilingGroupsResponse",
+  "description": "The structure representing the listProfilingGroupsResponse.",
+  "type": "object",
+  "properties": {
+    "nextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PaginationToken"
+        },
+        {
+          "description": "The <code>nextToken</code> value to include in a future <code>ListProfilingGroups</code> request. When the results of a <code>ListProfilingGroups</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return. "
+        }
+      ]
+    },
+    "profilingGroupNames": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProfilingGroupNames"
+        },
+        {
+          "description": " A returned list of profiling group names. A list of the names is returned only if <code>includeDescription</code> is <code>false</code>, otherwise a list of <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html\"> <code>ProfilingGroupDescription</code> </a> objects is returned. "
+        }
+      ]
+    },
+    "profilingGroups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProfilingGroupDescriptions"
+        },
+        {
+          "description": " A returned list <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html\"> <code>ProfilingGroupDescription</code> </a> objects. A list of <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html\"> <code>ProfilingGroupDescription</code> </a> objects is returned only if <code>includeDescription</code> is <code>true</code>, otherwise a list of profiling group names is returned. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "profilingGroupNames"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-describe-profiling-group-request-structure.json",
+  "name": "DescribeProfilingGroupRequest",
+  "description": "The structure representing the describeProfilingGroupRequest.",
+  "type": "object",
+  "properties": {}
+}

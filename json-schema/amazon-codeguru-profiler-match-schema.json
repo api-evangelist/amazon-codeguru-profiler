@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-match-schema.json",
+  "title": "Match",
+  "description": "The part of a profile that contains a recommendation found during analysis.",
+  "type": "object",
+  "properties": {
+    "frameAddress": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The location in the profiling graph that contains a recommendation found during analysis."
+        }
+      ]
+    },
+    "targetFramesIndex": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "The target frame that triggered a match."
+        }
+      ]
+    },
+    "thresholdBreachValue": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Double"
+        },
+        {
+          "description": "The value in the profile data that exceeded the recommendation threshold."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-aggregated-profile-time-schema.json",
+  "title": "AggregatedProfileTime",
+  "description": " Specifies the aggregation period and aggregation start time for an aggregated profile. An aggregated profile is used to collect posted agent profiles during an aggregation period. There are three possible aggregation periods (1 day, 1 hour, or 5 minutes). ",
+  "type": "object",
+  "properties": {
+    "period": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AggregationPeriod"
+        },
+        {
+          "description": "<p> The aggregation period. This indicates the period during which an aggregation profile collects posted agent profiles for a profiling group. Use one of three valid durations that are specified using the ISO 8601 format. </p> <ul> <li> <p> <code>P1D</code> \u2014 1 day </p> </li> <li> <p> <code>PT1H</code> \u2014 1 hour </p> </li> <li> <p> <code>PT5M</code> \u2014 5 minutes </p> </li> </ul>"
+        }
+      ]
+    },
+    "start": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "<p> The time that aggregation of posted agent profiles for a profiling group starts. The aggregation profile contains profiles posted by the agent starting at this time for an aggregation period specified by the <code>period</code> property of the <code>AggregatedProfileTime</code> object. </p> <p> Specify <code>start</code> using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>"
+        }
+      ]
+    }
+  }
+}

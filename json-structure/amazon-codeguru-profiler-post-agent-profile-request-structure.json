@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-post-agent-profile-request-structure.json",
+  "name": "PostAgentProfileRequest",
+  "description": "The structure representing the postAgentProfileRequest.",
+  "type": "object",
+  "properties": {
+    "agentProfile": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AgentProfile"
+        },
+        {
+          "description": " The submitted profiling data. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "agentProfile"
+  ]
+}

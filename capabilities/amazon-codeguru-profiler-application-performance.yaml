@@ -1,0 +1,119 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon CodeGuru Profiler Application Performance Profiling
+  description: Unified workflow for DevOps teams to manage profiling groups, retrieve CPU and heap profile data, and act on performance recommendations for production applications.
+  tags:
+  - Amazon
+  - AWS
+  - Application Performance
+  - Profiling
+  - DevOps
+  - Machine Learning
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+    AWS_REGION: AWS_REGION
+capability:
+  consumes:
+  - import: codeguruprofiler
+    location: ./shared/codeguruprofiler.yaml
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: codeguruprofiler-application-performance-api
+    description: Unified REST API for Application Performance Profiling.
+    resources:
+    - path: /v1/listProfilingGroups
+      name: list-profiling-groups
+      description: List profiling groups in the account
+    - path: /v1/createProfilingGroup
+      name: create-profiling-group
+      description: Create a new profiling group
+    - path: /v1/describeProfilingGroup
+      name: describe-profiling-group
+      description: Get details about a profiling group
+    - path: /v1/getRecommendations
+      name: get-recommendations
+      description: Get optimization recommendations for a profiling group
+  - type: mcp
+    port: 9090
+    namespace: codeguruprofiler-application-performance-mcp
+    transport: http
+    description: MCP server for AI-assisted Application Performance Profiling.
+    tools:
+    - name: list-profiling-groups
+      description: List profiling groups in the account
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.listProfilingGroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-profiling-group
+      description: Create a new profiling group
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.createProfilingGroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: describe-profiling-group
+      description: Get details about a profiling group
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.describeProfilingGroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-recommendations
+      description: Get optimization recommendations for a profiling group
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.getRecommendations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-profile-times
+      description: List profile collection times for a profiling group
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.listProfileTimes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-profile
+      description: Get aggregated profile data
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.getProfile
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-agent-profile
+      description: Submit profiling agent data
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.postAgentProfile
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-findings-reports
+      description: List findings reports for a profiling group
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.listFindingsReports
+      outputParameters:
+      - type: object
+        mapping: $.

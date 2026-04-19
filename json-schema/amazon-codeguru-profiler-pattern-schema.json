@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-pattern-schema.json",
+  "title": "Pattern",
+  "description": " A set of rules used to make a recommendation during an analysis. ",
+  "type": "object",
+  "properties": {
+    "countersToAggregate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Strings"
+        },
+        {
+          "description": " A list of the different counters used to determine if there is a match. "
+        }
+      ]
+    },
+    "description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The description of the recommendation. This explains a potential inefficiency in a profiled application."
+        }
+      ]
+    },
+    "id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The universally unique identifier (UUID) of this pattern."
+        }
+      ]
+    },
+    "name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name for this pattern."
+        }
+      ]
+    },
+    "resolutionSteps": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " A string that contains the steps recommended to address the potential inefficiency. "
+        }
+      ]
+    },
+    "targetFrames": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TargetFrames"
+        },
+        {
+          "description": "A list of frame names that were searched during the analysis that generated a recommendation."
+        }
+      ]
+    },
+    "thresholdPercent": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Percentage"
+        },
+        {
+          "description": " The percentage of time an application spends in one method that triggers a recommendation. The percentage of time is the same as the percentage of the total gathered sample counts during analysis. "
+        }
+      ]
+    }
+  }
+}

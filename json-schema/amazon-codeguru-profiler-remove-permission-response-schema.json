@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-remove-permission-response-schema.json",
+  "title": "RemovePermissionResponse",
+  "description": "The structure representing the <code>removePermissionResponse</code>.",
+  "type": "object",
+  "properties": {
+    "policy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " The JSON-formatted resource-based policy on the profiling group after the specified permissions were removed. "
+        }
+      ]
+    },
+    "revisionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RevisionId"
+        },
+        {
+          "description": " A universally unique identifier (UUID) for the revision of the resource-based policy after the specified permissions were removed. The updated JSON-formatted policy is in the <code>policy</code> element of the response. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "policy",
+    "revisionId"
+  ]
+}

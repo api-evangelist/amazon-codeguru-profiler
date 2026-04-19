@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-event-publishers-schema.json",
+  "title": "EventPublishers",
+  "description": "EventPublishers schema from Amazon CodeGuru Profiler",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/EventPublisher"
+  },
+  "minItems": 1,
+  "maxItems": 1
+}

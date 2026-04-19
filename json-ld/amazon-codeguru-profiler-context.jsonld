@@ -1,0 +1,364 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "amazon-code-guru-profiler": "https://amazon-code-guru-profiler.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AddNotificationChannelsResponse": "amazon-code-guru-profiler:AddNotificationChannelsResponse",
+    "Channel": "amazon-code-guru-profiler:Channel",
+    "BatchGetFrameMetricDataResponse": "amazon-code-guru-profiler:BatchGetFrameMetricDataResponse",
+    "FrameMetric": "amazon-code-guru-profiler:FrameMetric",
+    "ConfigureAgentResponse": "amazon-code-guru-profiler:ConfigureAgentResponse",
+    "CreateProfilingGroupResponse": "amazon-code-guru-profiler:CreateProfilingGroupResponse",
+    "DeleteProfilingGroupResponse": "amazon-code-guru-profiler:DeleteProfilingGroupResponse",
+    "DescribeProfilingGroupResponse": "amazon-code-guru-profiler:DescribeProfilingGroupResponse",
+    "GetFindingsReportAccountSummaryResponse": "amazon-code-guru-profiler:GetFindingsReportAccountSummaryResponse",
+    "GetNotificationConfigurationResponse": "amazon-code-guru-profiler:GetNotificationConfigurationResponse",
+    "GetPolicyResponse": "amazon-code-guru-profiler:GetPolicyResponse",
+    "GetProfileResponse": "amazon-code-guru-profiler:GetProfileResponse",
+    "GetRecommendationsResponse": "amazon-code-guru-profiler:GetRecommendationsResponse",
+    "ListFindingsReportsResponse": "amazon-code-guru-profiler:ListFindingsReportsResponse",
+    "ListProfileTimesResponse": "amazon-code-guru-profiler:ListProfileTimesResponse",
+    "ListProfilingGroupsResponse": "amazon-code-guru-profiler:ListProfilingGroupsResponse",
+    "ListTagsForResourceResponse": "amazon-code-guru-profiler:ListTagsForResourceResponse",
+    "PostAgentProfileResponse": "amazon-code-guru-profiler:PostAgentProfileResponse",
+    "PutPermissionResponse": "amazon-code-guru-profiler:PutPermissionResponse",
+    "RemoveNotificationChannelResponse": "amazon-code-guru-profiler:RemoveNotificationChannelResponse",
+    "RemovePermissionResponse": "amazon-code-guru-profiler:RemovePermissionResponse",
+    "SubmitFeedbackResponse": "amazon-code-guru-profiler:SubmitFeedbackResponse",
+    "TagResourceResponse": "amazon-code-guru-profiler:TagResourceResponse",
+    "UntagResourceResponse": "amazon-code-guru-profiler:UntagResourceResponse",
+    "UpdateProfilingGroupResponse": "amazon-code-guru-profiler:UpdateProfilingGroupResponse",
+    "AddNotificationChannelsRequest": "amazon-code-guru-profiler:AddNotificationChannelsRequest",
+    "NotificationConfiguration": "amazon-code-guru-profiler:NotificationConfiguration",
+    "AgentParameters": "amazon-code-guru-profiler:AgentParameters",
+    "AgentConfiguration": "amazon-code-guru-profiler:AgentConfiguration",
+    "AgentOrchestrationConfig": "amazon-code-guru-profiler:AgentOrchestrationConfig",
+    "AggregatedProfileTime": "amazon-code-guru-profiler:AggregatedProfileTime",
+    "Anomaly": "amazon-code-guru-profiler:Anomaly",
+    "Metric": "amazon-code-guru-profiler:Metric",
+    "UserFeedback": "amazon-code-guru-profiler:UserFeedback",
+    "AnomalyInstance": "amazon-code-guru-profiler:AnomalyInstance",
+    "BatchGetFrameMetricDataRequest": "amazon-code-guru-profiler:BatchGetFrameMetricDataRequest",
+    "UnprocessedEndTimeMap": "amazon-code-guru-profiler:UnprocessedEndTimeMap",
+    "Metadata": "amazon-code-guru-profiler:Metadata",
+    "ConfigureAgentRequest": "amazon-code-guru-profiler:ConfigureAgentRequest",
+    "TagsMap": "amazon-code-guru-profiler:TagsMap",
+    "CreateProfilingGroupRequest": "amazon-code-guru-profiler:CreateProfilingGroupRequest",
+    "ProfilingGroupDescription": "amazon-code-guru-profiler:ProfilingGroupDescription",
+    "DeleteProfilingGroupRequest": "amazon-code-guru-profiler:DeleteProfilingGroupRequest",
+    "DescribeProfilingGroupRequest": "amazon-code-guru-profiler:DescribeProfilingGroupRequest",
+    "FindingsReportSummary": "amazon-code-guru-profiler:FindingsReportSummary",
+    "FrameMetricDatum": "amazon-code-guru-profiler:FrameMetricDatum",
+    "GetFindingsReportAccountSummaryRequest": "amazon-code-guru-profiler:GetFindingsReportAccountSummaryRequest",
+    "GetNotificationConfigurationRequest": "amazon-code-guru-profiler:GetNotificationConfigurationRequest",
+    "GetPolicyRequest": "amazon-code-guru-profiler:GetPolicyRequest",
+    "GetProfileRequest": "amazon-code-guru-profiler:GetProfileRequest",
+    "GetRecommendationsRequest": "amazon-code-guru-profiler:GetRecommendationsRequest",
+    "ListFindingsReportsRequest": "amazon-code-guru-profiler:ListFindingsReportsRequest",
+    "TimestampStructure": "amazon-code-guru-profiler:TimestampStructure",
+    "ListProfileTimesRequest": "amazon-code-guru-profiler:ListProfileTimesRequest",
+    "ListProfilingGroupsRequest": "amazon-code-guru-profiler:ListProfilingGroupsRequest",
+    "ListTagsForResourceRequest": "amazon-code-guru-profiler:ListTagsForResourceRequest",
+    "Match": "amazon-code-guru-profiler:Match",
+    "Pattern": "amazon-code-guru-profiler:Pattern",
+    "PostAgentProfileRequest": "amazon-code-guru-profiler:PostAgentProfileRequest",
+    "ProfileTime": "amazon-code-guru-profiler:ProfileTime",
+    "ProfilingStatus": "amazon-code-guru-profiler:ProfilingStatus",
+    "PutPermissionRequest": "amazon-code-guru-profiler:PutPermissionRequest",
+    "Recommendation": "amazon-code-guru-profiler:Recommendation",
+    "RemoveNotificationChannelRequest": "amazon-code-guru-profiler:RemoveNotificationChannelRequest",
+    "RemovePermissionRequest": "amazon-code-guru-profiler:RemovePermissionRequest",
+    "SubmitFeedbackRequest": "amazon-code-guru-profiler:SubmitFeedbackRequest",
+    "TagResourceRequest": "amazon-code-guru-profiler:TagResourceRequest",
+    "UntagResourceRequest": "amazon-code-guru-profiler:UntagResourceRequest",
+    "UpdateProfilingGroupRequest": "amazon-code-guru-profiler:UpdateProfilingGroupRequest",
+    "notificationConfiguration": {
+      "@id": "amazon-code-guru-profiler:notificationConfiguration",
+      "@type": "xsd:string"
+    },
+    "eventPublishers": {
+      "@id": "amazon-code-guru-profiler:eventPublishers",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "amazon-code-guru-profiler:id",
+      "@type": "xsd:string"
+    },
+    "uri": {
+      "@id": "amazon-code-guru-profiler:uri",
+      "@type": "xsd:string"
+    },
+    "endTime": {
+      "@id": "amazon-code-guru-profiler:endTime",
+      "@type": "xsd:string"
+    },
+    "endTimes": {
+      "@id": "amazon-code-guru-profiler:endTimes",
+      "@type": "xsd:string"
+    },
+    "frameMetricData": {
+      "@id": "amazon-code-guru-profiler:frameMetricData",
+      "@type": "xsd:string"
+    },
+    "resolution": {
+      "@id": "amazon-code-guru-profiler:resolution",
+      "@type": "xsd:string"
+    },
+    "startTime": {
+      "@id": "amazon-code-guru-profiler:startTime",
+      "@type": "xsd:string"
+    },
+    "unprocessedEndTimes": {
+      "@id": "amazon-code-guru-profiler:unprocessedEndTimes",
+      "@type": "xsd:string"
+    },
+    "frameName": {
+      "@id": "amazon-code-guru-profiler:frameName",
+      "@type": "xsd:string"
+    },
+    "threadStates": {
+      "@id": "amazon-code-guru-profiler:threadStates",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "amazon-code-guru-profiler:type",
+      "@type": "xsd:string"
+    },
+    "configuration": {
+      "@id": "amazon-code-guru-profiler:configuration",
+      "@type": "xsd:string"
+    },
+    "profilingGroup": {
+      "@id": "amazon-code-guru-profiler:profilingGroup",
+      "@type": "xsd:string"
+    },
+    "nextToken": {
+      "@id": "amazon-code-guru-profiler:nextToken",
+      "@type": "xsd:string"
+    },
+    "reportSummaries": {
+      "@id": "amazon-code-guru-profiler:reportSummaries",
+      "@type": "xsd:string"
+    },
+    "policy": {
+      "@id": "amazon-code-guru-profiler:policy",
+      "@type": "xsd:string"
+    },
+    "revisionId": {
+      "@id": "amazon-code-guru-profiler:revisionId",
+      "@type": "xsd:string"
+    },
+    "profile": {
+      "@id": "amazon-code-guru-profiler:profile",
+      "@type": "xsd:string"
+    },
+    "anomalies": {
+      "@id": "amazon-code-guru-profiler:anomalies",
+      "@type": "xsd:string"
+    },
+    "profileEndTime": {
+      "@id": "amazon-code-guru-profiler:profileEndTime",
+      "@type": "xsd:string"
+    },
+    "profileStartTime": {
+      "@id": "amazon-code-guru-profiler:profileStartTime",
+      "@type": "xsd:string"
+    },
+    "profilingGroupName": {
+      "@id": "amazon-code-guru-profiler:profilingGroupName",
+      "@type": "xsd:string"
+    },
+    "recommendations": {
+      "@id": "amazon-code-guru-profiler:recommendations",
+      "@type": "xsd:string"
+    },
+    "findingsReportSummaries": {
+      "@id": "amazon-code-guru-profiler:findingsReportSummaries",
+      "@type": "xsd:string"
+    },
+    "profileTimes": {
+      "@id": "amazon-code-guru-profiler:profileTimes",
+      "@type": "xsd:string"
+    },
+    "profilingGroupNames": {
+      "@id": "amazon-code-guru-profiler:profilingGroupNames",
+      "@type": "xsd:string"
+    },
+    "profilingGroups": {
+      "@id": "amazon-code-guru-profiler:profilingGroups",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "amazon-code-guru-profiler:tags",
+      "@type": "xsd:string"
+    },
+    "channels": {
+      "@id": "amazon-code-guru-profiler:channels",
+      "@type": "xsd:string"
+    },
+    "agentParameters": {
+      "@id": "amazon-code-guru-profiler:agentParameters",
+      "@type": "xsd:string"
+    },
+    "periodInSeconds": {
+      "@id": "amazon-code-guru-profiler:periodInSeconds",
+      "@type": "xsd:string"
+    },
+    "shouldProfile": {
+      "@id": "amazon-code-guru-profiler:shouldProfile",
+      "@type": "xsd:string"
+    },
+    "profilingEnabled": {
+      "@id": "amazon-code-guru-profiler:profilingEnabled",
+      "@type": "xsd:string"
+    },
+    "period": {
+      "@id": "amazon-code-guru-profiler:period",
+      "@type": "xsd:string"
+    },
+    "start": {
+      "@id": "amazon-code-guru-profiler:start",
+      "@type": "xsd:string"
+    },
+    "instances": {
+      "@id": "amazon-code-guru-profiler:instances",
+      "@type": "xsd:string"
+    },
+    "metric": {
+      "@id": "amazon-code-guru-profiler:metric",
+      "@type": "xsd:string"
+    },
+    "reason": {
+      "@id": "amazon-code-guru-profiler:reason",
+      "@type": "xsd:string"
+    },
+    "userFeedback": {
+      "@id": "amazon-code-guru-profiler:userFeedback",
+      "@type": "xsd:string"
+    },
+    "frameMetrics": {
+      "@id": "amazon-code-guru-profiler:frameMetrics",
+      "@type": "xsd:string"
+    },
+    "fleetInstanceId": {
+      "@id": "amazon-code-guru-profiler:fleetInstanceId",
+      "@type": "xsd:string"
+    },
+    "metadata": {
+      "@id": "amazon-code-guru-profiler:metadata",
+      "@type": "xsd:string"
+    },
+    "agentOrchestrationConfig": {
+      "@id": "amazon-code-guru-profiler:agentOrchestrationConfig",
+      "@type": "xsd:string"
+    },
+    "computePlatform": {
+      "@id": "amazon-code-guru-profiler:computePlatform",
+      "@type": "xsd:string"
+    },
+    "arn": {
+      "@id": "amazon-code-guru-profiler:arn",
+      "@type": "xsd:string"
+    },
+    "createdAt": {
+      "@id": "amazon-code-guru-profiler:createdAt",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "profilingStatus": {
+      "@id": "amazon-code-guru-profiler:profilingStatus",
+      "@type": "xsd:string"
+    },
+    "updatedAt": {
+      "@id": "amazon-code-guru-profiler:updatedAt",
+      "@type": "xsd:string"
+    },
+    "totalNumberOfFindings": {
+      "@id": "amazon-code-guru-profiler:totalNumberOfFindings",
+      "@type": "xsd:string"
+    },
+    "frameMetric": {
+      "@id": "amazon-code-guru-profiler:frameMetric",
+      "@type": "xsd:string"
+    },
+    "values": {
+      "@id": "amazon-code-guru-profiler:values",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "amazon-code-guru-profiler:value",
+      "@type": "xsd:string"
+    },
+    "frameAddress": {
+      "@id": "amazon-code-guru-profiler:frameAddress",
+      "@type": "xsd:string"
+    },
+    "targetFramesIndex": {
+      "@id": "amazon-code-guru-profiler:targetFramesIndex",
+      "@type": "xsd:string"
+    },
+    "thresholdBreachValue": {
+      "@id": "amazon-code-guru-profiler:thresholdBreachValue",
+      "@type": "xsd:string"
+    },
+    "countersToAggregate": {
+      "@id": "amazon-code-guru-profiler:countersToAggregate",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "resolutionSteps": {
+      "@id": "amazon-code-guru-profiler:resolutionSteps",
+      "@type": "xsd:string"
+    },
+    "targetFrames": {
+      "@id": "amazon-code-guru-profiler:targetFrames",
+      "@type": "xsd:string"
+    },
+    "thresholdPercent": {
+      "@id": "amazon-code-guru-profiler:thresholdPercent",
+      "@type": "xsd:string"
+    },
+    "agentProfile": {
+      "@id": "amazon-code-guru-profiler:agentProfile",
+      "@type": "xsd:string"
+    },
+    "latestAgentOrchestratedAt": {
+      "@id": "amazon-code-guru-profiler:latestAgentOrchestratedAt",
+      "@type": "xsd:string"
+    },
+    "latestAgentProfileReportedAt": {
+      "@id": "amazon-code-guru-profiler:latestAgentProfileReportedAt",
+      "@type": "xsd:string"
+    },
+    "latestAggregatedProfile": {
+      "@id": "amazon-code-guru-profiler:latestAggregatedProfile",
+      "@type": "xsd:string"
+    },
+    "principals": {
+      "@id": "amazon-code-guru-profiler:principals",
+      "@type": "xsd:string"
+    },
+    "allMatchesCount": {
+      "@id": "amazon-code-guru-profiler:allMatchesCount",
+      "@type": "xsd:string"
+    },
+    "allMatchesSum": {
+      "@id": "amazon-code-guru-profiler:allMatchesSum",
+      "@type": "xsd:string"
+    },
+    "pattern": {
+      "@id": "amazon-code-guru-profiler:pattern",
+      "@type": "xsd:string"
+    },
+    "topMatches": {
+      "@id": "amazon-code-guru-profiler:topMatches",
+      "@type": "xsd:string"
+    },
+    "comment": {
+      "@id": "amazon-code-guru-profiler:comment",
+      "@type": "xsd:string"
+    }
+  }
+}

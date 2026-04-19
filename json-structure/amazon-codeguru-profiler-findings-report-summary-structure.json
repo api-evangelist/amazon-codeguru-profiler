@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-findings-report-summary-structure.json",
+  "name": "FindingsReportSummary",
+  "description": " Information about potential recommendations that might be created from the analysis of profiling data. ",
+  "type": "object",
+  "properties": {
+    "id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FindingsReportId"
+        },
+        {
+          "description": "The universally unique identifier (UUID) of the recommendation report."
+        }
+      ]
+    },
+    "profileEndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": " The end time of the period during which the metric is flagged as anomalous. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. "
+        }
+      ]
+    },
+    "profileStartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The start time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC."
+        }
+      ]
+    },
+    "profilingGroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name of the profiling group that is associated with the analysis data."
+        }
+      ]
+    },
+    "totalNumberOfFindings": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "The total number of different recommendations that were found by the analysis."
+        }
+      ]
+    }
+  }
+}

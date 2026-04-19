@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-event-publisher-structure.json",
+  "name": "EventPublisher",
+  "description": "EventPublisher schema from Amazon CodeGuru Profiler",
+  "type": "string",
+  "enum": [
+    "AnomalyDetection"
+  ]
+}

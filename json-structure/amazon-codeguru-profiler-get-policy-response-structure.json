@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-get-policy-response-structure.json",
+  "name": "GetPolicyResponse",
+  "description": "The structure representing the <code>getPolicyResponse</code>.",
+  "type": "object",
+  "properties": {
+    "policy": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The JSON-formatted resource-based policy attached to the <code>ProfilingGroup</code>."
+        }
+      ]
+    },
+    "revisionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RevisionId"
+        },
+        {
+          "description": "A unique identifier for the current revision of the returned policy."
+        }
+      ]
+    }
+  },
+  "required": [
+    "policy",
+    "revisionId"
+  ]
+}

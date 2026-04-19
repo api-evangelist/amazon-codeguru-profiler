@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-max-depth-structure.json",
+  "name": "MaxDepth",
+  "description": "MaxDepth schema from Amazon CodeGuru Profiler",
+  "type": "int32",
+  "minimum": 1,
+  "maximum": 10000
+}

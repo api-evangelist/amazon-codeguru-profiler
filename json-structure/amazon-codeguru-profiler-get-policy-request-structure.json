@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-get-policy-request-structure.json",
+  "name": "GetPolicyRequest",
+  "description": " The structure representing the <code>getPolicyRequest</code>. ",
+  "type": "object",
+  "properties": {}
+}

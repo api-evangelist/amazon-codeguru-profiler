@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-batch-get-frame-metric-data-request-structure.json",
+  "name": "BatchGetFrameMetricDataRequest",
+  "description": "The structure representing the BatchGetFrameMetricDataRequest.",
+  "type": "object",
+  "properties": {
+    "frameMetrics": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FrameMetrics"
+        },
+        {
+          "description": " The details of the metrics that are used to request a time series of values. The metric includes the name of the frame, the aggregation type to calculate the metric value for the frame, and the thread states to use to get the count for the metric value of the frame."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-anomalies-structure.json",
+  "name": "Anomalies",
+  "description": "Anomalies schema from Amazon CodeGuru Profiler",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Anomaly"
+  }
+}

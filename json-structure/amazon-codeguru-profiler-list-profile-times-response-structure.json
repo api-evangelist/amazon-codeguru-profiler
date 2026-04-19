@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-list-profile-times-response-structure.json",
+  "name": "ListProfileTimesResponse",
+  "description": "The structure representing the listProfileTimesResponse.",
+  "type": "object",
+  "properties": {
+    "nextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PaginationToken"
+        },
+        {
+          "description": "The <code>nextToken</code> value to include in a future <code>ListProfileTimes</code> request. When the results of a <code>ListProfileTimes</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return. "
+        }
+      ]
+    },
+    "profileTimes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProfileTimes"
+        },
+        {
+          "description": "The list of start times of the available profiles for the aggregation period in the specified time range. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "profileTimes"
+  ]
+}

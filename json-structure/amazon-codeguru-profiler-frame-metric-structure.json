@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-frame-metric-structure.json",
+  "name": "FrameMetric",
+  "description": " The frame name, metric type, and thread states. These are used to derive the value of the metric for the frame.",
+  "type": "object",
+  "properties": {
+    "frameName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " Name of the method common across the multiple occurrences of a frame in an application profile."
+        }
+      ]
+    },
+    "threadStates": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ThreadStates"
+        },
+        {
+          "description": "List of application runtime thread states used to get the counts for a frame a derive a metric value."
+        }
+      ]
+    },
+    "type": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MetricType"
+        },
+        {
+          "description": " A type of aggregation that specifies how a metric for a frame is analyzed. The supported value <code>AggregatedRelativeTotalTime</code> is an aggregation of the metric value for one frame that is calculated across the occurrences of all frames in a profile. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "frameName",
+    "threadStates",
+    "type"
+  ]
+}

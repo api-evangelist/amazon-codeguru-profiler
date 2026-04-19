@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-compute-platform-schema.json",
+  "title": "ComputePlatform",
+  "description": "ComputePlatform schema from Amazon CodeGuru Profiler",
+  "type": "string",
+  "enum": [
+    "Default",
+    "AWSLambda"
+  ]
+}

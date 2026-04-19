@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-get-notification-configuration-response-schema.json",
+  "title": "GetNotificationConfigurationResponse",
+  "description": "The structure representing the GetNotificationConfigurationResponse.",
+  "type": "object",
+  "properties": {
+    "notificationConfiguration": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NotificationConfiguration"
+        },
+        {
+          "description": "The current notification configuration for this profiling group."
+        }
+      ]
+    }
+  },
+  "required": [
+    "notificationConfiguration"
+  ]
+}

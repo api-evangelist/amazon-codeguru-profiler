@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-get-recommendations-response-structure.json",
+  "name": "GetRecommendationsResponse",
+  "description": "The structure representing the GetRecommendationsResponse.",
+  "type": "object",
+  "properties": {
+    "anomalies": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Anomalies"
+        },
+        {
+          "description": " The list of anomalies that the analysis has found for this profile. "
+        }
+      ]
+    },
+    "profileEndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": " The end time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. "
+        }
+      ]
+    },
+    "profileStartTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": " The start time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. "
+        }
+      ]
+    },
+    "profilingGroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProfilingGroupName"
+        },
+        {
+          "description": "The name of the profiling group the analysis data is about."
+        }
+      ]
+    },
+    "recommendations": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Recommendations"
+        },
+        {
+          "description": "The list of recommendations that the analysis found for this profile."
+        }
+      ]
+    }
+  },
+  "required": [
+    "anomalies",
+    "profileEndTime",
+    "profileStartTime",
+    "profilingGroupName",
+    "recommendations"
+  ]
+}

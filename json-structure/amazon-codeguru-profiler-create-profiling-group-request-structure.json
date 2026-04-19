@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-create-profiling-group-request-structure.json",
+  "name": "CreateProfilingGroupRequest",
+  "description": "The structure representing the createProfiliingGroupRequest.",
+  "type": "object",
+  "properties": {
+    "agentOrchestrationConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AgentOrchestrationConfig"
+        },
+        {
+          "description": " Specifies whether profiling is enabled or disabled for the created profiling group. "
+        }
+      ]
+    },
+    "computePlatform": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ComputePlatform"
+        },
+        {
+          "description": " The compute platform of the profiling group. Use <code>AWSLambda</code> if your application runs on AWS Lambda. Use <code>Default</code> if your application runs on a compute platform that is not AWS Lambda, such an Amazon EC2 instance, an on-premises server, or a different platform. If not specified, <code>Default</code> is used. "
+        }
+      ]
+    },
+    "profilingGroupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProfilingGroupName"
+        },
+        {
+          "description": "The name of the profiling group to create."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagsMap"
+        },
+        {
+          "description": " A list of tags to add to the created profiling group. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "profilingGroupName"
+  ]
+}

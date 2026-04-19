@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-list-findings-reports-request-structure.json",
+  "name": "ListFindingsReportsRequest",
+  "description": "The structure representing the ListFindingsReportsRequest.",
+  "type": "object",
+  "properties": {}
+}

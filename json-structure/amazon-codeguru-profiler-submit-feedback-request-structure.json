@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-submit-feedback-request-structure.json",
+  "name": "SubmitFeedbackRequest",
+  "description": "The structure representing the SubmitFeedbackRequest.",
+  "type": "object",
+  "properties": {
+    "comment": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Optional feedback about this anomaly."
+        }
+      ]
+    },
+    "type": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FeedbackType"
+        },
+        {
+          "description": " The feedback tpye. Thee are two valid values, <code>Positive</code> and <code>Negative</code>. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

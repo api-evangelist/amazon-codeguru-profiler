@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-aggregation-period-schema.json",
+  "title": "AggregationPeriod",
+  "description": "AggregationPeriod schema from Amazon CodeGuru Profiler",
+  "type": "string",
+  "enum": [
+    "PT5M",
+    "PT1H",
+    "P1D"
+  ]
+}

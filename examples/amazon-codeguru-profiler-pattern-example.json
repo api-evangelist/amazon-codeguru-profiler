@@ -1,0 +1,9 @@
+{
+  "countersToAggregate": "example-value",
+  "description": "Example description",
+  "id": "500123",
+  "name": "example-resource",
+  "resolutionSteps": "example-value",
+  "targetFrames": "example-value",
+  "thresholdPercent": "example-value"
+}

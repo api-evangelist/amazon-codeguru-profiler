@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-get-profile-response-structure.json",
+  "name": "GetProfileResponse",
+  "description": "The structure representing the getProfileResponse.",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AggregatedProfile"
+        },
+        {
+          "description": "Information about the profile."
+        }
+      ]
+    }
+  },
+  "required": [
+    "profile"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-put-permission-request-structure.json",
+  "name": "PutPermissionRequest",
+  "description": "The structure representing the <code>putPermissionRequest</code>.",
+  "type": "object",
+  "properties": {
+    "principals": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Principals"
+        },
+        {
+          "description": " A list ARNs for the roles and users you want to grant access to the profiling group. Wildcards are not are supported in the ARNs. "
+        }
+      ]
+    },
+    "revisionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RevisionId"
+        },
+        {
+          "description": " A universally unique identifier (UUID) for the revision of the policy you are adding to the profiling group. Do not specify this when you add permissions to a profiling group for the first time. If a policy already exists on the profiling group, you must specify the <code>revisionId</code>. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "principals"
+  ]
+}

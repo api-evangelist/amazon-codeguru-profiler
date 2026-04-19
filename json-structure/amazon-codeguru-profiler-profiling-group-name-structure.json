@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-profiling-group-name-structure.json",
+  "name": "ProfilingGroupName",
+  "description": "ProfilingGroupName schema from Amazon CodeGuru Profiler",
+  "type": "string",
+  "pattern": "^[\\w-]+$",
+  "minLength": 1,
+  "maxLength": 255
+}

@@ -1,0 +1,6 @@
+{
+  "agentOrchestrationConfig": "example-value",
+  "computePlatform": "example-value",
+  "profilingGroupName": "example-resource",
+  "tags": "example-value"
+}

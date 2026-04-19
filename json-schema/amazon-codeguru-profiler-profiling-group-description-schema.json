@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-profiling-group-description-schema.json",
+  "title": "ProfilingGroupDescription",
+  "description": " Contains information about a profiling group. ",
+  "type": "object",
+  "properties": {
+    "agentOrchestrationConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/AgentOrchestrationConfig"
+        },
+        {
+          "description": " An <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AgentOrchestrationConfig.html\"> <code>AgentOrchestrationConfig</code> </a> object that indicates if the profiling group is enabled for profiled or not. "
+        }
+      ]
+    },
+    "arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProfilingGroupArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) identifying the profiling group resource."
+        }
+      ]
+    },
+    "computePlatform": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ComputePlatform"
+        },
+        {
+          "description": " The compute platform of the profiling group. If it is set to <code>AWSLambda</code>, then the profiled application runs on AWS Lambda. If it is set to <code>Default</code>, then the profiled application runs on a compute platform that is not AWS Lambda, such an Amazon EC2 instance, an on-premises server, or a different platform. The default is <code>Default</code>. "
+        }
+      ]
+    },
+    "createdAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "The time when the profiling group was created. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. "
+        }
+      ]
+    },
+    "name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProfilingGroupName"
+        },
+        {
+          "description": "The name of the profiling group."
+        }
+      ]
+    },
+    "profilingStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProfilingStatus"
+        },
+        {
+          "description": " A <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingStatus.html\"> <code>ProfilingStatus</code> </a> object that includes information about the last time a profile agent pinged back, the last time a profile was received, and the aggregation period and start time for the most recent aggregated profile. "
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagsMap"
+        },
+        {
+          "description": " A list of the tags that belong to this profiling group. "
+        }
+      ]
+    },
+    "updatedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": " The date and time when the profiling group was last updated. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. "
+        }
+      ]
+    }
+  }
+}

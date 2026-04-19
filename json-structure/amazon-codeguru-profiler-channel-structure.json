@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-structure/amazon-codeguru-profiler-channel-structure.json",
+  "name": "Channel",
+  "description": "Notification medium for users to get alerted for events that occur in application profile. We support SNS topic as a notification channel.",
+  "type": "object",
+  "properties": {
+    "eventPublishers": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EventPublishers"
+        },
+        {
+          "description": "List of publishers for different type of events that may be detected in an application from the profile. Anomaly detection is the only event publisher in Profiler."
+        }
+      ]
+    },
+    "id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChannelId"
+        },
+        {
+          "description": "Unique identifier for each <code>Channel</code> in the notification configuration of a Profiling Group. A random UUID for channelId is used when adding a channel to the notification configuration if not specified in the request."
+        }
+      ]
+    },
+    "uri": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ChannelUri"
+        },
+        {
+          "description": "Unique arn of the resource to be used for notifications. We support a valid SNS topic arn as a channel uri."
+        }
+      ]
+    }
+  },
+  "required": [
+    "eventPublishers",
+    "uri"
+  ]
+}

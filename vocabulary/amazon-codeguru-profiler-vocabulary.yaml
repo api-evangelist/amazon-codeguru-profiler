@@ -1,0 +1,149 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon CodeGuru Profiler
+  description: Taxonomy of Amazon CodeGuru Profiler APIs.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: Amazon CodeGuru Profiler API
+    namespace: codeguruprofiler
+    version: '2019-07-18'
+    baseUrl: https://codeguru-profiler.us-east-1.amazonaws.com
+    status: active
+  resources:
+  - name: '{profilingGroupName}'
+    apis:
+    - Amazon CodeGuru Profiler API
+    actions: &id001
+    - AddNotificationChannels
+    - GetNotificationConfiguration
+    - BatchGetFrameMetricData
+    - ConfigureAgent
+    - DeleteProfilingGroup
+    - DescribeProfilingGroup
+    - UpdateProfilingGroup
+    - GetPolicy
+    - GetProfile
+    - ListProfileTimes
+    - PostAgentProfile
+    - PutPermission
+    - RemoveNotificationChannel
+    - RemovePermission
+  - name: profilingGroups
+    apis:
+    - Amazon CodeGuru Profiler API
+    actions: &id003
+    - CreateProfilingGroup
+    - GetRecommendations
+    - ListFindingsReports
+    - ListProfilingGroups
+    - SubmitFeedback
+  - name: findingsReports
+    apis:
+    - Amazon CodeGuru Profiler API
+    actions: &id004
+    - GetFindingsReportAccountSummary
+  - name: '{resourceArn}'
+    apis:
+    - Amazon CodeGuru Profiler API
+    actions: &id005
+    - ListTagsForResource
+    - TagResource
+    - UntagResource
+  actions:
+  - name: list
+    httpMethods:
+    - GET
+    pattern: read
+  - name: create
+    httpMethods:
+    - POST
+    pattern: write
+  - name: delete
+    httpMethods:
+    - DELETE
+    pattern: destructive
+  - name: get
+    httpMethods:
+    - GET
+    pattern: read
+  - name: update
+    httpMethods:
+    - PUT
+    - PATCH
+    pattern: write
+  schemas:
+    core: []
+  parameters:
+    identifiers:
+    - id
+    - name
+    - arn
+    pagination:
+    - nextToken
+    - maxResults
+  authentication:
+    schemes:
+    - AWS Signature Version 4
+    iamIntegration: true
+capability:
+  workflows:
+  - name: Application Performance Profiling
+    file: capabilities/amazon-codeguru-profiler-application-performance.yaml
+    description: Unified workflow for DevOps teams to manage profiling groups, retrieve CPU and heap profile data, and act on performance recommendations for productio
+    toolCount: 8
+    personas: &id002
+    - DevOps Engineer
+    - Platform Engineer
+    - Developer
+    domains:
+    - Application Performance Profiling
+  personas:
+  - id: devops-engineer
+    name: DevOps Engineer
+    description: DevOps Engineer persona.
+    workflows:
+    - Application Performance Profiling
+  - id: platform-engineer
+    name: Platform Engineer
+    description: Platform Engineer persona.
+    workflows:
+    - Application Performance Profiling
+  - id: developer
+    name: Developer
+    description: Developer persona.
+    workflows:
+    - Application Performance Profiling
+  domains:
+  - name: Application Performance Profiling
+    description: Unified workflow for DevOps teams to manage profiling groups, retrieve CPU and heap profile data, an
+  namespaces:
+  - type: consumed
+    name: codeguruprofiler
+    port:
+  binds:
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  - AWS_REGION
+crossReference:
+- resource: '{profilingGroupName}'
+  operations: *id001
+  workflows:
+  - Application Performance Profiling
+  personas: *id002
+- resource: profilingGroups
+  operations: *id003
+  workflows:
+  - Application Performance Profiling
+  personas: *id002
+- resource: findingsReports
+  operations: *id004
+  workflows:
+  - Application Performance Profiling
+  personas: *id002
+- resource: '{resourceArn}'
+  operations: *id005
+  workflows:
+  - Application Performance Profiling
+  personas: *id002

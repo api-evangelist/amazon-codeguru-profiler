@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-get-findings-report-account-summary-response-schema.json",
+  "title": "GetFindingsReportAccountSummaryResponse",
+  "description": "The structure representing the GetFindingsReportAccountSummaryResponse.",
+  "type": "object",
+  "properties": {
+    "nextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PaginationToken"
+        },
+        {
+          "description": "The <code>nextToken</code> value to include in a future <code>GetFindingsReportAccountSummary</code> request. When the results of a <code>GetFindingsReportAccountSummary</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return."
+        }
+      ]
+    },
+    "reportSummaries": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FindingsReportSummaries"
+        },
+        {
+          "description": "The return list of <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html\"> <code>FindingsReportSummary</code> </a> objects taht contain summaries of analysis results for all profiling groups in your AWS account."
+        }
+      ]
+    }
+  },
+  "required": [
+    "reportSummaries"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/json-schema/amazon-codeguru-profiler-update-profiling-group-response-schema.json",
+  "title": "UpdateProfilingGroupResponse",
+  "description": "The structure representing the updateProfilingGroupResponse.",
+  "type": "object",
+  "properties": {
+    "profilingGroup": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProfilingGroupDescription"
+        },
+        {
+          "description": " A <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html\"> <code>ProfilingGroupDescription</code> </a> that contains information about the returned updated profiling group. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "profilingGroup"
+  ]
+}

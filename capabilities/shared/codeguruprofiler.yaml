@@ -1,0 +1,676 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon CodeGuru Profiler
+  description: Amazon CodeGuru Profiler collects runtime performance data from your live applications, providing recommendations to help you reduce CPU utilization, cut costs, and improve application 
+    performance. Th
+  tags:
+  - Amazon
+  - AWS
+  - Application Performance
+  - Profiling
+  - DevOps
+  - Machine Learning
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+    AWS_REGION: AWS_REGION
+capability:
+  consumes:
+  - type: http
+    namespace: codeguruprofiler
+    baseUri: http://codeguru-profiler.us-east-1.amazonaws.com
+    description: Amazon CodeGuru Profiler REST API.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{AWS_AUTH_TOKEN}}'
+      placement: header
+    resources:
+    - name: '{profilingGroupName}'
+      path: /profilingGroups/{profilingGroupName}
+      description: Operations for {profilingGroupName}
+      operations:
+      - name: addNotificationChannels
+        method: POST
+        description: Amazon CodeGuru Profiler Add Notification Channels
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: getNotificationConfiguration
+        method: GET
+        description: Amazon CodeGuru Profiler Get Notification Configuration
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: batchGetFrameMetricData
+        method: POST
+        description: Amazon CodeGuru Profiler Batch Get Frame Metric Data
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: configureAgent
+        method: POST
+        description: Amazon CodeGuru Profiler Configure Agent
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: deleteProfilingGroup
+        method: DELETE
+        description: Amazon CodeGuru Profiler Delete Profiling Group
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: describeProfilingGroup
+        method: GET
+        description: Amazon CodeGuru Profiler Describe Profiling Group
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateProfilingGroup
+        method: PUT
+        description: Amazon CodeGuru Profiler Update Profiling Group
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: getPolicy
+        method: GET
+        description: Amazon CodeGuru Profiler Get Policy
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: getProfile
+        method: GET
+        description: Amazon CodeGuru Profiler Get Profile
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listProfileTimes
+        method: GET
+        description: Amazon CodeGuru Profiler List Profile Times
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: postAgentProfile
+        method: POST
+        description: Amazon CodeGuru Profiler Post Agent Profile
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: putPermission
+        method: PUT
+        description: Amazon CodeGuru Profiler Put Permission
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: removeNotificationChannel
+        method: DELETE
+        description: Amazon CodeGuru Profiler Remove Notification Channel
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: removePermission
+        method: DELETE
+        description: Amazon CodeGuru Profiler Remove Permission
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: profilingGroups
+      path: /profilingGroups
+      description: Operations for profilingGroups
+      operations:
+      - name: createProfilingGroup
+        method: POST
+        description: Amazon CodeGuru Profiler Create Profiling Group
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: getRecommendations
+        method: GET
+        description: Amazon CodeGuru Profiler Get Recommendations
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listFindingsReports
+        method: GET
+        description: Amazon CodeGuru Profiler List Findings Reports
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listProfilingGroups
+        method: GET
+        description: Amazon CodeGuru Profiler List Profiling Groups
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: submitFeedback
+        method: POST
+        description: Amazon CodeGuru Profiler Submit Feedback
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+    - name: findingsReports
+      path: /internal/findingsReports
+      description: Operations for findingsReports
+      operations:
+      - name: getFindingsReportAccountSummary
+        method: GET
+        description: Amazon CodeGuru Profiler Get Findings Report Account Summary
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: '{resourceArn}'
+      path: /tags/{resourceArn}
+      description: Operations for {resourceArn}
+      operations:
+      - name: listTagsForResource
+        method: GET
+        description: Amazon CodeGuru Profiler List Tags for Resource
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: tagResource
+        method: POST
+        description: Amazon CodeGuru Profiler Tag Resource
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: untagResource
+        method: DELETE
+        description: Amazon CodeGuru Profiler Untag Resource
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8100
+    namespace: codeguruprofiler-rest
+    resources:
+    - path: /v1/{profilingGroupName}
+      name: '{profilingGroupName}'
+      description: REST for {profilingGroupName}
+      operations:
+      - method: POST
+        name: addNotificationChannels
+        description: Amazon CodeGuru Profiler Add Notification Channels
+        call: codeguruprofiler.addNotificationChannels
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getNotificationConfiguration
+        description: Amazon CodeGuru Profiler Get Notification Configuration
+        call: codeguruprofiler.getNotificationConfiguration
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: batchGetFrameMetricData
+        description: Amazon CodeGuru Profiler Batch Get Frame Metric Data
+        call: codeguruprofiler.batchGetFrameMetricData
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: configureAgent
+        description: Amazon CodeGuru Profiler Configure Agent
+        call: codeguruprofiler.configureAgent
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteProfilingGroup
+        description: Amazon CodeGuru Profiler Delete Profiling Group
+        call: codeguruprofiler.deleteProfilingGroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: describeProfilingGroup
+        description: Amazon CodeGuru Profiler Describe Profiling Group
+        call: codeguruprofiler.describeProfilingGroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateProfilingGroup
+        description: Amazon CodeGuru Profiler Update Profiling Group
+        call: codeguruprofiler.updateProfilingGroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getPolicy
+        description: Amazon CodeGuru Profiler Get Policy
+        call: codeguruprofiler.getPolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getProfile
+        description: Amazon CodeGuru Profiler Get Profile
+        call: codeguruprofiler.getProfile
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listProfileTimes
+        description: Amazon CodeGuru Profiler List Profile Times
+        call: codeguruprofiler.listProfileTimes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: postAgentProfile
+        description: Amazon CodeGuru Profiler Post Agent Profile
+        call: codeguruprofiler.postAgentProfile
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: putPermission
+        description: Amazon CodeGuru Profiler Put Permission
+        call: codeguruprofiler.putPermission
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removeNotificationChannel
+        description: Amazon CodeGuru Profiler Remove Notification Channel
+        call: codeguruprofiler.removeNotificationChannel
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removePermission
+        description: Amazon CodeGuru Profiler Remove Permission
+        call: codeguruprofiler.removePermission
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/profilingGroups
+      name: profilingGroups
+      description: REST for profilingGroups
+      operations:
+      - method: POST
+        name: createProfilingGroup
+        description: Amazon CodeGuru Profiler Create Profiling Group
+        call: codeguruprofiler.createProfilingGroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getRecommendations
+        description: Amazon CodeGuru Profiler Get Recommendations
+        call: codeguruprofiler.getRecommendations
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listFindingsReports
+        description: Amazon CodeGuru Profiler List Findings Reports
+        call: codeguruprofiler.listFindingsReports
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listProfilingGroups
+        description: Amazon CodeGuru Profiler List Profiling Groups
+        call: codeguruprofiler.listProfilingGroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: submitFeedback
+        description: Amazon CodeGuru Profiler Submit Feedback
+        call: codeguruprofiler.submitFeedback
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/findingsReports
+      name: findingsReports
+      description: REST for findingsReports
+      operations:
+      - method: GET
+        name: getFindingsReportAccountSummary
+        description: Amazon CodeGuru Profiler Get Findings Report Account Summary
+        call: codeguruprofiler.getFindingsReportAccountSummary
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{resourceArn}
+      name: '{resourceArn}'
+      description: REST for {resourceArn}
+      operations:
+      - method: GET
+        name: listTagsForResource
+        description: Amazon CodeGuru Profiler List Tags for Resource
+        call: codeguruprofiler.listTagsForResource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: tagResource
+        description: Amazon CodeGuru Profiler Tag Resource
+        call: codeguruprofiler.tagResource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: untagResource
+        description: Amazon CodeGuru Profiler Untag Resource
+        call: codeguruprofiler.untagResource
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9100
+    namespace: codeguruprofiler-mcp
+    transport: http
+    tools:
+    - name: codeguruprofiler-addNotificationChannels
+      description: Amazon CodeGuru Profiler Add Notification Channels
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.addNotificationChannels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-getNotificationConfiguration
+      description: Amazon CodeGuru Profiler Get Notification Configuration
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.getNotificationConfiguration
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-batchGetFrameMetricData
+      description: Amazon CodeGuru Profiler Batch Get Frame Metric Data
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.batchGetFrameMetricData
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-configureAgent
+      description: Amazon CodeGuru Profiler Configure Agent
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.configureAgent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-deleteProfilingGroup
+      description: Amazon CodeGuru Profiler Delete Profiling Group
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.deleteProfilingGroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-describeProfilingGroup
+      description: Amazon CodeGuru Profiler Describe Profiling Group
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.describeProfilingGroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-updateProfilingGroup
+      description: Amazon CodeGuru Profiler Update Profiling Group
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.updateProfilingGroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-getPolicy
+      description: Amazon CodeGuru Profiler Get Policy
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.getPolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-getProfile
+      description: Amazon CodeGuru Profiler Get Profile
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.getProfile
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-listProfileTimes
+      description: Amazon CodeGuru Profiler List Profile Times
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.listProfileTimes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-postAgentProfile
+      description: Amazon CodeGuru Profiler Post Agent Profile
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.postAgentProfile
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-putPermission
+      description: Amazon CodeGuru Profiler Put Permission
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.putPermission
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-removeNotificationChannel
+      description: Amazon CodeGuru Profiler Remove Notification Channel
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.removeNotificationChannel
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-removePermission
+      description: Amazon CodeGuru Profiler Remove Permission
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.removePermission
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-createProfilingGroup
+      description: Amazon CodeGuru Profiler Create Profiling Group
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.createProfilingGroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-getRecommendations
+      description: Amazon CodeGuru Profiler Get Recommendations
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.getRecommendations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-listFindingsReports
+      description: Amazon CodeGuru Profiler List Findings Reports
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.listFindingsReports
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-listProfilingGroups
+      description: Amazon CodeGuru Profiler List Profiling Groups
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.listProfilingGroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-submitFeedback
+      description: Amazon CodeGuru Profiler Submit Feedback
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.submitFeedback
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-getFindingsReportAccountSummary
+      description: Amazon CodeGuru Profiler Get Findings Report Account Summary
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.getFindingsReportAccountSummary
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-listTagsForResource
+      description: Amazon CodeGuru Profiler List Tags for Resource
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codeguruprofiler.listTagsForResource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-tagResource
+      description: Amazon CodeGuru Profiler Tag Resource
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.tagResource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codeguruprofiler-untagResource
+      description: Amazon CodeGuru Profiler Untag Resource
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codeguruprofiler.untagResource
+      outputParameters:
+      - type: object
+        mapping: $.
