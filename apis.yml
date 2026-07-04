@@ -98,3 +98,7 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+
+common:
+  - url: https://aws.amazon.com/blogs/devops/tag/codeguru-profiler/feed/
+    type: Blog

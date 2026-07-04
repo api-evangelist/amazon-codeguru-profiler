@@ -1,0 +1,56 @@
+# Amazon CodeGuru Profiler API Reference
+
+> This section provides documentation for the Amazon CodeGuru Profiler API operations.
+
+- [Welcome](https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.md)
+- [Common Parameters](https://docs.aws.amazon.com/codeguru/latest/profiler-api/CommonParameters.md)
+- [Common Error Types](https://docs.aws.amazon.com/codeguru/latest/profiler-api/CommonErrors.md)
+
+## [Actions](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Operations.md)
+
+- [AddNotificationChannels](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AddNotificationChannels.md): Add up to 2 anomaly notifications channels for a profiling group.
+- [BatchGetFrameMetricData](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_BatchGetFrameMetricData.md): Returns the time series of values for a requested list of frame metrics from a time period.
+- [ConfigureAgent](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.md): Used by profiler agents to report their current state and to receive remote configuration updates.
+- [CreateProfilingGroup](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_CreateProfilingGroup.md): Creates a profiling group.
+- [DeleteProfilingGroup](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_DeleteProfilingGroup.md): Deletes a profiling group.
+- [DescribeProfilingGroup](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_DescribeProfilingGroup.md): Returns a ProfilingGroupDescription object that contains information about the requested profiling group.
+- [GetFindingsReportAccountSummary](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetFindingsReportAccountSummary.md): Returns a list of FindingsReportSummary objects that contain analysis results for all profiling groups in your AWS account.
+- [GetNotificationConfiguration](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetNotificationConfiguration.md): Get the current configuration for anomaly notifications for a profiling group.
+- [GetPolicy](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetPolicy.md): Returns the JSON-formatted resource-based policy on a profiling group.
+- [GetProfile](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.md): Gets the aggregated profile of a profiling group for a specified time range.
+- [GetRecommendations](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetRecommendations.md): Returns a list of Recommendation objects that contain recommendations for a profiling group for a given time period.
+- [ListFindingsReports](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ListFindingsReports.md): List the available reports for a given profiling group and time range.
+- [ListProfileTimes](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ListProfileTimes.md): Lists the start times of the available aggregated profiles of a profiling group for an aggregation period within the specified time range.
+- [ListProfilingGroups](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ListProfilingGroups.md): Returns a list of profiling groups.
+- [ListTagsForResource](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ListTagsForResource.md): Returns a list of the tags that are assigned to a specified resource.
+- [PostAgentProfile](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.md): Submits profiling data to an aggregated profile of a profiling group.
+- [PutPermission](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PutPermission.md): Adds permissions to a profiling group's resource-based policy that are provided using an action group.
+- [RemoveNotificationChannel](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_RemoveNotificationChannel.md): Remove one anomaly notifications channel for a profiling group.
+- [RemovePermission](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_RemovePermission.md): Removes permissions from a profiling group's resource-based policy that are provided using an action group.
+- [SubmitFeedback](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_SubmitFeedback.md): Sends feedback to CodeGuru Profiler about whether the anomaly detected by the analysis is useful or not.
+- [TagResource](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_TagResource.md): Use to assign one or more tags to a resource.
+- [UntagResource](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_UntagResource.md): Use to remove one or more tags from a resource.
+- [UpdateProfilingGroup](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_UpdateProfilingGroup.md): Updates a profiling group.
+
+
+## [Data Types](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Types.md)
+
+- [AgentConfiguration](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AgentConfiguration.md): The response of ConfigureAgent that specifies if an agent profiles or not and for how long to return profiling data.
+- [AgentOrchestrationConfig](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AgentOrchestrationConfig.md): Specifies whether profiling is enabled or disabled for a profiling group.
+- [AggregatedProfileTime](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AggregatedProfileTime.md): Specifies the aggregation period and aggregation start time for an aggregated profile.
+- [Anomaly](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Anomaly.md): Details about an anomaly in a specific metric of application profile.
+- [AnomalyInstance](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AnomalyInstance.md): The specific duration in which the metric is flagged as anomalous.
+- [Channel](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Channel.md): Notification medium for users to get alerted for events that occur in application profile.
+- [FindingsReportSummary](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.md): Information about potential recommendations that might be created from the analysis of profiling data.
+- [FrameMetric](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FrameMetric.md): The frame name, metric type, and thread states.
+- [FrameMetricDatum](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FrameMetricDatum.md): Information about a frame metric and its values.
+- [Match](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Match.md): The part of a profile that contains a recommendation found during analysis.
+- [Metric](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Metric.md): Details about the metric that the analysis used when it detected the anomaly.
+- [NotificationConfiguration](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_NotificationConfiguration.md): The configuration for notifications stored for each profiling group.
+- [Pattern](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Pattern.md): A set of rules used to make a recommendation during an analysis.
+- [ProfileTime](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfileTime.md): Contains the start time of a profile.
+- [ProfilingGroupDescription](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.md): Contains information about a profiling group.
+- [ProfilingStatus](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingStatus.md): Profiling status includes information about the last time a profile agent pinged back, the last time a profile was received, and the aggregation period and start time for the most recent aggregated profile.
+- [Recommendation](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Recommendation.md): A potential improvement that was found from analyzing the profiling data.
+- [TimestampStructure](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_TimestampStructure.md): A data type that contains a Timestamp object.
+- [UserFeedback](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_UserFeedback.md): Feedback that can be submitted for each instance of an anomaly by the user.

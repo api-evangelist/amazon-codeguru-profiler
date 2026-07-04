@@ -1,0 +1,19 @@
+generated: '2026-06-20'
+method: searched
+source: https://codeguru-profiler.us-east-1.amazonaws.com/.well-known/
+description: >-
+  Probe of the /.well-known/ discovery surface on the CodeGuru Profiler API
+  host. AWS service endpoints require SigV4-signed requests and return HTTP 403
+  for unauthenticated /.well-known/ paths; no discovery documents are published.
+host: https://codeguru-profiler.us-east-1.amazonaws.com
+documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403

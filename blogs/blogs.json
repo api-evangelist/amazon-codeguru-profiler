@@ -1,0 +1,6 @@
+{
+  "repo": "amazon-codeguru-profiler",
+  "feeds": [ { "source": "https://aws.amazon.com/blogs/devops/tag/codeguru-profiler/feed/", "feed_url": "https://aws.amazon.com/blogs/devops/tag/codeguru-profiler/feed/", "title": "CodeGuru Profiler – AWS DevOps & Developer Productivity Blog", "saved": 1 } ],
+  "fetched": "2026-07-04T13:39:37Z",
+  "post_count": 1
+}

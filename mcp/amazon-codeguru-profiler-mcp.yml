@@ -1,0 +1,83 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/amazon-codeguru-profiler-openapi-original.yaml
+description: >-
+  Candidate MCP server derived from the Amazon CodeGuru Profiler OpenAPI
+  operations (one tool per operationId). AWS does not publish a dedicated
+  CodeGuru Profiler MCP server; the awslabs/mcp catalog ships a general AWS
+  Documentation MCP server but no service-specific Profiler server. This is a
+  derived tool inventory, not a running endpoint.
+server:
+  name: amazon-codeguru-profiler
+  transport: http
+tools:
+  - name: add_notification_channels
+    description: Add up to 2 anomaly notification channels for a profiling group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#AddNotificationChannels
+  - name: batch_get_frame_metric_data
+    description: Returns the time series of values for a requested list of frame metrics from a time period.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#BatchGetFrameMetricData
+  - name: configure_agent
+    description: Used by profiler agents to report their current state and to receive remote configuration updates.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#ConfigureAgent
+  - name: create_profiling_group
+    description: Creates a profiling group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#CreateProfilingGroup
+  - name: delete_profiling_group
+    description: Deletes a profiling group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#DeleteProfilingGroup
+  - name: describe_profiling_group
+    description: Returns a ProfilingGroupDescription object with information about the requested profiling group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#DescribeProfilingGroup
+  - name: get_findings_report_account_summary
+    description: Returns a list of FindingsReportSummary objects for all profiling groups in your AWS account.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#GetFindingsReportAccountSummary
+  - name: get_notification_configuration
+    description: Get the current configuration for anomaly notifications for a profiling group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#GetNotificationConfiguration
+  - name: get_policy
+    description: Returns the JSON-formatted resource-based policy on a profiling group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#GetPolicy
+  - name: get_profile
+    description: Gets the aggregated profile of a profiling group for a specified time range.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#GetProfile
+  - name: get_recommendations
+    description: Returns a list of Recommendation objects for a profiling group for a given time period.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#GetRecommendations
+  - name: list_findings_reports
+    description: List the available reports for a given profiling group and time range.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#ListFindingsReports
+  - name: list_profile_times
+    description: Lists the start times of the available aggregated profiles of a profiling group within a time range.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#ListProfileTimes
+  - name: list_profiling_groups
+    description: Returns a list of profiling groups.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#ListProfilingGroups
+  - name: list_tags_for_resource
+    description: Returns a list of the tags that are assigned to a specified resource.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#ListTagsForResource
+  - name: post_agent_profile
+    description: Submits profiling data to an aggregated profile of a profiling group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#PostAgentProfile
+  - name: put_permission
+    description: Adds permissions to a profiling group's resource-based policy using an action group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#PutPermission
+  - name: remove_notification_channel
+    description: Remove one anomaly notifications channel for a profiling group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#RemoveNotificationChannel
+  - name: remove_permission
+    description: Removes permissions from a profiling group's resource-based policy using an action group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#RemovePermission
+  - name: submit_feedback
+    description: Sends feedback to CodeGuru Profiler about whether a detected anomaly is useful.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#SubmitFeedback
+  - name: tag_resource
+    description: Assign one or more tags to a resource.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#TagResource
+  - name: untag_resource
+    description: Remove one or more tags from a resource.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#UntagResource
+  - name: update_profiling_group
+    description: Updates a profiling group.
+    source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#UpdateProfilingGroup

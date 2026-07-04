@@ -1,0 +1,36 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Amazon CodeGuru Profiler
+  version: 1.0.0
+x-provenance:
+  generated: '2026-06-20'
+  method: generated
+  source: openapi/amazon-codeguru-profiler-openapi-original.yaml
+extends: openapi/amazon-codeguru-profiler-openapi-original.yaml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-aid: amazon-codeguru-profiler
+      x-apievangelist-provider: Amazon Web Services
+      x-apievangelist-category: Application Performance
+      x-authentication: AWS Signature Version 4 (SigV4)
+  - target: $.info
+    update:
+      x-apievangelist-artifacts:
+        packages: packages/amazon-codeguru-profiler-packages.yml
+        llms: llms/amazon-codeguru-profiler-llms.txt
+        errors: errors/amazon-codeguru-profiler-problem-types.yml
+        conformance: conformance/amazon-codeguru-profiler-conformance.yml
+        lifecycle: lifecycle/amazon-codeguru-profiler-lifecycle.yml
+        mcp: mcp/amazon-codeguru-profiler-mcp.yml
+  - target: $.externalDocs
+    update:
+      description: Amazon CodeGuru Profiler API Reference
+      url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+  - target: $.info
+    update:
+      x-apievangelist-note: >-
+        AWS CodeGuru Profiler returns service exceptions using non-standard HTTP
+        status codes 480-485 in this aws2openapi-generated spec; the real
+        service maps these to standard 4xx/5xx codes via the AWS query/JSON
+        protocol. See errors/amazon-codeguru-profiler-problem-types.yml.

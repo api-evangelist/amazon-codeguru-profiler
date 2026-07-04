@@ -1,0 +1,41 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/amazon-codeguru-profiler-openapi-original.yaml
+description: >-
+  Cross-cutting standards conformance for Amazon CodeGuru Profiler, derived from
+  the OpenAPI definition and AWS documentation. The API is an AWS JSON/REST
+  service authenticated with Signature Version 4; it does not use OAuth2/OIDC,
+  RFC 9457 problem+json, or the healthcare/finance interop standards.
+standards:
+  - id: aws-sigv4
+    conforms: true
+    evidence: x-aws-signingName codeguru-profiler; AWS Signature Version 4 request signing required.
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securityScheme; AWS uses SigV4 IAM credentials.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Error responses use application/json AWS exception shapes, not application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: List operations expose maxResults and nextToken pagination parameters.
+  - id: idempotency
+    conforms: true
+    evidence: CreateProfilingGroup accepts a clientToken idempotency key.
+  - id: json-api
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: psd2
+    conforms: false
+  - id: rfc8594-sunset
+    conforms: false
+    evidence: No Sunset/Deprecation header usage documented for the service API.

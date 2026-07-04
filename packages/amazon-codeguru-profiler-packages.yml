@@ -1,0 +1,64 @@
+generated: '2026-06-20'
+method: searched
+source: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up.html
+description: >-
+  First-party AWS client libraries and profiling agents for Amazon CodeGuru
+  Profiler. The service is exposed through the standard AWS SDKs (one
+  codeguruprofiler client per language) plus dedicated JVM and Python profiling
+  agents that submit runtime data to the ConfigureAgent / PostAgentProfile
+  operations.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@aws-sdk/client-codeguruprofiler"
+    url: https://www.npmjs.com/package/@aws-sdk/client-codeguruprofiler
+    install: npm install @aws-sdk/client-codeguruprofiler
+    version: 3.1079.0
+    official: true
+    kind: sdk
+  - language: python
+    registry: pypi
+    name: boto3
+    url: https://pypi.org/project/boto3/
+    install: pip install boto3
+    official: true
+    kind: sdk
+    notes: AWS SDK for Python; codeguruprofiler client via boto3.client('codeguruprofiler').
+  - language: python
+    registry: pypi
+    name: codeguru-profiler-agent
+    url: https://pypi.org/project/codeguru-profiler-agent/
+    install: pip install codeguru-profiler-agent
+    official: true
+    kind: agent
+    notes: First-party Python profiling agent that reports runtime data to CodeGuru Profiler.
+  - language: java
+    registry: maven
+    name: software.amazon.codeguruprofiler:codeguru-profiler-java-agent
+    url: https://central.sonatype.com/artifact/software.amazon.codeguruprofiler/codeguru-profiler-java-agent
+    install: "maven: software.amazon.codeguruprofiler:codeguru-profiler-java-agent:1.2.6"
+    version: 1.2.6
+    official: true
+    kind: agent
+    notes: First-party JVM profiling agent (published to Maven Central).
+  - language: dotnet
+    registry: nuget
+    name: AWSSDK.CodeGuruProfiler
+    url: https://www.nuget.org/packages/AWSSDK.CodeGuruProfiler
+    install: dotnet add package AWSSDK.CodeGuruProfiler
+    official: true
+    kind: sdk
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/aws/aws-sdk-go-v2/service/codeguruprofiler
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/codeguruprofiler
+    install: go get github.com/aws/aws-sdk-go-v2/service/codeguruprofiler
+    official: true
+    kind: sdk
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-codeguruprofiler
+    url: https://rubygems.org/gems/aws-sdk-codeguruprofiler
+    install: gem install aws-sdk-codeguruprofiler
+    official: true
+    kind: sdk
