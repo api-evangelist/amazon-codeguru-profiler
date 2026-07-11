@@ -100,5 +100,11 @@ maintainers:
   email: kin@apievangelist.com
 
 common:
+  - type: VulnerabilityDisclosure
+    url: security/amazon-codeguru-profiler-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-codeguru-profiler-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-codeguru-profiler-authentication.yml
   - url: https://aws.amazon.com/blogs/devops/tag/codeguru-profiler/feed/
     type: Blog
