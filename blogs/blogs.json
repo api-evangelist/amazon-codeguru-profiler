@@ -1,6 +1,21 @@
 {
   "repo": "amazon-codeguru-profiler",
-  "feeds": [ { "source": "https://aws.amazon.com/blogs/devops/tag/codeguru-profiler/feed/", "feed_url": "https://aws.amazon.com/blogs/devops/tag/codeguru-profiler/feed/", "title": "CodeGuru Profiler – AWS DevOps & Developer Productivity Blog", "saved": 1 } ],
-  "fetched": "2026-07-04T13:39:37Z",
+  "feeds": [
+    {
+      "source": "https://aws.amazon.com/blogs/devops/tag/codeguru-profiler/feed/",
+      "feed_url": "https://aws.amazon.com/blogs/devops/tag/codeguru-profiler/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://health.aws.amazon.com/health/status",
+      "feed_url": "https://health.aws.amazon.com/health/status",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 1
 }

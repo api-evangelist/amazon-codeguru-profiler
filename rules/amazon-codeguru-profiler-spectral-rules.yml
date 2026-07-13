@@ -1,86 +1,142 @@
-extends: "spectral:oas"
-
+# amazon-codeguru-profiler — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 50% of servers already https (warn)
+#   - path-params-casing: camel @ 100% (n=24)
+#   - query-params-casing: camel @ 88% (n=32)
+#   - operationid-casing: pascal @ 100% (n=23)
+#   - schema-names-casing: pascal @ 100% (n=128)
+#   - schema-properties-casing: camel @ 64% (n=110)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - pagination params observed: ['maxResults', 'nextToken']
+#   - merge: kept 10 existing, added 6 measured, upgraded 0
+#   - added: path-params-casing, query-params-casing, operationid-casing, schema-names-casing, schema-properties-casing, security-schemes-defined
+extends:
+  - spectral:oas
 rules:
-
   info-description-required:
     description: API must have a description
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: description
       function: truthy
-
   servers-https:
     description: All server URLs must use HTTPS
     severity: error
-    given: "$.servers[*].url"
+    given: $.servers[*].url
     then:
       function: pattern
       functionOptions:
-        match: "^https://"
-
+        match: ^https://
   operation-summary-required:
     description: Every operation must have a summary
     severity: error
-    given: "$.paths[*][get,post,put,delete,patch]"
+    given: $.paths[*][get,post,put,delete,patch]
     then:
       field: summary
       function: truthy
-
   operation-summary-company-prefix:
     description: Operation summaries should start with Amazon CodeGuru Profiler
     severity: warn
-    given: "$.paths[*][get,post,put,delete,patch].summary"
+    given: $.paths[*][get,post,put,delete,patch].summary
     then:
       function: pattern
       functionOptions:
-        match: "^Amazon CodeGuru Profiler"
-
+        match: ^Amazon CodeGuru Profiler
   operation-operationId-required:
     description: Every operation must have an operationId
     severity: error
-    given: "$.paths[*][get,post,put,delete,patch]"
+    given: $.paths[*][get,post,put,delete,patch]
     then:
       field: operationId
       function: truthy
-
   operation-tags-required:
     description: Every operation must have tags
     severity: warn
-    given: "$.paths[*][get,post,put,delete,patch]"
+    given: $.paths[*][get,post,put,delete,patch]
     then:
       field: tags
       function: truthy
-
   response-description-required:
     description: Every response must have a description
     severity: error
-    given: "$.paths[*][*].responses[*]"
+    given: $.paths[*][*].responses[*]
     then:
       field: description
       function: truthy
-
   schema-type-required:
     description: Schema components should have a type
     severity: warn
-    given: "$.components.schemas[*]"
+    given: $.components.schemas[*]
     then:
       field: type
       function: truthy
-
   no-empty-descriptions:
     description: Descriptions must not be empty strings
     severity: warn
-    given: "$..description"
+    given: $..description
     then:
       function: pattern
       functionOptions:
-        match: ".+"
-
+        match: .+
   operation-microcks-operation:
     description: Operations should include x-microcks-operation
     severity: info
-    given: "$.paths[*][get,post,put,delete,patch]"
+    given: $.paths[*][get,post,put,delete,patch]
     then:
       field: x-microcks-operation
+      function: truthy
+  path-params-casing:
+    description: Path parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  query-params-casing:
+    description: Query parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: camel
+  operationid-casing:
+    description: Operation IDs should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-properties-casing:
+    description: Schema properties should be camelCase (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: camel
+  security-schemes-defined:
+    description: Security schemes should be defined in components.
+    severity: warn
+    given: $.components
+    then:
+      field: securitySchemes
       function: truthy
