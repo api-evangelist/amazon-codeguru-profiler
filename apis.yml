@@ -100,6 +100,8 @@ maintainers:
   email: kin@apievangelist.com
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-codeguru-profiler-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/amazon-codeguru-profiler-vulnerability-disclosure.yml
   - type: DomainSecurity
