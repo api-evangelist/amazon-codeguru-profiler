@@ -1,0 +1,431 @@
+openapi: 3.0.0
+info:
+  version: '2019-07-18'
+  x-release: v4
+  title: Amazon CodeGuru Profiler Internal ProfilingGroups#clientToken API
+  description: <p> This section provides documentation for the Amazon CodeGuru Profiler API operations. </p> <p> Amazon CodeGuru Profiler collects runtime performance data from your live applications, and provides recommendations that can help you fine-tune your application performance. Using machine learning algorithms, CodeGuru Profiler can help you find your most expensive lines of code and suggest ways you can improve efficiency and remove CPU bottlenecks. </p> <p> Amazon CodeGuru Profiler provides different visualizations of profiling data to help you identify what code is running on the CPU, see how much time is consumed, and suggest ways to reduce CPU utilization. </p> <note> <p>Amazon CodeGuru Profiler currently supports applications written in all Java virtual machine (JVM) languages and Python. While CodeGuru Profiler supports both visualizations and recommendations for applications written in Java, it can also generate visualizations and a subset of recommendations for applications written in other JVM languages and Python.</p> </note> <p> For more information, see <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html">What is Amazon CodeGuru Profiler</a> in the <i>Amazon CodeGuru Profiler User Guide</i>. </p>
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: codeguruprofiler
+  x-aws-signingName: codeguru-profiler
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codeguruprofiler-2019-07-18.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://codeguru-profiler.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The Amazon CodeGuru Profiler multi-region endpoint
+- url: https://codeguru-profiler.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The Amazon CodeGuru Profiler multi-region endpoint
+- url: http://codeguru-profiler.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The Amazon CodeGuru Profiler endpoint for China (Beijing) and China (Ningxia)
+- url: https://codeguru-profiler.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The Amazon CodeGuru Profiler endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: ProfilingGroups#clientToken
+paths:
+  /profilingGroups#clientToken:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: CreateProfilingGroup
+      description: Creates a profiling group.
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateProfilingGroupResponse'
+              examples:
+                CreateProfilingGroup201Example:
+                  summary: Default CreateProfilingGroup 201 response
+                  x-microcks-default: true
+                  value:
+                    profilingGroup: example-value
+        '480':
+          description: ServiceQuotaExceededException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceQuotaExceededException'
+              examples:
+                CreateProfilingGroup480Example:
+                  summary: Default CreateProfilingGroup 480 response
+                  x-microcks-default: true
+                  value: example-value
+        '481':
+          description: InternalServerException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                CreateProfilingGroup481Example:
+                  summary: Default CreateProfilingGroup 481 response
+                  x-microcks-default: true
+                  value: example-value
+        '482':
+          description: ConflictException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictException'
+              examples:
+                CreateProfilingGroup482Example:
+                  summary: Default CreateProfilingGroup 482 response
+                  x-microcks-default: true
+                  value: example-value
+        '483':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+              examples:
+                CreateProfilingGroup483Example:
+                  summary: Default CreateProfilingGroup 483 response
+                  x-microcks-default: true
+                  value: example-value
+        '484':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+              examples:
+                CreateProfilingGroup484Example:
+                  summary: Default CreateProfilingGroup 484 response
+                  x-microcks-default: true
+                  value: example-value
+      parameters:
+      - name: clientToken
+        in: query
+        required: true
+        description: ' Amazon CodeGuru Profiler uses this universally unique identifier (UUID) to prevent the accidental creation of duplicate profiling groups if there are failures and retries. '
+        schema:
+          type: string
+          pattern: ^[\w-]+$
+          minLength: 1
+          maxLength: 64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - profilingGroupName
+              properties:
+                agentOrchestrationConfig:
+                  description: ' Specifies whether profiling is enabled or disabled for a profiling group. It is used by <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a> to enable or disable profiling for a profiling group. '
+                  type: object
+                  properties:
+                    profilingEnabled:
+                      allOf:
+                      - $ref: '#/components/schemas/Boolean'
+                      - description: ' A <code>Boolean</code> that specifies whether the profiling agent collects profiling data or not. Set to <code>true</code> to enable profiling. '
+                computePlatform:
+                  description: ' The compute platform of the profiling group. Use <code>AWSLambda</code> if your application runs on AWS Lambda. Use <code>Default</code> if your application runs on a compute platform that is not AWS Lambda, such an Amazon EC2 instance, an on-premises server, or a different platform. If not specified, <code>Default</code> is used. '
+                  type: string
+                  enum:
+                  - Default
+                  - AWSLambda
+                profilingGroupName:
+                  description: The name of the profiling group to create.
+                  type: string
+                  pattern: ^[\w-]+$
+                  minLength: 1
+                  maxLength: 255
+                tags:
+                  description: ' A list of tags to add to the created profiling group. '
+                  type: object
+                  additionalProperties:
+                    $ref: '#/components/schemas/String'
+            examples:
+              CreateProfilingGroupRequestExample:
+                summary: Default CreateProfilingGroup request
+                x-microcks-default: true
+                value:
+                  agentOrchestrationConfig:
+                    profilingEnabled: example-value
+                  computePlatform: Default
+                  profilingGroupName: example-resource
+                  tags: {}
+      summary: Amazon CodeGuru Profiler Create Profiling Group
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - ProfilingGroups#clientToken
+components:
+  parameters:
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+  schemas:
+    Timestamp:
+      type: string
+      format: date-time
+    ComputePlatform:
+      type: string
+      enum:
+      - Default
+      - AWSLambda
+    ConflictException: {}
+    AggregationPeriod:
+      type: string
+      enum:
+      - PT5M
+      - PT1H
+      - P1D
+    ProfilingStatus:
+      type: object
+      properties:
+        latestAgentOrchestratedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The date and time when the profiling agent most recently pinged back. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
+        latestAgentProfileReportedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The date and time when the most recent profile was received. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
+        latestAggregatedProfile:
+          allOf:
+          - $ref: '#/components/schemas/AggregatedProfileTime'
+          - description: ' An <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AggregatedProfileTime.html"> <code>AggregatedProfileTime</code> </a> object that contains the aggregation period and start time for an aggregated profile. '
+      description: ' Profiling status includes information about the last time a profile agent pinged back, the last time a profile was received, and the aggregation period and start time for the most recent aggregated profile. '
+    AgentOrchestrationConfig:
+      type: object
+      required:
+      - profilingEnabled
+      properties:
+        profilingEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: ' A <code>Boolean</code> that specifies whether the profiling agent collects profiling data or not. Set to <code>true</code> to enable profiling. '
+      description: ' Specifies whether profiling is enabled or disabled for a profiling group. It is used by <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a> to enable or disable profiling for a profiling group. '
+    Boolean:
+      type: boolean
+    ThrottlingException: {}
+    ProfilingGroupName:
+      type: string
+      pattern: ^[\w-]+$
+      minLength: 1
+      maxLength: 255
+    ProfilingGroupDescription:
+      type: object
+      properties:
+        agentOrchestrationConfig:
+          allOf:
+          - $ref: '#/components/schemas/AgentOrchestrationConfig'
+          - description: ' An <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AgentOrchestrationConfig.html"> <code>AgentOrchestrationConfig</code> </a> object that indicates if the profiling group is enabled for profiled or not. '
+        arn:
+          allOf:
+          - $ref: '#/components/schemas/ProfilingGroupArn'
+          - description: The Amazon Resource Name (ARN) identifying the profiling group resource.
+        computePlatform:
+          allOf:
+          - $ref: '#/components/schemas/ComputePlatform'
+          - description: ' The compute platform of the profiling group. If it is set to <code>AWSLambda</code>, then the profiled application runs on AWS Lambda. If it is set to <code>Default</code>, then the profiled application runs on a compute platform that is not AWS Lambda, such an Amazon EC2 instance, an on-premises server, or a different platform. The default is <code>Default</code>. '
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: 'The time when the profiling group was created. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        name:
+          allOf:
+          - $ref: '#/components/schemas/ProfilingGroupName'
+          - description: The name of the profiling group.
+        profilingStatus:
+          allOf:
+          - $ref: '#/components/schemas/ProfilingStatus'
+          - description: ' A <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingStatus.html"> <code>ProfilingStatus</code> </a> object that includes information about the last time a profile agent pinged back, the last time a profile was received, and the aggregation period and start time for the most recent aggregated profile. '
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/TagsMap'
+          - description: ' A list of the tags that belong to this profiling group. '
+        updatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' The date and time when the profiling group was last updated. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+      description: ' Contains information about a profiling group. '
+    TagsMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/String'
+    CreateProfilingGroupResponse:
+      type: object
+      required:
+      - profilingGroup
+      properties:
+        profilingGroup:
+          allOf:
+          - $ref: '#/components/schemas/ProfilingGroupDescription'
+          - description: ' The returned <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html"> <code>ProfilingGroupDescription</code> </a> object that contains information about the created profiling group. '
+      description: The structure representing the createProfilingGroupResponse.
+    String:
+      type: string
+    ValidationException: {}
+    AggregatedProfileTime:
+      type: object
+      properties:
+        period:
+          allOf:
+          - $ref: '#/components/schemas/AggregationPeriod'
+          - description: <p> The aggregation period. This indicates the period during which an aggregation profile collects posted agent profiles for a profiling group. Use one of three valid durations that are specified using the ISO 8601 format. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p> <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes </p> </li> </ul>
+        start:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: <p> The time that aggregation of posted agent profiles for a profiling group starts. The aggregation profile contains profiles posted by the agent starting at this time for an aggregation period specified by the <code>period</code> property of the <code>AggregatedProfileTime</code> object. </p> <p> Specify <code>start</code> using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
+      description: ' Specifies the aggregation period and aggregation start time for an aggregated profile. An aggregated profile is used to collect posted agent profiles during an aggregation period. There are three possible aggregation periods (1 day, 1 hour, or 5 minutes). '
+    ServiceQuotaExceededException: {}
+    ProfilingGroupArn:
+      type: string
+    InternalServerException: {}
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/codeguru-profiler/
+x-hasEquivalentPaths: true

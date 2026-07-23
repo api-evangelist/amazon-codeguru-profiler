@@ -1,0 +1,926 @@
+openapi: 3.0.0
+info:
+  version: '2019-07-18'
+  x-release: v4
+  title: Amazon CodeGuru Profiler Internal API
+  description: <p> This section provides documentation for the Amazon CodeGuru Profiler API operations. </p> <p> Amazon CodeGuru Profiler collects runtime performance data from your live applications, and provides recommendations that can help you fine-tune your application performance. Using machine learning algorithms, CodeGuru Profiler can help you find your most expensive lines of code and suggest ways you can improve efficiency and remove CPU bottlenecks. </p> <p> Amazon CodeGuru Profiler provides different visualizations of profiling data to help you identify what code is running on the CPU, see how much time is consumed, and suggest ways to reduce CPU utilization. </p> <note> <p>Amazon CodeGuru Profiler currently supports applications written in all Java virtual machine (JVM) languages and Python. While CodeGuru Profiler supports both visualizations and recommendations for applications written in Java, it can also generate visualizations and a subset of recommendations for applications written in other JVM languages and Python.</p> </note> <p> For more information, see <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html">What is Amazon CodeGuru Profiler</a> in the <i>Amazon CodeGuru Profiler User Guide</i>. </p>
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: codeguruprofiler
+  x-aws-signingName: codeguru-profiler
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codeguruprofiler-2019-07-18.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://codeguru-profiler.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The Amazon CodeGuru Profiler multi-region endpoint
+- url: https://codeguru-profiler.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The Amazon CodeGuru Profiler multi-region endpoint
+- url: http://codeguru-profiler.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The Amazon CodeGuru Profiler endpoint for China (Beijing) and China (Ningxia)
+- url: https://codeguru-profiler.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The Amazon CodeGuru Profiler endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: Internal
+paths:
+  /internal/findingsReports:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: GetFindingsReportAccountSummary
+      description: ' Returns a list of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html"> <code>FindingsReportSummary</code> </a> objects that contain analysis results for all profiling groups in your AWS account. '
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFindingsReportAccountSummaryResponse'
+              examples:
+                GetFindingsReportAccountSummary200Example:
+                  summary: Default GetFindingsReportAccountSummary 200 response
+                  x-microcks-default: true
+                  value:
+                    nextToken: example-value
+                    reportSummaries: example-value
+        '480':
+          description: InternalServerException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                GetFindingsReportAccountSummary480Example:
+                  summary: Default GetFindingsReportAccountSummary 480 response
+                  x-microcks-default: true
+                  value: '123456789012'
+        '481':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+              examples:
+                GetFindingsReportAccountSummary481Example:
+                  summary: Default GetFindingsReportAccountSummary 481 response
+                  x-microcks-default: true
+                  value: '123456789012'
+        '482':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+              examples:
+                GetFindingsReportAccountSummary482Example:
+                  summary: Default GetFindingsReportAccountSummary 482 response
+                  x-microcks-default: true
+                  value: '123456789012'
+      parameters:
+      - name: dailyReportsOnly
+        in: query
+        required: false
+        description: A <code>Boolean</code> value indicating whether to only return reports from daily profiles. If set to <code>True</code>, only analysis data from daily profiles is returned. If set to <code>False</code>, analysis data is returned from smaller time windows (for example, one hour).
+        schema:
+          type: boolean
+      - name: maxResults
+        in: query
+        required: false
+        description: The maximum number of results returned by <code> GetFindingsReportAccountSummary</code> in paginated output. When this parameter is used, <code>GetFindingsReportAccountSummary</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>GetFindingsReportAccountSummary</code> request with the returned <code>nextToken</code> value.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: nextToken
+        in: query
+        required: false
+        description: <p>The <code>nextToken</code> value returned from a previous paginated <code>GetFindingsReportAccountSummary</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. </p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+        schema:
+          type: string
+          pattern: ^[\w-]+$
+          minLength: 1
+          maxLength: 64
+      summary: Amazon CodeGuru Profiler Get Findings Report Account Summary
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Internal
+  /internal/profilingGroups/{profilingGroupName}/recommendations#endTime&startTime:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: GetRecommendations
+      description: ' Returns a list of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Recommendation.html"> <code>Recommendation</code> </a> objects that contain recommendations for a profiling group for a given time period. A list of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Anomaly.html"> <code>Anomaly</code> </a> objects that contains details about anomalies detected in the profiling group for the same time period is also returned. '
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRecommendationsResponse'
+              examples:
+                GetRecommendations200Example:
+                  summary: Default GetRecommendations 200 response
+                  x-microcks-default: true
+                  value:
+                    anomalies: example-value
+                    profileEndTime: example-value
+                    profileStartTime: example-value
+                    profilingGroupName: example-resource
+                    recommendations: example-value
+        '480':
+          description: InternalServerException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                GetRecommendations480Example:
+                  summary: Default GetRecommendations 480 response
+                  x-microcks-default: true
+                  value: example-value
+        '481':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+              examples:
+                GetRecommendations481Example:
+                  summary: Default GetRecommendations 481 response
+                  x-microcks-default: true
+                  value: example-value
+        '482':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+              examples:
+                GetRecommendations482Example:
+                  summary: Default GetRecommendations 482 response
+                  x-microcks-default: true
+                  value: example-value
+        '483':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+              examples:
+                GetRecommendations483Example:
+                  summary: Default GetRecommendations 483 response
+                  x-microcks-default: true
+                  value: example-value
+      parameters:
+      - name: endTime
+        in: query
+        required: true
+        description: ' The start time of the profile to get analysis data about. You must specify <code>startTime</code> and <code>endTime</code>. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        schema:
+          type: string
+          format: date-time
+      - name: locale
+        in: query
+        required: false
+        description: <p> The language used to provide analysis. Specify using a string that is one of the following <code>BCP 47</code> language codes. </p> <ul> <li> <p> <code>de-DE</code> - German, Germany </p> </li> <li> <p> <code>en-GB</code> - English, United Kingdom </p> </li> <li> <p> <code>en-US</code> - English, United States </p> </li> <li> <p> <code>es-ES</code> - Spanish, Spain </p> </li> <li> <p> <code>fr-FR</code> - French, France </p> </li> <li> <p> <code>it-IT</code> - Italian, Italy </p> </li> <li> <p> <code>ja-JP</code> - Japanese, Japan </p> </li> <li> <p> <code>ko-KR</code> - Korean, Republic of Korea </p> </li> <li> <p> <code>pt-BR</code> - Portugese, Brazil </p> </li> <li> <p> <code>zh-CN</code> - Chinese, China </p> </li> <li> <p> <code>zh-TW</code> - Chinese, Taiwan </p> </li> </ul>
+        schema:
+          type: string
+          description: 'BCP47 language code. Supported locales: de-DE, en-GB, en-US, es-ES, fr-FR, it-IT, ja-JP, ko-KR, pt-BR, zh-CN, zh-TW'
+      - name: profilingGroupName
+        in: path
+        required: true
+        description: ' The name of the profiling group to get analysis data about. '
+        schema:
+          type: string
+          pattern: ^[\w-]+$
+          minLength: 1
+          maxLength: 255
+      - name: startTime
+        in: query
+        required: true
+        description: ' The end time of the profile to get analysis data about. You must specify <code>startTime</code> and <code>endTime</code>. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        schema:
+          type: string
+          format: date-time
+      summary: Amazon CodeGuru Profiler Get Recommendations
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Internal
+  /internal/profilingGroups/{profilingGroupName}/findingsReports#endTime&startTime:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    get:
+      operationId: ListFindingsReports
+      description: List the available reports for a given profiling group and time range.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFindingsReportsResponse'
+              examples:
+                ListFindingsReports200Example:
+                  summary: Default ListFindingsReports 200 response
+                  x-microcks-default: true
+                  value:
+                    findingsReportSummaries: example-value
+                    nextToken: example-value
+        '480':
+          description: InternalServerException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                ListFindingsReports480Example:
+                  summary: Default ListFindingsReports 480 response
+                  x-microcks-default: true
+                  value: example-value
+        '481':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+              examples:
+                ListFindingsReports481Example:
+                  summary: Default ListFindingsReports 481 response
+                  x-microcks-default: true
+                  value: example-value
+        '482':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+              examples:
+                ListFindingsReports482Example:
+                  summary: Default ListFindingsReports 482 response
+                  x-microcks-default: true
+                  value: example-value
+        '483':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+              examples:
+                ListFindingsReports483Example:
+                  summary: Default ListFindingsReports 483 response
+                  x-microcks-default: true
+                  value: example-value
+      parameters:
+      - name: dailyReportsOnly
+        in: query
+        required: false
+        description: A <code>Boolean</code> value indicating whether to only return reports from daily profiles. If set to <code>True</code>, only analysis data from daily profiles is returned. If set to <code>False</code>, analysis data is returned from smaller time windows (for example, one hour).
+        schema:
+          type: boolean
+      - name: endTime
+        in: query
+        required: true
+        description: ' The end time of the profile to get analysis data about. You must specify <code>startTime</code> and <code>endTime</code>. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        schema:
+          type: string
+          format: date-time
+      - name: maxResults
+        in: query
+        required: false
+        description: The maximum number of report results returned by <code>ListFindingsReports</code> in paginated output. When this parameter is used, <code>ListFindingsReports</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListFindingsReports</code> request with the returned <code>nextToken</code> value.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: nextToken
+        in: query
+        required: false
+        description: <p>The <code>nextToken</code> value returned from a previous paginated <code>ListFindingsReportsRequest</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. </p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+        schema:
+          type: string
+          pattern: ^[\w-]+$
+          minLength: 1
+          maxLength: 64
+      - name: profilingGroupName
+        in: path
+        required: true
+        description: The name of the profiling group from which to search for analysis data.
+        schema:
+          type: string
+          pattern: ^[\w-]+$
+          minLength: 1
+          maxLength: 255
+      - name: startTime
+        in: query
+        required: true
+        description: ' The start time of the profile to get analysis data about. You must specify <code>startTime</code> and <code>endTime</code>. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        schema:
+          type: string
+          format: date-time
+      summary: Amazon CodeGuru Profiler List Findings Reports
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Internal
+  /internal/profilingGroups/{profilingGroupName}/anomalies/{anomalyInstanceId}/feedback:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: SubmitFeedback
+      description: Sends feedback to CodeGuru Profiler about whether the anomaly detected by the analysis is useful or not.
+      responses:
+        '204':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubmitFeedbackResponse'
+              examples:
+                SubmitFeedback204Example:
+                  summary: Default SubmitFeedback 204 response
+                  x-microcks-default: true
+                  value: {}
+        '480':
+          description: InternalServerException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                SubmitFeedback480Example:
+                  summary: Default SubmitFeedback 480 response
+                  x-microcks-default: true
+                  value: example-value
+        '481':
+          description: ValidationException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationException'
+              examples:
+                SubmitFeedback481Example:
+                  summary: Default SubmitFeedback 481 response
+                  x-microcks-default: true
+                  value: example-value
+        '482':
+          description: ThrottlingException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThrottlingException'
+              examples:
+                SubmitFeedback482Example:
+                  summary: Default SubmitFeedback 482 response
+                  x-microcks-default: true
+                  value: example-value
+        '483':
+          description: ResourceNotFoundException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+              examples:
+                SubmitFeedback483Example:
+                  summary: Default SubmitFeedback 483 response
+                  x-microcks-default: true
+                  value: example-value
+      parameters:
+      - name: anomalyInstanceId
+        in: path
+        required: true
+        description: The universally unique identifier (UUID) of the <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AnomalyInstance.html"> <code>AnomalyInstance</code> </a> object that is included in the analysis data.
+        schema:
+          type: string
+          pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
+      - name: profilingGroupName
+        in: path
+        required: true
+        description: The name of the profiling group that is associated with the analysis data.
+        schema:
+          type: string
+          pattern: ^[\w-]+$
+          minLength: 1
+          maxLength: 255
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - type
+              properties:
+                comment:
+                  description: Optional feedback about this anomaly.
+                  type: string
+                type:
+                  description: ' The feedback tpye. Thee are two valid values, <code>Positive</code> and <code>Negative</code>. '
+                  type: string
+                  enum:
+                  - Positive
+                  - Negative
+            examples:
+              SubmitFeedbackRequestExample:
+                summary: Default SubmitFeedback request
+                x-microcks-default: true
+                value:
+                  comment: example-value
+                  type: Positive
+      summary: Amazon CodeGuru Profiler Submit Feedback
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      tags:
+      - Internal
+components:
+  schemas:
+    FindingsReportSummaries:
+      type: array
+      items:
+        $ref: '#/components/schemas/FindingsReportSummary'
+    ResourceNotFoundException: {}
+    TargetFrame:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    Timestamp:
+      type: string
+      format: date-time
+    Recommendations:
+      type: array
+      items:
+        $ref: '#/components/schemas/Recommendation'
+    UserFeedback:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/FeedbackType'
+          - description: Optional <code>Positive</code> or <code>Negative</code> feedback submitted by the user about whether the recommendation is useful or not.
+      description: Feedback that can be submitted for each instance of an anomaly by the user. Feedback is be used for improvements in generating recommendations for the application.
+    Percentage:
+      type: number
+      format: double
+      minimum: 0
+      maximum: 100
+    GetRecommendationsResponse:
+      type: object
+      required:
+      - anomalies
+      - profileEndTime
+      - profileStartTime
+      - profilingGroupName
+      - recommendations
+      properties:
+        anomalies:
+          allOf:
+          - $ref: '#/components/schemas/Anomalies'
+          - description: ' The list of anomalies that the analysis has found for this profile. '
+        profileEndTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' The end time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        profileStartTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' The start time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        profilingGroupName:
+          allOf:
+          - $ref: '#/components/schemas/ProfilingGroupName'
+          - description: The name of the profiling group the analysis data is about.
+        recommendations:
+          allOf:
+          - $ref: '#/components/schemas/Recommendations'
+          - description: The list of recommendations that the analysis found for this profile.
+      description: The structure representing the GetRecommendationsResponse.
+    PaginationToken:
+      type: string
+      pattern: ^[\w-]+$
+      minLength: 1
+      maxLength: 64
+    FindingsReportSummary:
+      type: object
+      properties:
+        id:
+          allOf:
+          - $ref: '#/components/schemas/FindingsReportId'
+          - description: The universally unique identifier (UUID) of the recommendation report.
+        profileEndTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' The end time of the period during which the metric is flagged as anomalous. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        profileStartTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The start time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
+        profilingGroupName:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The name of the profiling group that is associated with the analysis data.
+        totalNumberOfFindings:
+          allOf:
+          - $ref: '#/components/schemas/Integer'
+          - description: The total number of different recommendations that were found by the analysis.
+      description: ' Information about potential recommendations that might be created from the analysis of profiling data. '
+    Pattern:
+      type: object
+      properties:
+        countersToAggregate:
+          allOf:
+          - $ref: '#/components/schemas/Strings'
+          - description: ' A list of the different counters used to determine if there is a match. '
+        description:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The description of the recommendation. This explains a potential inefficiency in a profiled application.
+        id:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The universally unique identifier (UUID) of this pattern.
+        name:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The name for this pattern.
+        resolutionSteps:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: ' A string that contains the steps recommended to address the potential inefficiency. '
+        targetFrames:
+          allOf:
+          - $ref: '#/components/schemas/TargetFrames'
+          - description: A list of frame names that were searched during the analysis that generated a recommendation.
+        thresholdPercent:
+          allOf:
+          - $ref: '#/components/schemas/Percentage'
+          - description: ' The percentage of time an application spends in one method that triggers a recommendation. The percentage of time is the same as the percentage of the total gathered sample counts during analysis. '
+      description: ' A set of rules used to make a recommendation during an analysis. '
+    FeedbackType:
+      type: string
+      enum:
+      - Positive
+      - Negative
+    AnomalyInstance:
+      type: object
+      required:
+      - id
+      - startTime
+      properties:
+        endTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' The end time of the period during which the metric is flagged as anomalous. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        id:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: ' The universally unique identifier (UUID) of an instance of an anomaly in a metric. '
+        startTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' The start time of the period during which the metric is flagged as anomalous. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        userFeedback:
+          allOf:
+          - $ref: '#/components/schemas/UserFeedback'
+          - description: Feedback type on a specific instance of anomaly submitted by the user.
+      description: The specific duration in which the metric is flagged as anomalous.
+    GetFindingsReportAccountSummaryResponse:
+      type: object
+      required:
+      - reportSummaries
+      properties:
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: The <code>nextToken</code> value to include in a future <code>GetFindingsReportAccountSummary</code> request. When the results of a <code>GetFindingsReportAccountSummary</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.
+        reportSummaries:
+          allOf:
+          - $ref: '#/components/schemas/FindingsReportSummaries'
+          - description: The return list of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html"> <code>FindingsReportSummary</code> </a> objects taht contain summaries of analysis results for all profiling groups in your AWS account.
+      description: The structure representing the GetFindingsReportAccountSummaryResponse.
+    Integer:
+      type: integer
+    Double:
+      type: number
+      format: double
+    Match:
+      type: object
+      properties:
+        frameAddress:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The location in the profiling graph that contains a recommendation found during analysis.
+        targetFramesIndex:
+          allOf:
+          - $ref: '#/components/schemas/Integer'
+          - description: The target frame that triggered a match.
+        thresholdBreachValue:
+          allOf:
+          - $ref: '#/components/schemas/Double'
+          - description: The value in the profile data that exceeded the recommendation threshold.
+      description: The part of a profile that contains a recommendation found during analysis.
+    Matches:
+      type: array
+      items:
+        $ref: '#/components/schemas/Match'
+    Anomaly:
+      type: object
+      required:
+      - instances
+      - metric
+      - reason
+      properties:
+        instances:
+          allOf:
+          - $ref: '#/components/schemas/AnomalyInstances'
+          - description: ' A list of the instances of the detected anomalies during the requested period. '
+        metric:
+          allOf:
+          - $ref: '#/components/schemas/Metric'
+          - description: ' Details about the metric that the analysis used when it detected the anomaly. The metric includes the name of the frame that was analyzed with the type and thread states used to derive the metric value for that frame. '
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The reason for which metric was flagged as anomalous.
+      description: ' Details about an anomaly in a specific metric of application profile. The anomaly is detected using analysis of the metric data over a period of time. '
+    AnomalyInstances:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnomalyInstance'
+    ThrottlingException: {}
+    SubmitFeedbackResponse:
+      type: object
+      properties: {}
+      description: The structure representing the SubmitFeedbackResponse.
+    ProfilingGroupName:
+      type: string
+      pattern: ^[\w-]+$
+      minLength: 1
+      maxLength: 255
+    String:
+      type: string
+    ValidationException: {}
+    MetricType:
+      type: string
+      enum:
+      - AggregatedRelativeTotalTime
+    FindingsReportId:
+      type: string
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
+    Recommendation:
+      type: object
+      required:
+      - allMatchesCount
+      - allMatchesSum
+      - endTime
+      - pattern
+      - startTime
+      - topMatches
+      properties:
+        allMatchesCount:
+          allOf:
+          - $ref: '#/components/schemas/Integer'
+          - description: How many different places in the profile graph triggered a match.
+        allMatchesSum:
+          allOf:
+          - $ref: '#/components/schemas/Double'
+          - description: How much of the total sample count is potentially affected.
+        endTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: End time of the profile that was used by this analysis. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
+        pattern:
+          allOf:
+          - $ref: '#/components/schemas/Pattern'
+          - description: The pattern that analysis recognized in the profile to make this recommendation.
+        startTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The start time of the profile that was used by this analysis. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
+        topMatches:
+          allOf:
+          - $ref: '#/components/schemas/Matches'
+          - description: 'List of the matches with most impact. '
+      description: A potential improvement that was found from analyzing the profiling data.
+    Anomalies:
+      type: array
+      items:
+        $ref: '#/components/schemas/Anomaly'
+    Metric:
+      type: object
+      required:
+      - frameName
+      - threadStates
+      - type
+      properties:
+        frameName:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: ' The name of the method that appears as a frame in any stack in a profile. '
+        threadStates:
+          allOf:
+          - $ref: '#/components/schemas/Strings'
+          - description: ' The list of application runtime thread states that is used to calculate the metric value for the frame. '
+        type:
+          allOf:
+          - $ref: '#/components/schemas/MetricType'
+          - description: ' A type that specifies how a metric for a frame is analyzed. The supported value <code>AggregatedRelativeTotalTime</code> is an aggregation of the metric value for one frame that is calculated across the occurences of all frames in a profile.'
+      description: ' Details about the metric that the analysis used when it detected the anomaly. The metric what is analyzed to create recommendations. It includes the name of the frame that was analyzed and the type and thread states used to derive the metric value for that frame. '
+    ListFindingsReportsResponse:
+      type: object
+      required:
+      - findingsReportSummaries
+      properties:
+        findingsReportSummaries:
+          allOf:
+          - $ref: '#/components/schemas/FindingsReportSummaries'
+          - description: The list of analysis results summaries.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: The <code>nextToken</code> value to include in a future <code>ListFindingsReports</code> request. When the results of a <code>ListFindingsReports</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.
+      description: The structure representing the ListFindingsReportsResponse.
+    Strings:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    InternalServerException: {}
+    TargetFrames:
+      type: array
+      items:
+        $ref: '#/components/schemas/TargetFrame'
+  parameters:
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/codeguru-profiler/
+x-hasEquivalentPaths: true
