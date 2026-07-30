@@ -3,7 +3,19 @@ name: Amazon CodeGuru Profiler
 description: Amazon CodeGuru Profiler collects runtime performance data from your live applications, providing recommendations to help you reduce CPU utilization, cut costs, and improve application 
   performance. The profiler analyzes your application's CPU and heap usage to identify the most expensive lines of code and offers actionable recommendations.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-codeguru-profiler.png
 tags:
 - Amazon
 - AWS
@@ -16,24 +28,64 @@ created: '2026-03-16'
 modified: '2026-04-19'
 specificationVersion: '0.19'
 apis:
-- aid: amazon-codeguru-profiler:amazon-codeguru-profiler-api
-  name: Amazon CodeGuru Profiler API
-  description: The Amazon CodeGuru Profiler REST API.
+- aid: amazon-codeguru-profiler:amazon-codeguru-profiler-internal-api
+  name: Amazon CodeGuru Profiler Internal API
+  description: The Internal API from Amazon CodeGuru Profiler — 4 operation(s) for internal.
   humanURL: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
   baseURL: https://codeguru-profiler.us-east-1.amazonaws.com
   tags:
-  - Amazon
-  - AWS
-  - Application Performance
-  - Profiling
-  - DevOps
+  - Internal
   properties:
+  - type: OpenAPI
+    url: openapi/amazon-codeguru-profiler-internal-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/codeguruprofiler/
   - type: APIReference
     url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+- aid: amazon-codeguru-profiler:amazon-codeguru-profiler-profilinggroups-api
+  name: Amazon CodeGuru Profiler ProfilingGroups API
+  description: >-
+    The ProfilingGroups API from Amazon CodeGuru Profiler — 12 operation(s) for profilinggroups.
+  humanURL: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+  baseURL: https://codeguru-profiler.us-east-1.amazonaws.com
+  tags:
+  - ProfilingGroups
+  properties:
   - type: OpenAPI
-    url: openapi/amazon-codeguru-profiler-openapi-original.yaml
+    url: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/codeguruprofiler/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+- aid: amazon-codeguru-profiler:amazon-codeguru-profiler-profilinggroups-clienttoken-api
+  name: Amazon CodeGuru Profiler ProfilingGroups#clientToken API
+  description: >-
+    The ProfilingGroups#clientToken API from Amazon CodeGuru Profiler — 1 operation(s) for profilinggroups#clienttoken.
+  humanURL: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+  baseURL: https://codeguru-profiler.us-east-1.amazonaws.com
+  tags:
+  - ProfilingGroups#clientToken
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/codeguruprofiler/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+- aid: amazon-codeguru-profiler:amazon-codeguru-profiler-tags-api
+  name: Amazon CodeGuru Profiler Tags API
+  description: The Tags API from Amazon CodeGuru Profiler — 2 operation(s) for tags.
+  humanURL: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+  baseURL: https://codeguru-profiler.us-east-1.amazonaws.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-codeguru-profiler-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/codeguruprofiler/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
 common:
 - type: GettingStarted
   url: https://docs.aws.amazon.com/codeguru/profiler
