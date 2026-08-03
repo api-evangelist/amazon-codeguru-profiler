@@ -1,0 +1,20 @@
+{
+  "provider": "amazon-codeguru-profiler",
+  "sources": [
+    "amazon-codeguru-profiler-internal-api-openapi.yml",
+    "amazon-codeguru-profiler-profilinggroups-api-openapi.yml",
+    "amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml",
+    "amazon-codeguru-profiler-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-codeguru-profiler-internal-api-openapi.yml",
+    "amazon-codeguru-profiler-profilinggroups-api-openapi.yml",
+    "amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml",
+    "amazon-codeguru-profiler-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
