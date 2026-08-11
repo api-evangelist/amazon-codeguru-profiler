@@ -152,6 +152,10 @@ maintainers:
   email: kin@apievangelist.com
 
 common:
+  - type: MCPServer
+    url: mcp/amazon-codeguru-profiler-mcp.yml
+  - type: Overlay
+    url: overlays/amazon-codeguru-profiler-openapi-original-overlay.yaml
   - type: AgenticAccess
     url: agentic-access/amazon-codeguru-profiler-agentic-access.yml
   - type: VulnerabilityDisclosure
