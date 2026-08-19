@@ -1,0 +1,919 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon CodeGuru Profiler Internal ProfilingGroups API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ProfilingGroups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Get Notification Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/notificationConfiguration",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the profiling group we want to get the notification configuration for."
+              }
+            ]
+          },
+          "docs": "Get the current configuration for anomaly notifications for a profiling group."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Add Notification Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/notificationConfiguration",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the profiling group that we are setting up notifications for."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add up to 2 anomaly notifications channels for a profiling group."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Batch Get Frame Metric Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/frames/-/metrics",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": " The end time of the time period for the returned time series values. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. "
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": " The duration of the frame metrics used to return the time series values. Specify using the ISO 8601 format. The maximum period duration is one day (<code>PT24H</code> or <code>P1D</code>). "
+              },
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": " The name of the profiling group associated with the the frame metrics used to return the time series values. "
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": " The start time of the time period for the frame metrics used to return the time series values. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. "
+              },
+              {
+                "name": "targetResolution",
+                "value": "",
+                "type": "query",
+                "description": "<p>The requested resolution of time steps for the returned time series of values. If the requested target resolution is not available due to data not being retained we provide a best effort result by falling back to the most granular available resolution after the target resolution. There are 3 valid values. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p> <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes </p> </li> </ul>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": " Returns the time series of values for a requested list of frame metrics from a time period."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Configure Agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/configureAgent",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": " The name of the profiling group for which the configured agent is collecting profiling data. "
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": " Used by profiler agents to report their current state and to receive remote configuration updates. For example, <code>ConfigureAgent</code> can be used to tell an agent whether to profile or not and for how long to return profiling data. "
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Describe Profiling Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": " The name of the profiling group to get information about. "
+              }
+            ]
+          },
+          "docs": " Returns a <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html\"> <code>ProfilingGroupDescription</code> </a> object that contains information about the requested profiling group. "
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Update Profiling Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the profiling group to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a profiling group."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Delete Profiling Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the profiling group to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a profiling group."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Get Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/policy",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the profiling group."
+              }
+            ]
+          },
+          "docs": " Returns the JSON-formatted resource-based policy on a profiling group. "
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Get Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/profile",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              },
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "<p> The end time of the requested profile. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p> <p> If you specify <code>endTime</code>, then you must also specify <code>period</code> or <code>startTime</code>, but not both. </p>"
+              },
+              {
+                "name": "maxDepth",
+                "value": "",
+                "type": "query",
+                "description": " The maximum depth of the stacks in the code that is represented in the aggregated profile. For example, if CodeGuru Profiler finds a method <code>A</code>, which calls method <code>B</code>, which calls method <code>C</code>, which calls method <code>D</code>, then the depth is 4. If the <code>maxDepth</code> is set to 2, then the aggregated profile contains representations of methods <code>A</code> and <code>B</code>. "
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "<p> Used with <code>startTime</code> or <code>endTime</code> to specify the time range for the returned aggregated profile. Specify using the ISO 8601 format. For example, <code>P1DT1H1M1S</code>. </p> <pre><code> &lt;p&gt; To get the latest aggregated profile, specify only &lt;code&gt;period&lt;/code&gt;. &lt;/p&gt; </code></pre>"
+              },
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the profiling group to get."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "<p>The start time of the profile to get. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.</p> <pre><code> &lt;p&gt; If you specify &lt;code&gt;startTime&lt;/code&gt;, then you must also specify &lt;code&gt;period&lt;/code&gt; or &lt;code&gt;endTime&lt;/code&gt;, but not both. &lt;/p&gt; </code></pre>"
+              }
+            ]
+          },
+          "docs": "<p> Gets the aggregated profile of a profiling group for a specified time range. Amazon CodeGuru Profiler collects posted agent profiles for a profiling group into aggregated profiles. </p> <pre><code> &lt;note&gt; &lt;p&gt; Because aggregated profiles expire over time &lt;code&gt;GetProfile&lt;/code&gt; is not idempotent. &lt;/p&gt; &lt;/note&gt; &lt;p&gt; Specify the time range for the requested aggregated profile using 1 or 2 of the following parameters: &lt;code&gt;startTime&lt;/code&gt;, &l"
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler List Profile Times",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/profileTimes#endTime&period&startTime",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "The end time of the time range from which to list the profiles."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of profile time results returned by <code>ListProfileTimes</code> in paginated output. When this parameter is used, <code>ListProfileTimes</code> only returns <code>maxResults</code> results in a single page with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListProfileTimes</code> request with the returned <code>nextToken</code> value. "
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "<p>The <code>nextToken</code> value returned from a previous paginated <code>ListProfileTimes</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. </p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "The order (ascending or descending by start time of the profile) to use when listing profiles. Defaults to <code>TIMESTAMP_DESCENDING</code>. "
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "<p> The aggregation period. This specifies the period during which an aggregation profile collects posted agent profiles for a profiling group. There are 3 valid values. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p> <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes </p> </li> </ul>"
+              },
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the profiling group."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "The start time of the time range from which to list the profiles."
+              }
+            ]
+          },
+          "docs": "Lists the start times of the available aggregated profiles of a profiling group for an aggregation period within the specified time range."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler List Profiling Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "includeDescription",
+                "value": "",
+                "type": "query",
+                "description": "A <code>Boolean</code> value indicating whether to include a description. If <code>true</code>, then a list of <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html\"> <code>ProfilingGroupDescription</code> </a> objects that contain detailed information about profiling groups is returned. If <code>false</code>, then a list of profiling group names is returned."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of profiling groups results returned by <code>ListProfilingGroups</code> in paginated output. When this parameter is used, <code>ListProfilingGroups</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListProfilingGroups</code> request with the returned <code>nextToken</code> value. "
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "<p>The <code>nextToken</code> value returned from a previous paginated <code>ListProfilingGroups</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. </p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>"
+              }
+            ]
+          },
+          "docs": " Returns a list of profiling groups. The profiling groups are returned as <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html\"> <code>ProfilingGroupDescription</code> </a> objects. "
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Post Agent Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/agentProfile#Content-Type",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profileToken",
+                "value": "",
+                "type": "query",
+                "description": " Amazon CodeGuru Profiler uses this universally unique identifier (UUID) to prevent the accidental submission of duplicate profiling data if there are failures and retries. "
+              },
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": " The name of the profiling group with the aggregated profile that receives the submitted profiling data. "
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": " Submits profiling data to an aggregated profile of a profiling group. To get an aggregated profile that is created with this profiling data, use <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html\"> <code>GetProfile</code> </a>. "
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Put Permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/policy/:actionGroup",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "actionGroup",
+                "value": "",
+                "type": "path",
+                "description": " Specifies an action group that contains permissions to add to a profiling group resource. One action group is supported, <code>agentPermissions</code>, which grants permission to perform actions required by the profiling agent, <code>ConfigureAgent</code> and <code>PostAgentProfile</code> permissions. "
+              },
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the profiling group to grant access to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<p> Adds permissions to a profiling group's resource-based policy that are provided using an action group. If a profiling group doesn't have a resource-based policy, one is created for it using the permissions in the action group and the roles and users in the <code>principals</code> parameter. </p> <pre><code> &lt;p&gt; The one supported action group that can be added is &lt;code&gt;agentPermission&lt;/code&gt; which grants &lt;code&gt;ConfigureAgent&lt;/code&gt; and &lt;code&gt;PostAgent&lt;/c"
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Remove Notification Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/notificationConfiguration/:channelId",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The id of the channel that we want to stop receiving notifications."
+              },
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the profiling group we want to change notification configuration for."
+              }
+            ]
+          },
+          "docs": "Remove one anomaly notifications channel for a profiling group."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeGuru Profiler Remove Permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://codeguru-profiler.{region}.amazonaws.com/profilingGroups/:profilingGroupName/policy/:actionGroup#revisionId",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "actionGroup",
+                "value": "",
+                "type": "path",
+                "description": " Specifies an action group that contains the permissions to remove from a profiling group's resource-based policy. One action group is supported, <code>agentPermissions</code>, which grants <code>ConfigureAgent</code> and <code>PostAgentProfile</code> permissions. "
+              },
+              {
+                "name": "profilingGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the profiling group."
+              },
+              {
+                "name": "revisionId",
+                "value": "",
+                "type": "query",
+                "description": " A universally unique identifier (UUID) for the revision of the resource-based policy from which you want to remove permissions. "
+              }
+            ]
+          },
+          "docs": " Removes permissions from a profiling group's resource-based policy that are provided using an action group. The one supported action group that can be removed is <code>agentPermission</code> which grants <code>ConfigureAgent</code> and <code>PostAgent</code> permissions. For more information, see <a href=\"https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html\">Resource-based policies in CodeGuru Profiler</a> in the <i>Amazon CodeGuru Profiler User Guide</i>, <a hre"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
