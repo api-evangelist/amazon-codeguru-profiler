@@ -22,6 +22,13 @@ tags:
 - Application Performance
 - Profiling
 - DevOps
+- Machine-Learning
+tags_raw:
+- Amazon
+- AWS
+- Application Performance
+- Profiling
+- DevOps
 - Machine Learning
 url: https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/apis.yml
 created: '2026-03-16'
