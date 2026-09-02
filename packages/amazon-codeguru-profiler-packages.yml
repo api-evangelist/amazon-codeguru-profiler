@@ -1,19 +1,26 @@
-generated: '2026-06-20'
+generated: '2026-09-01'
 method: searched
 source: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up.html
+currency_checked: '2026-09-01'
+currency_source: >-
+  Versions and publish dates read from each registry's own metadata endpoint on 2026-09-01:
+  registry.npmjs.org, pypi.org/pypi/<pkg>/json, repo1.maven.org maven-metadata.xml,
+  api.nuget.org, rubygems.org/api/v1, proxy.golang.org, crates.io/api/v1.
 description: >-
-  First-party AWS client libraries and profiling agents for Amazon CodeGuru
-  Profiler. The service is exposed through the standard AWS SDKs (one
-  codeguruprofiler client per language) plus dedicated JVM and Python profiling
-  agents that submit runtime data to the ConfigureAgent / PostAgentProfile
-  operations.
+  First-party AWS client libraries and profiling agents for Amazon CodeGuru Profiler. The
+  service is exposed through the standard AWS SDKs (one codeguruprofiler client per language)
+  plus dedicated JVM and Python profiling agents that submit runtime data to the
+  ConfigureAgent / PostAgentProfile operations.
+package_count: 10
+official_count: 10
 packages:
   - language: javascript
     registry: npm
     name: "@aws-sdk/client-codeguruprofiler"
     url: https://www.npmjs.com/package/@aws-sdk/client-codeguruprofiler
     install: npm install @aws-sdk/client-codeguruprofiler
-    version: 3.1079.0
+    version: 3.1124.0
+    published: '2026-09-01'
     official: true
     kind: sdk
   - language: python
@@ -21,6 +28,8 @@ packages:
     name: boto3
     url: https://pypi.org/project/boto3/
     install: pip install boto3
+    version: 1.43.86
+    published: '2026-09-01'
     official: true
     kind: sdk
     notes: AWS SDK for Python; codeguruprofiler client via boto3.client('codeguruprofiler').
@@ -29,6 +38,8 @@ packages:
     name: codeguru-profiler-agent
     url: https://pypi.org/project/codeguru-profiler-agent/
     install: pip install codeguru-profiler-agent
+    version: 1.2.6
+    published: '2025-12-11'
     official: true
     kind: agent
     notes: First-party Python profiling agent that reports runtime data to CodeGuru Profiler.
@@ -38,14 +49,29 @@ packages:
     url: https://central.sonatype.com/artifact/software.amazon.codeguruprofiler/codeguru-profiler-java-agent
     install: "maven: software.amazon.codeguruprofiler:codeguru-profiler-java-agent:1.2.6"
     version: 1.2.6
+    published: '2026-02-25'
     official: true
     kind: agent
-    notes: First-party JVM profiling agent (published to Maven Central).
+    notes: >-
+      First-party JVM profiling agent published to Maven Central. Date read from the
+      maven-metadata.xml lastUpdated field (20260225194314) for release 1.2.6.
+  - language: java
+    registry: maven
+    name: software.amazon.awssdk:codeguruprofiler
+    url: https://central.sonatype.com/artifact/software.amazon.awssdk/codeguruprofiler
+    install: "maven: software.amazon.awssdk:codeguruprofiler:2.54.10"
+    version: 2.54.10
+    published: '2026-09-01'
+    official: true
+    kind: sdk
+    notes: AWS SDK for Java v2 service client.
   - language: dotnet
     registry: nuget
     name: AWSSDK.CodeGuruProfiler
     url: https://www.nuget.org/packages/AWSSDK.CodeGuruProfiler
     install: dotnet add package AWSSDK.CodeGuruProfiler
+    version: 4.0.100.11
+    published: '2026-08-24'
     official: true
     kind: sdk
   - language: go
@@ -53,6 +79,8 @@ packages:
     name: github.com/aws/aws-sdk-go-v2/service/codeguruprofiler
     url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/codeguruprofiler
     install: go get github.com/aws/aws-sdk-go-v2/service/codeguruprofiler
+    version: v1.36.0
+    published: '2026-08-31'
     official: true
     kind: sdk
   - language: ruby
@@ -60,5 +88,39 @@ packages:
     name: aws-sdk-codeguruprofiler
     url: https://rubygems.org/gems/aws-sdk-codeguruprofiler
     install: gem install aws-sdk-codeguruprofiler
+    version: 1.71.0
+    published: '2026-07-09'
     official: true
     kind: sdk
+  - language: rust
+    registry: crates.io
+    name: aws-sdk-codeguruprofiler
+    url: https://crates.io/crates/aws-sdk-codeguruprofiler
+    install: cargo add aws-sdk-codeguruprofiler
+    version: 1.108.0
+    published: '2026-08-25'
+    official: true
+    kind: sdk
+    notes: Date is the crate's updated_at from the crates.io API.
+  - language: multi
+    registry: pypi
+    name: awscli
+    url: https://pypi.org/project/awscli/
+    install: pip install awscli
+    version: 1.46.1
+    published: '2026-08-27'
+    official: true
+    kind: cli
+    notes: >-
+      The AWS CLI, which exposes the service as `aws codeguruprofiler` with 23 subcommands.
+      See cli/amazon-codeguru-profiler-cli.yml.
+currency_finding: >-
+  The generated SDK clients are current — npm, boto3, Java v2, Go, NuGet, crates and RubyGems
+  all published within the last two months, most within days, because they ride the AWS-wide
+  SDK release train and move whether or not this service changes. The two artifacts that are
+  actually CodeGuru Profiler-specific — the packages a customer installs into their own
+  application — are the stale ones: the JVM agent last shipped 2026-02-25 (1.2.6, six months)
+  and the Python agent 2025-12-11 (1.2.6, nine months). Read alongside an API version frozen at
+  2019-07-18 and a provider changelog whose newest dated entry is July 2021, the agent release
+  cadence is the only first-party dated signal here and it points at a service in steady state
+  rather than active development.

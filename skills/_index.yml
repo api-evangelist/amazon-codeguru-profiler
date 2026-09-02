@@ -1,0 +1,35 @@
+generated: '2026-09-01'
+method: generated
+source:
+  - openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+description: >-
+  Packaged Agent Skills for Amazon CodeGuru Profiler, generated from the published OpenAPI
+  operations plus the conventions, errors and reversibility artifacts in this repo. Every
+  operationId referenced was verified against the specs in openapi/. AWS publishes no
+  skills/ or AGENTS.md for this service; these are API Evangelist generated, not provider
+  published.
+provider_published: false
+skill_count: 3
+skills:
+  - name: amazon-codeguru-profiler-onboard-profiling-group
+    file: skills/amazon-codeguru-profiler-onboard-profiling-group.md
+    description: Create a profiling group, enable collection, and confirm the agent is reporting.
+    operations: [CreateProfilingGroup, UpdateProfilingGroup, DescribeProfilingGroup, ListProfilingGroups, TagResource]
+    write_surface: true
+  - name: amazon-codeguru-profiler-read-recommendations
+    file: skills/amazon-codeguru-profiler-read-recommendations.md
+    description: Pull findings, recommendations and anomalies for a group over a time range, and send anomaly feedback.
+    operations: [GetFindingsReportAccountSummary, ListFindingsReports, GetRecommendations, SubmitFeedback, BatchGetFrameMetricData]
+    write_surface: partial
+  - name: amazon-codeguru-profiler-configure-anomaly-notifications
+    file: skills/amazon-codeguru-profiler-configure-anomaly-notifications.md
+    description: Attach, inspect and detach Amazon SNS anomaly-notification channels on a profiling group.
+    operations: [AddNotificationChannels, GetNotificationConfiguration, RemoveNotificationChannel]
+    write_surface: true
+cross_links:
+  conventions: conventions/amazon-codeguru-profiler-conventions.yml
+  errors: errors/amazon-codeguru-profiler-problem-types.yml
+  rate_limits: rate-limits/amazon-codeguru-profiler-rate-limits.yml
+  data_model: data-model/amazon-codeguru-profiler-data-model.yml

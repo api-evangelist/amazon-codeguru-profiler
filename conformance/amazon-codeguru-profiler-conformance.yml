@@ -1,29 +1,64 @@
-generated: '2026-06-20'
-method: derived
-source: openapi/amazon-codeguru-profiler-openapi-original.yaml
+generated: '2026-09-01'
+method: searched
+source: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+derived_from:
+  - openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-tags-api-openapi.yml
 description: >-
-  Cross-cutting standards conformance for Amazon CodeGuru Profiler, derived from
-  the OpenAPI definition and AWS documentation. The API is an AWS JSON/REST
-  service authenticated with Signature Version 4; it does not use OAuth2/OIDC,
-  RFC 9457 problem+json, or the healthcare/finance interop standards.
+  Cross-cutting standards conformance for Amazon CodeGuru Profiler. The API is an AWS
+  JSON/REST service authenticated with Signature Version 4. It does not use OAuth2/OIDC,
+  RFC 9457 problem+json, or any of the sector interop standards.
 standards:
   - id: aws-sigv4
     conforms: true
-    evidence: x-aws-signingName codeguru-profiler; AWS Signature Version 4 request signing required.
+    evidence: >-
+      x-aws-signingName codeguru-profiler in the spec; AWS Signature Version 4 request signing
+      is required on every operation.
   - id: oauth2
     conforms: false
-    evidence: No oauth2 securityScheme; AWS uses SigV4 IAM credentials.
+    evidence: No oauth2 securityScheme in any of the four specs; AWS uses SigV4 IAM credentials.
   - id: oidc
     conforms: false
+    evidence: >-
+      /.well-known/openid-configuration probed 2026-09-01 on all three hosts — 403, 404 and 301->404.
   - id: rfc9457-problem-details
     conforms: false
-    evidence: Error responses use application/json AWS exception shapes, not application/problem+json.
+    evidence: >-
+      Error responses use application/json AWS exception shapes with x-amzn-ErrorType, not
+      application/problem+json.
+  - id: rfc9116-security-txt
+    conforms: true
+    evidence: >-
+      https://aws.amazon.com/.well-known/security.txt returned HTTP 200 on 2026-09-01 with
+      Policy, Contact, Encryption, Preferred-Languages, Expires and Hiring fields.
   - id: pagination
     conforms: true
-    evidence: List operations expose maxResults and nextToken pagination parameters.
+    evidence: >-
+      Cursor pagination via maxResults + nextToken on ListProfilingGroups, ListProfileTimes,
+      ListFindingsReports and GetFindingsReportAccountSummary.
   - id: idempotency
     conforms: true
-    evidence: CreateProfilingGroup accepts a clientToken idempotency key.
+    evidence: >-
+      CreateProfilingGroup requires a clientToken UUID; PostAgentProfile accepts a profileToken
+      UUID. Both are documented as preventing duplicates on retry.
+  - id: optimistic-concurrency
+    conforms: true
+    evidence: >-
+      revisionId on the profiling group resource policy; PutPermission/RemovePermission return
+      ConflictException (409) on a stale revision.
+  - id: iso8601-timestamps
+    conforms: true
+    evidence: >-
+      "Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z" on every
+      Timestamp field.
+  - id: rfc8594-sunset
+    conforms: false
+    evidence: No Sunset or Deprecation response headers declared; no deprecation policy published.
+  - id: rfc6570-uri-templates
+    conforms: true
+    evidence: 'servers[] declares a templated host: http://codeguru-profiler.{region}.amazonaws.com with a region enum.'
   - id: json-api
     conforms: false
   - id: odata
@@ -36,6 +71,48 @@ standards:
     conforms: false
   - id: psd2
     conforms: false
-  - id: rfc8594-sunset
-    conforms: false
-    evidence: No Sunset/Deprecation header usage documented for the service API.
+domain_standard:
+  market: application-performance-monitoring / continuous profiling
+  declared_in_contract: false
+  candidates_checked:
+    - id: opentelemetry-profiles
+      declared: false
+      note: >-
+        OpenTelemetry is the live standardisation effort for this market and its profiling
+        signal is the relevant candidate. The CodeGuru Profiler contract declares NO OTLP
+        endpoint, no pprof media type, and no OpenTelemetry semantic conventions. GetProfile and
+        PostAgentProfile negotiate an AWS-proprietary profile format through Accept /
+        Content-Type and the payload is not modelled in the spec at all.
+    - id: pprof
+      declared: false
+      note: >-
+        No application/vnd.google.protobuf pprof media type appears in any of the four specs.
+    - id: otlp
+      declared: false
+      note: No OTLP/gRPC or OTLP/HTTP surface; the service ships no .proto.
+  conforms: false
+  evidence: >-
+    Checked the four refined OpenAPI documents and the original aws2openapi source for any
+    profiling-interchange media type, OTLP path or semantic-convention attribute. None present.
+  note: >-
+    REWARD-ONLY check: recorded as an honest absence, not a penalty. The finding that matters to
+    a buyer is portability — profile data submitted through PostAgentProfile is in an
+    unpublished AWS format, so there is no standards-based path to move it to, or read it with,
+    another profiler.
+regulatory:
+  regime: null
+  note: >-
+    Developer tooling / APM. No sector regulatory regime (finance, health, telecom) applies to
+    this service's own contract.
+compliance_program:
+  published: true
+  scope: AWS-wide, not CodeGuru Profiler-specific
+  note: >-
+    AWS publishes its certifications through AWS Artifact and the AWS Compliance Programs page
+    rather than per service. The in-scope-services list is the authority for whether CodeGuru
+    Profiler falls under a given certification; no service-specific attestation page was found.
+  url: https://aws.amazon.com/compliance/programs/
+  services_in_scope: https://aws.amazon.com/compliance/services-in-scope/
+docs:
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/CommonErrors.html
+  - https://docs.aws.amazon.com/general/latest/gr/codeguru-profiler.html

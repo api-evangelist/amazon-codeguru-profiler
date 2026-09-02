@@ -1,0 +1,53 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Amazon CodeGuru Profiler Internal Profiling Groups API
+  version: 1.0.0
+extends: amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+x-generated: '2026-09-01'
+x-method: generated
+x-source: API Evangelist enrichment pipeline; enhancements derived from provider documentation probed
+  2026-09-01.
+actions:
+- target: $.servers
+  description: "Pin the transport to HTTPS. The aws2openapi conversion emitted an http:// server first;\
+    \ the AWS General Reference lists Protocol HTTPS for every codeguru-profiler regional endpoint. The\
+    \ original document is not mutated \u2014 this overlay records the correction."
+  update:
+  - url: https://codeguru-profiler.{region}.amazonaws.com
+    description: Regional CodeGuru Profiler endpoint. HTTPS only.
+    variables:
+      region:
+        default: us-east-1
+        description: The AWS region
+        enum:
+        - us-east-1
+        - us-east-2
+        - us-west-2
+        - ap-southeast-1
+        - ap-southeast-2
+        - ap-northeast-1
+        - eu-central-1
+        - eu-west-1
+        - eu-west-2
+        - eu-north-1
+- target: $.info
+  description: Correct the contact away from the aws2openapi converter author and onto the provider.
+  update:
+    contact:
+      name: Amazon Web Services
+      url: https://aws.amazon.com/codeguru/profiler/
+    x-provider: Amazon Web Services
+    x-api-version: '2019-07-18'
+    x-documentation: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+- target: $.info
+  description: Cross-link the runtime-semantics artifacts an agent needs alongside the contract.
+  update:
+    x-artifacts:
+      conventions: conventions/amazon-codeguru-profiler-conventions.yml
+      errors: errors/amazon-codeguru-profiler-problem-types.yml
+      rate-limits: rate-limits/amazon-codeguru-profiler-rate-limits.yml
+      lifecycle: lifecycle/amazon-codeguru-profiler-lifecycle.yml
+      authentication: authentication/amazon-codeguru-profiler-authentication.yml
+      data-model: data-model/amazon-codeguru-profiler-data-model.yml
+      plans: plans/amazon-codeguru-profiler-plans-pricing.yml
+      skills: skills/_index.yml

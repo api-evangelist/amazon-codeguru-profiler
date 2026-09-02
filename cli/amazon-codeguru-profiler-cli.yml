@@ -1,0 +1,81 @@
+generated: '2026-09-01'
+method: searched
+source: https://docs.aws.amazon.com/cli/latest/reference/codeguruprofiler/index.html
+description: >-
+  Amazon CodeGuru Profiler has no standalone CLI of its own. It is driven through the AWS CLI,
+  which exposes the service as the `aws codeguruprofiler` command group — one subcommand per
+  API operation, 23 in total, matching the 23 operations in the OpenAPI.
+name: AWS CLI
+command: aws codeguruprofiler
+official: true
+first_party: true
+dedicated: false
+note: >-
+  Recorded as `dedicated: false` because this is the general AWS CLI, not a CodeGuru
+  Profiler-specific binary. The binary itself is catalogued in
+  packages/amazon-codeguru-profiler-packages.yml.
+install:
+  - method: pip
+    command: pip install awscli
+  - method: homebrew
+    command: brew install awscli
+  - method: installer
+    url: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+auth:
+  mechanism: aws-sigv4
+  configure: aws configure
+  note: Uses the standard AWS credential chain (profiles, env vars, IAM role, SSO).
+command_groups:
+  - name: Profiling groups
+    commands:
+      - create-profiling-group
+      - delete-profiling-group
+      - describe-profiling-group
+      - list-profiling-groups
+      - update-profiling-group
+  - name: Profiles and metrics
+    commands:
+      - get-profile
+      - list-profile-times
+      - post-agent-profile
+      - batch-get-frame-metric-data
+      - configure-agent
+  - name: Findings and recommendations
+    commands:
+      - get-findings-report-account-summary
+      - get-recommendations
+      - list-findings-reports
+      - submit-feedback
+  - name: Notifications
+    commands:
+      - add-notification-channels
+      - get-notification-configuration
+      - remove-notification-channel
+  - name: Permissions
+    commands:
+      - get-policy
+      - put-permission
+      - remove-permission
+  - name: Tags
+    commands:
+      - list-tags-for-resource
+      - tag-resource
+      - untag-resource
+command_count: 23
+key_flows:
+  - name: Create and enable a profiling group
+    steps:
+      - aws codeguruprofiler create-profiling-group --profiling-group-name <name> --client-token <uuid> --compute-platform Default
+      - aws codeguruprofiler update-profiling-group --profiling-group-name <name> --agent-orchestration-config profilingEnabled=true
+      - aws codeguruprofiler describe-profiling-group --profiling-group-name <name>
+  - name: Read the latest recommendations
+    steps:
+      - aws codeguruprofiler list-findings-reports --profiling-group-name <name> --start-time <iso8601> --end-time <iso8601>
+      - aws codeguruprofiler get-recommendations --profiling-group-name <name> --start-time <iso8601> --end-time <iso8601>
+  - name: Route anomaly notifications to an SNS topic
+    steps:
+      - aws codeguruprofiler add-notification-channels --profiling-group-name <name> --channels eventPublishers=AnomalyDetection,uri=<sns-topic-arn>
+      - aws codeguruprofiler get-notification-configuration --profiling-group-name <name>
+docs:
+  - https://docs.aws.amazon.com/cli/latest/reference/codeguruprofiler/index.html
+  - https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html

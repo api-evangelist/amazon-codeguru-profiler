@@ -1,0 +1,68 @@
+generated: '2026-09-01'
+method: searched
+source: https://docs.aws.amazon.com/general/latest/gr/codeguru-profiler.html
+description: >-
+  Published limits for Amazon CodeGuru Profiler. AWS publishes a resource QUOTA for this
+  service but does NOT publish a request-rate limit, a window, a burst allowance, or any
+  rate-limit response headers.
+limit_count: 1
+limits:
+  - name: Number of profiling groups per account and region.
+    scope: per-account-per-region
+    limit: 500
+    unit: profiling groups
+    window: none
+    burst: null
+    adjustable: true
+    increase_url: https://console.aws.amazon.com/servicequotas/home/services/codeguru-profiler/quotas/L-DA8D4E8D
+    quota_code: L-DA8D4E8D
+    source: https://docs.aws.amazon.com/general/latest/gr/codeguru-profiler.html
+    exhaustion:
+      status: 402
+      exception: ServiceQuotaExceededException
+      operations:
+        - CreateProfilingGroup
+        - AddNotificationChannels
+request_rate_limits:
+  published: false
+  note: >-
+    No per-operation TPS, per-key or per-account request rate is published for
+    codeguru-profiler in the AWS General Reference or the service documentation. Requests are
+    throttled — the API declares ThrottlingException on 20 of 23 operations — but the actual
+    ceiling is not disclosed, so a client cannot budget against it in advance.
+response_headers:
+  rate_limit_headers: []
+  retry_after: false
+  note: >-
+    CodeGuru Profiler documents no RateLimit-*, X-RateLimit-* or Retry-After response headers.
+    The only runtime exhaustion signal is the exception itself. This is the meaningful gap for
+    an autonomous client: it can detect that it was throttled but cannot learn its remaining
+    budget or a server-specified wait, so it must fall back to blind exponential backoff.
+exhaustion:
+  status: 429
+  exception: ThrottlingException
+  body: '{"message": "The request was denied due to request throttling."}'
+  type_header: x-amzn-ErrorType
+  source: https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AddNotificationChannels.html
+  operations_declaring: 20
+retry_guidance:
+  strategy: exponential-backoff-with-jitter
+  sdk_automatic: true
+  evidence: >-
+    "Your request rate is too high. The AWS SDKs automatically retry requests that receive this
+    exception. Reduce the frequency of requests."
+  source: https://docs.aws.amazon.com/codeguru/latest/profiler-api/CommonErrors.html
+other_hard_limits:
+  - name: Notification channels per profiling group
+    limit: 2
+    source: openapi Channels schema (minItems 1, maxItems 2)
+    docs: https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AddNotificationChannels.html
+  - name: Profiling group name length
+    limit: '1-255 characters, pattern [\w-]+'
+    source: https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_CreateProfilingGroup.html
+  - name: GetProfile maxDepth
+    limit: '1-10000'
+    source: openapi GetProfile maxDepth parameter
+docs:
+  - https://docs.aws.amazon.com/general/latest/gr/codeguru-profiler.html
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/CommonErrors.html

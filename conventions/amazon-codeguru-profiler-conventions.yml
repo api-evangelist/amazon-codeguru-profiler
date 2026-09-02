@@ -1,0 +1,237 @@
+generated: '2026-09-01'
+method: searched
+source: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+derived_from:
+  - openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-tags-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+description: >-
+  Cross-cutting runtime semantics for the Amazon CodeGuru Profiler API — how an agent
+  authenticates, pages, retries, traces, and takes an action back.
+auth:
+  style: aws-sigv4
+  scheme_name: hmac
+  header: Authorization
+  signing_name: codeguru-profiler
+  note: >-
+    Every request must be signed with AWS Signature Version 4 using IAM credentials.
+    There is no API key, bearer token or OAuth flow. Permission is granted by IAM policy
+    on codeguru-profiler:* actions and, for cross-account access, by a resource-based
+    policy on the profiling group (PutPermission / GetPolicy / RemovePermission).
+  see: authentication/amazon-codeguru-profiler-authentication.yml
+idempotency:
+  supported: true
+  mechanism: client-supplied-token
+  keys:
+    - parameter: clientToken
+      location: query
+      operations:
+        - CreateProfilingGroup
+      required: true
+      format: UUID
+      constraints: 'Length 1-64; pattern [\w-]+'
+      docs: https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_CreateProfilingGroup.html
+      evidence: >-
+        "Amazon CodeGuru Profiler uses this universally unique identifier (UUID) to prevent the
+        accidental creation of duplicate profiling groups if there are failures and retries."
+    - parameter: profileToken
+      location: query
+      operations:
+        - PostAgentProfile
+      required: false
+      format: UUID
+      constraints: 'Length 1-64; pattern ^[\w-]+$'
+      docs: https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html
+      evidence: >-
+        "Amazon CodeGuru Profiler uses this universally unique identifier (UUID) to prevent the
+        accidental submission of duplicate profiling data if there are failures and retries."
+  retention: not-published
+  note: >-
+    Two of the twenty-three operations take a client-supplied idempotency token, and they are
+    the two that would otherwise create duplicates on retry: CreateProfilingGroup (token
+    REQUIRED) and PostAgentProfile (token optional). AWS does not publish how long either token
+    is remembered. The remaining writes are naturally idempotent updates
+    (PUT UpdateProfilingGroup, PUT PutPermission), deletes, or append-only feedback.
+  see_also: The policy operations use revisionId for optimistic concurrency; see concurrency_control.
+concurrency_control:
+  supported: true
+  mechanism: revision-token
+  parameter: revisionId
+  operations:
+    - PutPermission
+    - RemovePermission
+  note: >-
+    The profiling group resource policy carries a revisionId. RemovePermission requires it
+    and PutPermission accepts it, so a lost update is rejected with ConflictException (409)
+    rather than silently overwriting another principal's policy change.
+pagination:
+  style: cursor
+  request_params:
+    - name: nextToken
+      in: query
+      description: Opaque continuation token returned by the previous page.
+    - name: maxResults
+      in: query
+      description: Maximum number of results to return in a single page.
+  response_fields:
+    - nextToken
+  operations:
+    - ListProfilingGroups
+    - ListProfileTimes
+    - ListFindingsReports
+    - GetFindingsReportAccountSummary
+  note: Absence of nextToken in a response means the last page was returned.
+ordering:
+  supported: true
+  parameter: orderBy
+  values:
+    - TimestampDescending
+    - TimestampAscending
+  default: TimestampDescending
+  operations:
+    - ListProfileTimes
+  note: >-
+    Ordering is offered on exactly one operation. ListProfilingGroups, ListFindingsReports and
+    GetFindingsReportAccountSummary expose no sort control.
+content_negotiation:
+  supported: true
+  operations:
+    - operation: GetProfile
+      parameter: Accept
+      location: header
+      description: The format of the returned profiling data, mapped to the Accept header.
+    - operation: PostAgentProfile
+      parameter: Content-Type
+      location: header
+      description: The format of the submitted profiling data, mapped to the Content-Type header.
+  note: >-
+    The profile payload itself is a negotiated binary/JSON blob rather than a modelled schema,
+    which is why GetProfile and PostAgentProfile are the two operations an agent cannot fully
+    reason about from the contract alone.
+field_expansion:
+  supported: false
+sparse_fieldsets:
+  supported: false
+metadata:
+  supported: true
+  mechanism: resource-tags
+  operations:
+    - TagResource
+    - UntagResource
+    - ListTagsForResource
+  note: >-
+    Free-form string-to-string tags on the profiling group ARN, also settable at creation
+    via the tags field on CreateProfilingGroup.
+request_id_tracing:
+  supported: true
+  response_header: x-amzn-RequestId
+  note: >-
+    AWS returns a request identifier on every response; quote it when contacting AWS Support.
+    There is no client-supplied trace/correlation header documented for this service.
+versioning:
+  scheme: dated-api-version
+  current: '2019-07-18'
+  see: lifecycle/amazon-codeguru-profiler-lifecycle.yml
+error_envelope:
+  format: aws-json-exception
+  rfc9457: false
+  media_type: application/json
+  type_header: x-amzn-ErrorType
+  see: errors/amazon-codeguru-profiler-problem-types.yml
+rate_limit_signaling:
+  documented_headers: []
+  exhaustion_status: 429
+  exhaustion_exception: ThrottlingException
+  retry_after: not-published
+  note: >-
+    CodeGuru Profiler does not document RateLimit-* or X-RateLimit-* response headers, and
+    does not document a Retry-After header on 429. The only runtime signal is the
+    ThrottlingException itself; AWS guidance is exponential backoff with jitter, which the
+    AWS SDKs implement automatically.
+  see: rate-limits/amazon-codeguru-profiler-rate-limits.yml
+dry_run_mode:
+  supported: false
+  grade: none
+  note: >-
+    No dryRun / validateOnly parameter is declared on any operation. An agent cannot rehearse
+    a write against this API.
+reversibility:
+  grade: documented
+  applicable: true
+  note: >-
+    CodeGuru Profiler has a real write surface, so reversibility applies. Every write here is
+    a configuration change whose inverse is another documented operation — but AWS publishes
+    NO time window for any of them, so this grades `documented`, not `verified`. Deleting a
+    profiling group discards its accumulated profile history, and no restore operation exists.
+  write_surfaces:
+    - operation: CreateProfilingGroup
+      reversal: DeleteProfilingGroup
+      reversal_kind: delete
+      window: not-published
+      destructive: false
+      note: Recreating a group with the same name does not restore the previous group's profile data.
+    - operation: DeleteProfilingGroup
+      reversal: null
+      reversal_kind: none
+      window: not-published
+      destructive: true
+      note: >-
+        No restore, undelete or recycle-bin operation is published. Deleting a profiling group
+        is irreversible and takes its aggregated profiles, findings reports and notification
+        configuration with it. An agent must treat this as a terminal action.
+    - operation: UpdateProfilingGroup
+      reversal: UpdateProfilingGroup
+      reversal_kind: reapply-previous-state
+      window: not-published
+      destructive: false
+      note: >-
+        The only mutable field is agentOrchestrationConfig.profilingEnabled. Read the prior
+        value with DescribeProfilingGroup before writing so the previous state can be reapplied.
+    - operation: AddNotificationChannels
+      reversal: RemoveNotificationChannel
+      reversal_kind: remove
+      window: not-published
+      destructive: false
+      note: Reversal is per channel and requires the channelId returned by the add call.
+    - operation: PutPermission
+      reversal: RemovePermission
+      reversal_kind: revoke
+      window: not-published
+      destructive: false
+      note: >-
+        Both carry revisionId, so an agent can verify it is reverting the revision it created
+        rather than clobbering a concurrent change.
+    - operation: TagResource
+      reversal: UntagResource
+      reversal_kind: remove
+      window: not-published
+      destructive: false
+    - operation: PostAgentProfile
+      reversal: null
+      reversal_kind: none
+      window: not-published
+      destructive: false
+      note: >-
+        Append-only telemetry submission. Submitted profile data cannot be withdrawn; it ages
+        out of the aggregation windows instead.
+    - operation: SubmitFeedback
+      reversal: null
+      reversal_kind: overwrite
+      window: not-published
+      destructive: false
+      note: Feedback on an anomaly instance can be re-submitted but not withdrawn.
+  window_source: null
+  window_note: >-
+    NO reversal window is stated anywhere in the CodeGuru Profiler documentation. None is
+    asserted here.
+cross_links:
+  errors: errors/amazon-codeguru-profiler-problem-types.yml
+  lifecycle: lifecycle/amazon-codeguru-profiler-lifecycle.yml
+  authentication: authentication/amazon-codeguru-profiler-authentication.yml
+  rate_limits: rate-limits/amazon-codeguru-profiler-rate-limits.yml
+  conformance: conformance/amazon-codeguru-profiler-conformance.yml
+docs:
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/CommonParameters.html
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_CreateProfilingGroup.html

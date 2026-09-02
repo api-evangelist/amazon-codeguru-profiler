@@ -1,0 +1,129 @@
+generated: '2026-09-01'
+method: searched
+source: https://docs.aws.amazon.com/codeguru/latest/profiler-api/CommonErrors.html
+derived_from:
+  - openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-tags-api-openapi.yml
+description: >-
+  Error catalog for Amazon CodeGuru Profiler. Service-specific exception shapes were
+  derived from the 4xx/5xx responses declared across the four refined OpenAPI documents;
+  the AWS-wide common errors were read from the published Common Error Types reference.
+format: aws-json-exception
+rfc9457: false
+envelope:
+  media_type: application/json
+  note: >-
+    CodeGuru Profiler returns AWS JSON exception shapes, not application/problem+json.
+    The exception type is carried in the x-amzn-ErrorType response header and in the
+    JSON body's message field. There is no RFC 9457 type/title/detail/instance envelope.
+  fields:
+    - name: message
+      description: Human-readable description of the failure.
+    - name: x-amzn-ErrorType
+      location: header
+      description: The exception name, e.g. ThrottlingException.
+    - name: x-amzn-RequestId
+      location: header
+      description: Request identifier to quote when contacting AWS Support.
+x-spec-note: >-
+  The aws2openapi conversion that produced these specs emits synthetic status codes
+  480-485 to keep one response object per declared exception. They are NOT HTTP status
+  codes the service returns; the real HTTP status for each exception is recorded in
+  http_status below, read from the AWS API reference.
+problem_types:
+  - name: ValidationException
+    http_status: 400
+    title: The parameter is not valid.
+    remediation: Check that all required parameters are present and that values match the documented constraints.
+    operations_declaring: 21
+  - name: ThrottlingException
+    http_status: 429
+    title: The request was denied due to request throttling.
+    remediation: >-
+      Reduce request rate and retry with exponential backoff and jitter. The AWS SDKs
+      retry this exception automatically.
+    operations_declaring: 20
+    note: >-
+      AWS documents ThrottlingException with HTTP Status Code 400 on the service-wide
+      Common Error Types page; the CodeGuru Profiler API reference documents the
+      service-specific ThrottlingException as HTTP 429. Both are recorded here rather
+      than resolved, because the two AWS pages disagree.
+    conflicting_status: 400
+  - name: ResourceNotFoundException
+    http_status: 404
+    title: The resource specified in the request does not exist.
+    remediation: Verify the profiling group name or resource ARN exists in this account and region.
+    operations_declaring: 20
+  - name: InternalServerException
+    http_status: 500
+    title: The server encountered an internal error and is unable to complete the request.
+    remediation: Retry after a short delay; contact AWS Support if the failure persists.
+    operations_declaring: 23
+  - name: ConflictException
+    http_status: 409
+    title: The requested operation would cause a conflict with the current state of a service resource associated with the request.
+    remediation: >-
+      Resolving the conflict is dependent on the context. Re-read the resource and retry
+      with the current revisionId where one is required (PutPermission / RemovePermission).
+    operations_declaring: 6
+  - name: ServiceQuotaExceededException
+    http_status: 402
+    title: You have exceeded your service quota.
+    remediation: >-
+      Remove some of the relevant resources, or use Service Quotas to request an increase.
+      The adjustable quota is 500 profiling groups per account per region.
+    operations_declaring: 2
+    operations:
+      - CreateProfilingGroup
+      - AddNotificationChannels
+common_errors:
+  - name: AccessDeniedException
+    http_status: 403
+    title: You don't have permission to perform this action. Verify that your IAM policy includes the required permissions.
+  - name: ExpiredTokenException
+    http_status: 403
+    title: The security token included in the request has expired. Request a new security token and try again.
+  - name: IncompleteSignature
+    http_status: 403
+    title: The request signature doesn't conform to AWS standards.
+  - name: InternalFailure
+    http_status: 500
+    title: The request can't be processed right now because of an internal server issue.
+  - name: MalformedHttpRequestException
+    http_status: 400
+    title: The request body can't be processed.
+  - name: NotAuthorized
+    http_status: 401
+    title: You don't have permissions to perform this action.
+  - name: OptInRequired
+    http_status: 403
+    title: Your AWS account needs a subscription for this service.
+  - name: RequestAbortedException
+    http_status: 400
+    title: The request was aborted before a response could be returned.
+  - name: RequestEntityTooLargeException
+    http_status: 413
+    title: The request entity is too large. Reduce the size of the request body and try again.
+  - name: RequestTimeoutException
+    http_status: 408
+    title: The request timed out.
+  - name: ServiceUnavailable
+    http_status: 503
+    title: The service is temporarily unavailable. Try again later.
+  - name: ThrottlingException
+    http_status: 400
+    title: Your request rate is too high. The AWS SDKs automatically retry requests that receive this exception.
+  - name: UnknownOperationException
+    http_status: 404
+    title: The action or operation isn't recognized.
+  - name: UnrecognizedClientException
+    http_status: 403
+    title: The X.509 certificate or AWS access key ID you provided doesn't exist in our records.
+  - name: ValidationError
+    http_status: 400
+    title: The input doesn't meet the required format or constraints.
+docs:
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/CommonErrors.html
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/CommonParameters.html

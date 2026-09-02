@@ -1,0 +1,210 @@
+generated: '2026-09-01'
+method: derived
+source:
+- mcp/amazon-codeguru-profiler-mcp.yml
+- openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+- openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
+- openapi/amazon-codeguru-profiler-tags-api-openapi.yml
+description: "Crosswalk binding the candidate Amazon CodeGuru Profiler MCP tools to the OpenAPI operations\
+  \ that back them. AWS publishes no MCP server for this service, so the tool side is a DERIVED candidate\
+  \ inventory generated one-per-operation from the contract \u2014 which is why the binding is exactly\
+  \ one-to-one with no composite tools and no unmapped operations. Each tool inherits its backing operation\
+  \ parameters and requestBody as its real inputSchema."
+surfaces:
+  openapi:
+    documents:
+    - openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+    - openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+    - openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
+    - openapi/amazon-codeguru-profiler-tags-api-openapi.yml
+    operations: 23
+    gated: false
+    auth: AWS Signature Version 4 (IAM); the CONTRACT is public, calls are credentialed.
+  graphql:
+    endpoint: null
+    present: false
+  mcp:
+    url: null
+    present: false
+    mode: none
+    note: No hosted or stdio MCP server exists for CodeGuru Profiler; nothing to introspect.
+crosswalk:
+- tool: add_notification_channels
+  category: notifications
+  rest:
+  - AddNotificationChannels
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: batch_get_frame_metric_data
+  category: profiles
+  rest:
+  - BatchGetFrameMetricData
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: configure_agent
+  category: profiles
+  rest:
+  - ConfigureAgent
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: create_profiling_group
+  category: profiling_groups
+  rest:
+  - CreateProfilingGroup
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
+- tool: delete_profiling_group
+  category: profiling_groups
+  rest:
+  - DeleteProfilingGroup
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: describe_profiling_group
+  category: profiling_groups
+  rest:
+  - DescribeProfilingGroup
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: get_findings_report_account_summary
+  category: findings
+  rest:
+  - GetFindingsReportAccountSummary
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+- tool: get_notification_configuration
+  category: notifications
+  rest:
+  - GetNotificationConfiguration
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: get_policy
+  category: permissions
+  rest:
+  - GetPolicy
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: get_profile
+  category: profiles
+  rest:
+  - GetProfile
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: get_recommendations
+  category: findings
+  rest:
+  - GetRecommendations
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+- tool: list_findings_reports
+  category: findings
+  rest:
+  - ListFindingsReports
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+- tool: list_profile_times
+  category: profiles
+  rest:
+  - ListProfileTimes
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: list_profiling_groups
+  category: profiling_groups
+  rest:
+  - ListProfilingGroups
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: list_tags_for_resource
+  category: tags
+  rest:
+  - ListTagsForResource
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-tags-api-openapi.yml
+- tool: post_agent_profile
+  category: profiles
+  rest:
+  - PostAgentProfile
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: put_permission
+  category: permissions
+  rest:
+  - PutPermission
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: remove_notification_channel
+  category: notifications
+  rest:
+  - RemoveNotificationChannel
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: remove_permission
+  category: permissions
+  rest:
+  - RemovePermission
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+- tool: submit_feedback
+  category: findings
+  rest:
+  - SubmitFeedback
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+- tool: tag_resource
+  category: tags
+  rest:
+  - TagResource
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-tags-api-openapi.yml
+- tool: untag_resource
+  category: tags
+  rest:
+  - UntagResource
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-tags-api-openapi.yml
+- tool: update_profiling_group
+  category: profiling_groups
+  rest:
+  - UpdateProfilingGroup
+  binding: one-to-one
+  confidence: high
+  openapi: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+mcp_only: []
+rest_only: []
+coverage:
+  tools: 23
+  rest_operations: 23
+  mapped: 23
+  mcp_only: 0
+  rest_only: 0
+  confidence_high: 23
+  confidence_medium: 0
+  confidence_low: 0
+notes:
+- "Every mapping is confidence: high because both sides were generated from the same contract \u2014 this\
+  \ crosswalk records a derivation, not an independent reconciliation of a vendor-authored tool list."
+- mcp_only is empty and rest_only is empty by construction. If AWS ever ships a real CodeGuru Profiler
+  MCP server, this file must be regenerated against its tools/list response, and both lists will likely
+  become non-empty.

@@ -1,0 +1,65 @@
+generated: '2026-09-01'
+method: searched
+source: https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AddNotificationChannels.html
+derived_from: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+type: event-notifications
+asyncapi_published: false
+description: >-
+  Amazon CodeGuru Profiler has a real, contract-declared event surface, but it is NOT an HTTP
+  webhook surface and there is no AsyncAPI document for it. Anomaly notifications are published
+  to an Amazon SNS topic that the customer owns; the customer registers the topic ARN against a
+  profiling group through the AddNotificationChannels operation. Delivery, retry, fan-out and
+  payload signing are therefore SNS's, not CodeGuru Profiler's.
+transport: amazon-sns
+delivery: publish-to-customer-owned-sns-topic
+callback_http: false
+signature_scheme: none-published
+event_count: 1
+events:
+  - name: AnomalyDetection
+    publisher_enum_value: AnomalyDetection
+    description: >-
+      The only event publisher CodeGuru Profiler supports. Fires when the analysis detects an
+      anomaly in an application profile for the profiling group the channel is attached to.
+    evidence: >-
+      "List of publishers for different type of events that may be detected in an application
+      from the profile. Anomaly detection is the only event publisher in Profiler."
+    schema_published: false
+    schema_note: >-
+      The notification message body is not modelled in the OpenAPI and no published schema for
+      it was found. The API models only the SUBSCRIPTION (Channel), not the payload. A consumer
+      cannot know the message shape from the contract.
+    related_api_objects:
+      - Anomaly
+      - AnomalyInstance
+      - Metric
+subscription:
+  resource: Channel
+  fields:
+    - name: uri
+      required: true
+      description: 'Unique arn of the resource to be used for notifications. We support a valid SNS topic arn as a channel uri.'
+    - name: eventPublishers
+      required: true
+      description: List of publishers for different type of events that may be detected in an application from the profile.
+    - name: id
+      required: false
+      description: >-
+        Unique identifier for each Channel in the notification configuration of a Profiling
+        Group. A random UUID for channelId is used when adding a channel if not specified.
+  constraints:
+    max_channels_per_profiling_group: 2
+    min_channels_per_request: 1
+  operations:
+    subscribe: AddNotificationChannels
+    read: GetNotificationConfiguration
+    unsubscribe: RemoveNotificationChannel
+gaps:
+  - No AsyncAPI (or any machine-readable event) document is published.
+  - No message schema is published for the anomaly notification payload.
+  - No HTTP callback/webhook option; the consumer must own an SNS topic to receive anything.
+  - No replay, dead-letter or delivery-status surface is exposed by the Profiler API itself.
+docs:
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AddNotificationChannels.html
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Channel.html
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_NotificationConfiguration.html

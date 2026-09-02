@@ -1,0 +1,223 @@
+generated: '2026-09-01'
+method: derived
+source:
+  - openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-internal-api-openapi.yml
+  - openapi/amazon-codeguru-profiler-tags-api-openapi.yml
+docs: https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Types.html
+description: >-
+  Entity-relationship graph for Amazon CodeGuru Profiler, derived from the $ref links and
+  identifier fields across the 89 component schemas in the four refined OpenAPI documents.
+  The model has ONE root aggregate — the profiling group — and everything else hangs off it.
+root_entity: ProfilingGroup
+identifier_scheme:
+  primary: arn
+  format: 'arn:aws:codeguru-profiler:{region}:{account}:profilingGroup/{name}'
+  natural_key: profilingGroupName
+  natural_key_constraints: 'Length 1-255, pattern [\w-]+, unique per account per region'
+  note: >-
+    There are no opaque prefixed object ids in this API. Resources are addressed by name in the
+    path and by ARN in tagging operations. The only UUID-shaped identifiers are the client
+    idempotency tokens (clientToken, profileToken), the notification channelId, and the
+    findings report id.
+entities:
+  - name: ProfilingGroup
+    schema: ProfilingGroupDescription
+    description: The unit of profiling, billing and access control. Everything else belongs to one.
+    identifiers:
+      - arn
+      - name
+    fields:
+      - name
+      - arn
+      - computePlatform
+      - agentOrchestrationConfig
+      - profilingStatus
+      - createdAt
+      - updatedAt
+      - tags
+    enums:
+      computePlatform: [Default, AWSLambda]
+    operations:
+      create: CreateProfilingGroup
+      read: DescribeProfilingGroup
+      list: ListProfilingGroups
+      update: UpdateProfilingGroup
+      delete: DeleteProfilingGroup
+  - name: AgentOrchestrationConfig
+    description: The on/off switch for collection on a profiling group.
+    fields: [profilingEnabled]
+  - name: AgentConfiguration
+    description: Remote configuration handed back to a running profiler agent.
+    fields: [shouldProfile, periodInSeconds, agentParameters]
+    operations:
+      read: ConfigureAgent
+  - name: ProfilingStatus
+    description: Liveness of the agent and the most recent aggregated profile.
+    fields: [latestAgentOrchestratedAt, latestAgentProfileReportedAt, latestAggregatedProfile]
+  - name: AggregatedProfile
+    description: The profile payload itself — a negotiated binary/JSON blob, not a modelled schema.
+    operations:
+      read: GetProfile
+      write: PostAgentProfile
+      list_times: ListProfileTimes
+  - name: AggregatedProfileTime
+    description: The start time and aggregation period of one aggregated profile.
+    fields: [start, period]
+    enums:
+      period: [PT5M, PT1H, P1D]
+  - name: FrameMetricDatum
+    description: A time series of values for one frame metric.
+    fields: [frameMetric, values]
+    operations:
+      read: BatchGetFrameMetricData
+  - name: FrameMetric
+    description: Identifies a stack frame and thread states to measure.
+    fields: [frameName, type, threadStates]
+    enums:
+      type: [AggregatedRelativeTotalTime]
+  - name: FindingsReportSummary
+    description: One analysis report produced over a profile time range.
+    identifiers: [id]
+    fields: [id, profilingGroupName, profileStartTime, profileEndTime, totalNumberOfFindings]
+    operations:
+      list: ListFindingsReports
+      account_summary: GetFindingsReportAccountSummary
+  - name: Recommendation
+    description: A detected inefficiency pattern with matched frames.
+    fields: [pattern, topMatches, allMatchesCount, allMatchesSum, startTime, endTime]
+    operations:
+      read: GetRecommendations
+  - name: Pattern
+    description: The named inefficiency pattern a recommendation matched.
+    identifiers: [id]
+    fields: [id, name, description, resolutionSteps, targetFrames, thresholdPercent, countersToAggregate]
+  - name: Match
+    description: One frame that matched a pattern.
+    fields: [frameAddress, targetFramesIndex, thresholdBreachValue]
+  - name: Anomaly
+    description: A detected anomaly on a metric, carrying its instances.
+    fields: [metric, reason, instances]
+    operations:
+      read: GetRecommendations
+  - name: AnomalyInstance
+    description: One occurrence of an anomaly, and the only object that carries user feedback.
+    identifiers: [id]
+    fields: [id, startTime, endTime, userFeedback]
+    enums:
+      userFeedback.type: [Positive, Negative]
+    operations:
+      feedback: SubmitFeedback
+  - name: NotificationConfiguration
+    description: Up to two notification channels attached to a profiling group.
+    fields: [channels]
+    operations:
+      read: GetNotificationConfiguration
+      add: AddNotificationChannels
+      remove: RemoveNotificationChannel
+  - name: Channel
+    description: An Amazon SNS topic to publish anomaly notifications to.
+    identifiers: [id]
+    fields: [id, uri, eventPublishers]
+    enums:
+      eventPublishers: [AnomalyDetection]
+    constraints: 'Minimum 1, maximum 2 channels per profiling group'
+  - name: ResourcePolicy
+    description: The resource-based policy granting cross-principal access to a profiling group.
+    fields: [policy, revisionId, actionGroup]
+    note: >-
+      actionGroup is declared as a plain string in the contract with no enum, so the set of
+      valid action groups is not readable from the spec.
+    operations:
+      read: GetPolicy
+      grant: PutPermission
+      revoke: RemovePermission
+  - name: Tag
+    description: A string-to-string label on the profiling group ARN.
+    operations:
+      list: ListTagsForResource
+      add: TagResource
+      remove: UntagResource
+relationships:
+  - from: ProfilingGroup
+    to: AgentOrchestrationConfig
+    type: has_one
+    via: agentOrchestrationConfig
+  - from: ProfilingGroup
+    to: ProfilingStatus
+    type: has_one
+    via: profilingStatus
+  - from: ProfilingGroup
+    to: Tag
+    type: has_many
+    via: tags
+  - from: ProfilingGroup
+    to: AggregatedProfile
+    type: has_many
+    via: profilingGroupName (path)
+  - from: ProfilingGroup
+    to: NotificationConfiguration
+    type: has_one
+    via: profilingGroupName (path)
+  - from: ProfilingGroup
+    to: ResourcePolicy
+    type: has_one
+    via: profilingGroupName (path)
+  - from: ProfilingGroup
+    to: FindingsReportSummary
+    type: has_many
+    via: profilingGroupName
+  - from: ProfilingGroup
+    to: AgentConfiguration
+    type: has_one
+    via: profilingGroupName (path)
+  - from: NotificationConfiguration
+    to: Channel
+    type: has_many
+    via: channels
+    cardinality: 1..2
+  - from: ProfilingStatus
+    to: AggregatedProfileTime
+    type: has_one
+    via: latestAggregatedProfile
+  - from: FindingsReportSummary
+    to: ProfilingGroup
+    type: belongs_to
+    via: profilingGroupName
+  - from: Recommendation
+    to: Pattern
+    type: has_one
+    via: pattern
+  - from: Recommendation
+    to: Match
+    type: has_many
+    via: topMatches
+  - from: Anomaly
+    to: AnomalyInstance
+    type: has_many
+    via: instances
+  - from: Anomaly
+    to: Metric
+    type: has_one
+    via: metric
+  - from: AnomalyInstance
+    to: UserFeedback
+    type: has_one
+    via: userFeedback
+  - from: FrameMetricDatum
+    to: FrameMetric
+    type: has_one
+    via: frameMetric
+counts:
+  schemas: 89
+  entities: 18
+  relationships: 18
+notes:
+  - >-
+    The graph is a star, not a mesh — 8 of the 18 relationships originate at ProfilingGroup.
+    An agent that can name a profiling group can reach every other object in the API.
+  - >-
+    AggregatedProfile is the one entity with no modelled schema. Both GetProfile and
+    PostAgentProfile negotiate the payload format through Accept / Content-Type, so its
+    structure is not readable from the contract.

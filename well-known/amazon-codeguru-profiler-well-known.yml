@@ -1,19 +1,105 @@
-generated: '2026-06-20'
-method: searched
-source: https://codeguru-profiler.us-east-1.amazonaws.com/.well-known/
+generated: '2026-09-01'
+method: probed
+source: live HTTP probes of every apis.yml and OpenAPI host, 2026-09-01
 description: >-
-  Probe of the /.well-known/ discovery surface on the CodeGuru Profiler API
-  host. AWS service endpoints require SigV4-signed requests and return HTTP 403
-  for unauthenticated /.well-known/ paths; no discovery documents are published.
-host: https://codeguru-profiler.us-east-1.amazonaws.com
-documents:
-  - path: /.well-known/security.txt
-    status: 403
-  - path: /.well-known/openid-configuration
-    status: 403
-  - path: /.well-known/oauth-authorization-server
-    status: 403
-  - path: /.well-known/api-catalog
-    status: 403
-  - path: /.well-known/ai-plugin.json
-    status: 403
+  Probe of the /.well-known/ discovery surface across all three hosts in this profile. The AWS
+  API host answers 403 to every unauthenticated path because it requires a SigV4-signed request
+  and cannot resolve a service/operation name. docs.aws.amazon.com serves nothing. The corporate
+  host aws.amazon.com serves a REAL RFC 9116 security.txt, saved verbatim; every other path
+  there 301s to a trailing-slash URL that then 404s with the marketing SPA shell.
+hosts:
+  - host: aws.amazon.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: well-known/amazon-codeguru-profiler-security.txt
+        content_type: text/plain
+        document: true
+        note: RFC 9116 security.txt. Expires 2026-09-24T16:25:03.000Z.
+      - path: /.well-known/openid-configuration
+        status: 301
+        document: false
+        note: 301 to trailing-slash URL, which returns 404 with the aws.amazon.com HTML shell.
+      - path: /.well-known/oauth-authorization-server
+        status: 301
+        document: false
+      - path: /.well-known/api-catalog
+        status: 301
+        document: false
+        note: Followed to https://aws.amazon.com/.well-known/api-catalog/ -> 404 HTML. NOT a served catalog.
+      - path: /.well-known/ai-plugin.json
+        status: 301
+        document: false
+      - path: /.well-known/agent-card.json
+        status: 301
+        document: false
+        note: Followed -> 404 HTML shell. No A2A agent card.
+      - path: /.well-known/agent.json
+        status: 301
+        document: false
+  - host: codeguru-profiler.us-east-1.amazonaws.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+        document: false
+      - path: /.well-known/openid-configuration
+        status: 403
+        document: false
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+        document: false
+      - path: /.well-known/api-catalog
+        status: 403
+        document: false
+      - path: /.well-known/ai-plugin.json
+        status: 403
+        document: false
+      - path: /.well-known/agent-card.json
+        status: 403
+        document: false
+      - path: /.well-known/agent.json
+        status: 403
+        document: false
+    note: >-
+      Every path returns the same body — {"message":"Unable to determine service/operation name
+      to be authorized"} — which is the AWS SigV4 front door, not a per-path policy.
+  - host: docs.aws.amazon.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        document: false
+      - path: /.well-known/openid-configuration
+        status: 404
+        document: false
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        document: false
+      - path: /.well-known/api-catalog
+        status: 404
+        document: false
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        document: false
+      - path: /.well-known/agent-card.json
+        status: 404
+        document: false
+      - path: /.well-known/agent.json
+        status: 404
+        document: false
+summary:
+  hosts_probed: 3
+  paths_probed: 21
+  documents_served: 1
+  served:
+    - host: aws.amazon.com
+      path: /.well-known/security.txt
+  agent_card: false
+  api_catalog: false
+  openid_configuration: false
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: >-
+    Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads.
+    Re-probed and rewritten 2026-09-01, which upgraded this from an all-403 absence to a real
+    security.txt hit on aws.amazon.com.

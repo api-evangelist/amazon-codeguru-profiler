@@ -1,0 +1,56 @@
+generated: '2026-09-01'
+method: searched
+source: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/security-iam-awsmanpol.html
+description: >-
+  Change history for Amazon CodeGuru Profiler. AWS does not publish a dated per-operation API
+  changelog for this service; the only dated change record found on the provider's own surface
+  is the AWS managed-policy update table in the user guide. The service API version has not
+  moved since launch.
+scheme: dated-api-version
+current_version: '2019-07-18'
+version_unchanged_since: '2019-07-18'
+dedicated_changelog_published: false
+rss:
+  available: true
+  note: >-
+    The user guide Document history page carries an RSS feed for documentation updates; it
+    tracks doc edits rather than API changes.
+  page: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/document-history.html
+entries:
+  - date: '2021-07-12'
+    scope: iam-managed-policy
+    breaking: false
+    additions: false
+    highlight: >-
+      AmazonCodeGuruProfilerAgentAccess updated — CodeGuru Profiler reduced resource scope in
+      order to improve application security.
+    source: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/security-iam-awsmanpol.html
+  - date: '2021-04-01'
+    scope: iam-managed-policy
+    breaking: false
+    additions: true
+    highlight: >-
+      AmazonCodeGuruProfilerAgentAccess updated — added the permissions needed for the
+      CodeGuru Profiler agent to create a profiling group.
+    source: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/security-iam-awsmanpol.html
+  - date: '2021-03-25'
+    scope: iam-managed-policy
+    breaking: false
+    additions: false
+    highlight: CodeGuru Profiler started tracking changes for its AWS managed policies.
+    source: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/security-iam-awsmanpol.html
+gap_note: >-
+  This is a thin changelog and the thinness is the finding: a service whose contract has been
+  frozen at API version 2019-07-18 and whose most recent dated provider-published change is
+  from July 2021 gives an integrator no signal about ongoing investment. The AWS "What's New"
+  feed is service-wide, not CodeGuru Profiler-specific, so it is not recorded here as a
+  provider changelog for this API.
+probes:
+  - url: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/document-history.html
+    status: 200
+    finding: >-
+      Page served but returned only the shell title through our fetcher; the entries are
+      rendered client-side, so no dated rows could be read from it.
+docs:
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-ug/document-history.html
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-ug/security-iam-awsmanpol.html

@@ -1,7 +1,8 @@
 aid: amazon-codeguru-profiler
 name: Amazon CodeGuru Profiler
-description: Amazon CodeGuru Profiler collects runtime performance data from your live applications, providing recommendations to help you reduce CPU utilization, cut costs, and improve application 
-  performance. The profiler analyzes your application's CPU and heap usage to identify the most expensive lines of code and offers actionable recommendations.
+description: Amazon CodeGuru Profiler collects runtime performance data from your live applications, providing recommendations
+  to help you reduce CPU utilization, cut costs, and improve application performance. The profiler analyzes your
+  application's CPU and heap usage to identify the most expensive lines of code and offers actionable recommendations.
 type: Index
 deliveryModel:
   model: unknown
@@ -43,7 +44,7 @@ tags_raw:
 - Machine Learning
 url: https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-19'
+modified: '2026-09-01'
 specificationVersion: '0.23'
 apis:
 - aid: amazon-codeguru-profiler:amazon-codeguru-profiler-internal-api
@@ -57,13 +58,18 @@ apis:
   - type: OpenAPI
     url: openapi/amazon-codeguru-profiler-internal-api-openapi.yml
   - type: Documentation
-    url: https://docs.aws.amazon.com/codeguruprofiler/
+    url: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html
   - type: APIReference
     url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+  - type: Overlay
+    url: overlays/amazon-codeguru-profiler-internal-api-overlay.yaml
+  - type: Postman
+    url: collections/amazon-codeguru-profiler-internal-api.postman_collection.json
+  - type: OpenCollection
+    url: collections/amazon-codeguru-profiler-internal-api.opencollection.json
 - aid: amazon-codeguru-profiler:amazon-codeguru-profiler-profilinggroups-api
   name: Amazon CodeGuru Profiler ProfilingGroups API
-  description: >-
-    The ProfilingGroups API from Amazon CodeGuru Profiler — 12 operation(s) for profilinggroups.
+  description: The ProfilingGroups API from Amazon CodeGuru Profiler — 12 operation(s) for profilinggroups.
   humanURL: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
   baseURL: https://codeguru-profiler.us-east-1.amazonaws.com
   tags:
@@ -72,13 +78,18 @@ apis:
   - type: OpenAPI
     url: openapi/amazon-codeguru-profiler-profilinggroups-api-openapi.yml
   - type: Documentation
-    url: https://docs.aws.amazon.com/codeguruprofiler/
+    url: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html
   - type: APIReference
     url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+  - type: Overlay
+    url: overlays/amazon-codeguru-profiler-profilinggroups-api-overlay.yaml
+  - type: Postman
+    url: collections/amazon-codeguru-profiler-profilinggroups-api.postman_collection.json
+  - type: OpenCollection
+    url: collections/amazon-codeguru-profiler-profilinggroups-api.opencollection.json
 - aid: amazon-codeguru-profiler:amazon-codeguru-profiler-profilinggroups-clienttoken-api
   name: Amazon CodeGuru Profiler ProfilingGroups#clientToken API
-  description: >-
-    The ProfilingGroups#clientToken API from Amazon CodeGuru Profiler — 1 operation(s) for profilinggroups#clienttoken.
+  description: The ProfilingGroups#clientToken API from Amazon CodeGuru Profiler — 1 operation(s) for profilinggroups#clienttoken.
   humanURL: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
   baseURL: https://codeguru-profiler.us-east-1.amazonaws.com
   tags:
@@ -87,9 +98,15 @@ apis:
   - type: OpenAPI
     url: openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
   - type: Documentation
-    url: https://docs.aws.amazon.com/codeguruprofiler/
+    url: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html
   - type: APIReference
     url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+  - type: Overlay
+    url: overlays/amazon-codeguru-profiler-profilinggroups-clienttoken-api-overlay.yaml
+  - type: Postman
+    url: collections/amazon-codeguru-profiler-profilinggroups-clienttoken-api.postman_collection.json
+  - type: OpenCollection
+    url: collections/amazon-codeguru-profiler-profilinggroups-clienttoken-api.opencollection.json
 - aid: amazon-codeguru-profiler:amazon-codeguru-profiler-tags-api
   name: Amazon CodeGuru Profiler Tags API
   description: The Tags API from Amazon CodeGuru Profiler — 2 operation(s) for tags.
@@ -101,20 +118,28 @@ apis:
   - type: OpenAPI
     url: openapi/amazon-codeguru-profiler-tags-api-openapi.yml
   - type: Documentation
-    url: https://docs.aws.amazon.com/codeguruprofiler/
+    url: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html
   - type: APIReference
     url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+  - type: Overlay
+    url: overlays/amazon-codeguru-profiler-tags-api-overlay.yaml
+  - type: Postman
+    url: collections/amazon-codeguru-profiler-tags-api.postman_collection.json
+  - type: OpenCollection
+    url: collections/amazon-codeguru-profiler-tags-api.opencollection.json
 common:
+- type: Website
+  url: https://aws.amazon.com/codeguru/profiler/
 - type: GettingStarted
-  url: https://docs.aws.amazon.com/codeguru/profiler
+  url: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up.html
 - type: Pricing
-  url: https://aws.amazon.com/codeguruprofiler/pricing/
+  url: https://aws.amazon.com/codeguru/profiler/pricing/
 - type: Console
-  url: https://console.aws.amazon.com/codeguruprofiler/
+  url: https://console.aws.amazon.com/codeguru/profiler
 - type: Portal
-  url: https://aws.amazon.com/codeguruprofiler/
+  url: https://aws.amazon.com/codeguru/profiler/
 - type: Documentation
-  url: https://docs.aws.amazon.com/codeguruprofiler/
+  url: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html
 - type: TermsOfService
   url: https://aws.amazon.com/service-terms/
 - type: PrivacyPolicy
@@ -131,16 +156,16 @@ common:
   url: rules/amazon-codeguru-profiler-spectral-rules.yml
 - type: Vocabulary
   url: vocabulary/amazon-codeguru-profiler-vocabulary.yaml
-- type: NaftikoCapability
-  url: capabilities/amazon-codeguru-profiler-application-performance.yaml
 - type: JSONLD
   url: json-ld/amazon-codeguru-profiler-context.jsonld
 - type: Features
   data:
   - name: Application Profiling
-    description: Continuously profile application CPU utilization and heap usage in production without significant overhead.
+    description: Continuously profile application CPU utilization and heap usage in production without significant
+      overhead.
   - name: AI-Powered Recommendations
-    description: Receive actionable recommendations from machine learning models identifying expensive code paths and resource inefficiencies.
+    description: Receive actionable recommendations from machine learning models identifying expensive code paths
+      and resource inefficiencies.
   - name: Flame Graphs
     description: Visualize CPU usage with flame graphs that highlight the most resource-intensive code paths.
   - name: Anomaly Detection
@@ -154,7 +179,8 @@ common:
   - name: Cost Reduction
     description: Reduce compute costs by optimizing code that consumes excessive CPU time and cloud resources.
   - name: Latency Investigation
-    description: Investigate application latency issues by profiling which code paths contribute most to request processing time.
+    description: Investigate application latency issues by profiling which code paths contribute most to request
+      processing time.
 - type: Integrations
   data:
   - name: AWS Lambda
@@ -165,22 +191,79 @@ common:
     description: Profile applications running on EC2 instances.
   - name: AWS CodeGuru Reviewer
     description: Combine profiling insights with code review recommendations.
+- type: MCPServer
+  url: mcp/amazon-codeguru-profiler-mcp.yml
+- type: Overlay
+  url: overlays/amazon-codeguru-profiler-openapi-original-overlay.yaml
+- type: AgenticAccess
+  url: agentic-access/amazon-codeguru-profiler-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-codeguru-profiler-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-codeguru-profiler-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-codeguru-profiler-authentication.yml
+- url: https://aws.amazon.com/blogs/devops/tag/codeguru-profiler/feed/
+  type: Blog
+- type: Packages
+  url: packages/amazon-codeguru-profiler-packages.yml
+- type: SDKs
+  url: packages/amazon-codeguru-profiler-packages.yml
+- type: CLI
+  url: cli/amazon-codeguru-profiler-cli.yml
+- type: WellKnown
+  url: well-known/amazon-codeguru-profiler-well-known.yml
+- type: SecurityTxt
+  url: well-known/amazon-codeguru-profiler-security.txt
+- type: Security
+  url: security/amazon-codeguru-profiler-vulnerability-disclosure.yml
+- type: ToolCrosswalk
+  url: mcp/amazon-codeguru-profiler-tool-crosswalk.yml
+- type: LLMsTxt
+  url: llms/amazon-codeguru-profiler-llms.txt
+- type: Conformance
+  url: conformance/amazon-codeguru-profiler-conformance.yml
+- type: ErrorCatalog
+  url: errors/amazon-codeguru-profiler-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/amazon-codeguru-profiler-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/amazon-codeguru-profiler-lifecycle.yml
+- type: Conventions
+  url: conventions/amazon-codeguru-profiler-conventions.yml
+- type: Idempotency
+  url: conventions/amazon-codeguru-profiler-conventions.yml
+- type: DataModel
+  url: data-model/amazon-codeguru-profiler-data-model.yml
+- type: Plans
+  url: plans/amazon-codeguru-profiler-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/amazon-codeguru-profiler-rate-limits.yml
+- type: ChangeLog
+  url: changelog/amazon-codeguru-profiler-changelog.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Webhooks
+  url: asyncapi/amazon-codeguru-profiler-notifications.yml
+- type: SpectralRules
+  url: rules/amazon-codeguru-profiler-jsonschema-spectral-rules.yml
+- type: DeveloperPortal
+  url: https://aws.amazon.com/codeguru/profiler/
+- type: APIReference
+  url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+- type: FAQ
+  url: https://aws.amazon.com/codeguru/profiler/faqs/
+- type: Compliance
+  url: https://aws.amazon.com/compliance/programs/
+- type: Support
+  url: https://aws.amazon.com/contact-us/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-
-common:
-  - type: MCPServer
-    url: mcp/amazon-codeguru-profiler-mcp.yml
-  - type: Overlay
-    url: overlays/amazon-codeguru-profiler-openapi-original-overlay.yaml
-  - type: AgenticAccess
-    url: agentic-access/amazon-codeguru-profiler-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/amazon-codeguru-profiler-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/amazon-codeguru-profiler-domain-security.yml
-  - type: Authentication
-    url: authentication/amazon-codeguru-profiler-authentication.yml
-  - url: https://aws.amazon.com/blogs/devops/tag/codeguru-profiler/feed/
-    type: Blog
+x-enrichment:
+  date: '2026-09-01'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1
+x-parent: aws
+x-relationship: product

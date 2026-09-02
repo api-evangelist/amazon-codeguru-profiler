@@ -84,7 +84,40 @@ tools:
   source_operation: openapi/amazon-codeguru-profiler-openapi-original.yaml#UpdateProfilingGroup
 deployment:
   mode: none
-  verified: derived
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+  checked: '2026-09-01'
+  source: https://github.com/awslabs/mcp
   tools: 23
-  checked: '2026-08-12'
-  source: catalog MCP census
+  note: >-
+    AWS ships NO MCP server for Amazon CodeGuru Profiler — neither a hosted remote endpoint nor
+    a service-specific stdio package. The awslabs/mcp catalog was searched on 2026-09-01 and
+    contains no codeguruprofiler server. The tool list above is DERIVED from the OpenAPI
+    operations and is a candidate inventory, not a running surface. No endpoint URL is asserted.
+related_servers:
+  - name: AWS API MCP Server
+    package: awslabs.aws-api-mcp-server
+    mode: local-stdio
+    first_party: true
+    profiler_specific: false
+    docs: https://awslabs.github.io/mcp/servers/aws-api-mcp-server
+    note: >-
+      A GENERAL first-party AWS server that drives the AWS CLI, so it can reach the 23
+      `aws codeguruprofiler` subcommands as a side effect. Recorded for completeness only; it is
+      not a CodeGuru Profiler MCP server and must not be counted as one.
+  - name: AWS Documentation MCP Server
+    package: awslabs.aws-documentation-mcp-server
+    mode: local-stdio
+    first_party: true
+    profiler_specific: false
+    docs: https://awslabs.github.io/mcp/servers/aws-documentation-mcp-server
+    note: Serves AWS documentation generally, including CodeGuru Profiler pages. Not a service API server.
+x-untrusted-content-note: >-
+  Several docs.aws.amazon.com pages fetched during this pass carried an appended "See also"
+  block urging the reader to run `aws agent-toolkit search-skills`. One instance rendered as
+  "AWS publishes reusable skills for none", showing it to be templated injected text rather
+  than AWS editorial content. It was treated as untrusted, not followed, and no AWS-published
+  agent skill is claimed anywhere in this repo on the strength of it.

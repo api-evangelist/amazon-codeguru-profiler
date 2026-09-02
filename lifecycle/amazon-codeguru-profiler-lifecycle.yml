@@ -1,0 +1,79 @@
+generated: '2026-09-01'
+method: searched
+source: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
+description: >-
+  Versioning, deprecation and availability posture for the Amazon CodeGuru Profiler API,
+  read from the AWS API reference, the AWS service terms and the AWS Health status page.
+versioning:
+  scheme: dated-api-version
+  current_version: '2019-07-18'
+  evidence: >-
+    Every per-operation "See Also" SDK link is namespaced codeguruprofiler-2019-07-18,
+    e.g. https://docs.aws.amazon.com/goto/boto3/codeguruprofiler-2019-07-18/CreateProfilingGroup
+  in_url: false
+  note: >-
+    The API version is bound to the SDK service model, not carried in the request path.
+    Paths are unversioned (/profilingGroups, /tags/{resourceArn}); clients pin a version by
+    pinning an SDK release.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  note: >-
+    No RFC 8594 Sunset/Deprecation headers are declared in the OpenAPI and no
+    service-level deprecation policy page was found for CodeGuru Profiler. AWS publishes
+    per-service end-of-support notices ad hoc rather than a standing policy document.
+  checked: '2026-09-01'
+  probes:
+    - url: https://aws.amazon.com/codeguru/profiler/faqs/
+      status: 200
+      finding: No end-of-support, deprecation or maintenance notice present.
+    - url: https://aws.amazon.com/codeguru/profiler/
+      status: 200
+      finding: Product page live; service marketed as generally available.
+sibling_service_note: >-
+  Amazon CodeGuru Reviewer — a different service under the same CodeGuru brand — moved to a
+  maintenance lifecycle with new-customer access closed from November 7, 2025. That notice
+  applies to Reviewer, NOT to Profiler, and is recorded here only so the two are not confused.
+status_page:
+  url: https://health.aws.amazon.com/health/status
+  scope: All AWS services and regions
+  machine_readable: false
+sla:
+  published: false
+  note: >-
+    No service-specific SLA page was found for CodeGuru Profiler. The service is governed by
+    the AWS Service Terms and the AWS Customer Agreement.
+  terms: https://aws.amazon.com/service-terms/
+availability:
+  regions:
+    - us-east-1
+    - us-east-2
+    - us-west-2
+    - ap-southeast-1
+    - ap-southeast-2
+    - ap-northeast-1
+    - eu-central-1
+    - eu-west-1
+    - eu-west-2
+    - eu-north-1
+  source: https://docs.aws.amazon.com/general/latest/gr/codeguru-profiler.html
+  endpoint_pattern: codeguru-profiler.{region}.amazonaws.com
+  protocol: HTTPS
+managed_policy_history:
+  source: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/security-iam-awsmanpol.html
+  entries:
+    - date: '2021-07-12'
+      change: AmazonCodeGuruProfilerAgentAccess - Updates to policy
+      description: CodeGuru Profiler reduced resource scope in order to improve application security.
+    - date: '2021-04-01'
+      change: AmazonCodeGuruProfilerAgentAccess - Updates to policy
+      description: CodeGuru Profiler added permissions needed for CodeGuru Profiler agent to Create a Profiling Group.
+    - date: '2021-03-25'
+      change: CodeGuru Profiler started tracking changes
+      description: CodeGuru Profiler started tracking changes for its AWS managed policies.
+docs:
+  - https://docs.aws.amazon.com/general/latest/gr/codeguru-profiler.html
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-ug/security-iam-awsmanpol.html

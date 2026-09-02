@@ -1,0 +1,60 @@
+generated: '2026-09-01'
+method: searched
+source: https://aws.amazon.com/codeguru/profiler/pricing/
+description: >-
+  Published pricing for Amazon CodeGuru Profiler. Usage-based, not tiered: there is one
+  free-trial plan and one pay-as-you-go rate, both billed on sampling hours. A sampling hour
+  is one hour of the profiling agent running on one instance or container.
+plan_count: 2
+currency: USD
+billing_period: monthly
+unit: sampling hour
+unit_definition: One hour of the profiling agent running on one instance or container.
+model: usage-based
+plans:
+  - name: Free Tier
+    price: 0
+    currency: USD
+    billing_period: monthly
+    duration: 90 days
+    included_quota: All sampling hours during the 90-day trial
+    overage: Converts to the pay-as-you-go rate after 90 days
+    limits:
+      - 'Profiling groups per account per region: 500 (adjustable)'
+    evidence: >-
+      "You can get started with Amazon CodeGuru Profiler at no cost. The Free Tier lasts for
+      90 days."
+    source: https://aws.amazon.com/codeguru/profiler/pricing/
+  - name: Pay-as-you-go
+    price: 0.005
+    price_unit: per sampling hour
+    currency: USD
+    billing_period: monthly
+    included_quota: >-
+      For AWS Lambda: the first 500 sampling hours per payer account are free.
+    charged_band: First 36,000 sampling hours per profiling group per month
+    overage: >-
+      None. There is no additional charge beyond 36,000 sampling hours per profiling group per
+      month — the per-group monthly charge is capped at 36,000 x $0.005 = $180.
+    applies_to:
+      - Amazon EC2
+      - Amazon ECS
+      - Amazon EKS
+      - AWS Fargate
+      - AWS Lambda
+    evidence: >-
+      "$0.005 per sampling hour for the first 36,000 sampling hours per profiling group per
+      month. No additional charge beyond 36,000 sampling hours per profiling group per month."
+    limits:
+      - 'Profiling groups per account per region: 500 (adjustable)'
+    source: https://aws.amazon.com/codeguru/profiler/pricing/
+enterprise_contact_only: false
+machine_readable_pricing:
+  available: false
+  note: >-
+    AWS publishes a machine-readable Price List API/bulk catalog across services, but no
+    per-service pricing endpoint is linked from the CodeGuru Profiler pricing page. The values
+    above were read from the published HTML pricing page.
+docs:
+  - https://aws.amazon.com/codeguru/profiler/pricing/
+  - https://aws.amazon.com/codeguru/profiler/faqs/

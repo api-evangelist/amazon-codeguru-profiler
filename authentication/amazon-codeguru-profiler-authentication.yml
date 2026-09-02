@@ -1,16 +1,101 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/amazon-codeguru-profiler-openapi-original.yaml
+generated: '2026-09-01'
+method: searched
+source: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/security-iam-awsmanpol.html
+derived_from: openapi/amazon-codeguru-profiler-openapi-original.yaml
+description: >-
+  Authentication and authorization profile for Amazon CodeGuru Profiler. Every request is signed
+  with AWS Signature Version 4 using IAM credentials — there is no API key, bearer token, OAuth
+  flow or OIDC discovery document. Authorization is expressed as IAM actions on
+  codeguru-profiler:*, plus an optional resource-based policy on each profiling group for
+  cross-principal access.
 summary:
   types:
-  - apiKey
+    - apiKey
   api_key_in:
-  - header
+    - header
+  oauth2: false
+  openid_connect: false
+  mutual_tls: false
 schemes:
-- name: hmac
-  type: apiKey
-  in: header
-  parameter: Authorization
-  description: Amazon Signature authorization v4
-  sources:
-  - openapi/amazon-codeguru-profiler-openapi-original.yaml
+  - name: hmac
+    type: apiKey
+    in: header
+    parameter: Authorization
+    description: Amazon Signature authorization v4
+    signing_name: codeguru-profiler
+    sources:
+      - openapi/amazon-codeguru-profiler-openapi-original.yaml
+    note: >-
+      Modelled as apiKey-in-header because that is the closest OpenAPI 3.x securityScheme to
+      SigV4. It is NOT a static key: the Authorization header carries a per-request HMAC
+      signature derived from an access key, secret key, optional session token, the request
+      canonicalisation, the region and the date.
+credential_sources:
+  - IAM user long-lived access keys
+  - IAM role temporary credentials (STS)
+  - IAM Identity Center / AWS SSO
+  - EC2 / ECS / Lambda instance and task roles
+authorization:
+  model: iam-policy
+  service_prefix: codeguru-profiler
+  resource_arn_pattern: 'arn:aws:codeguru-profiler:{region}:{account}:profilingGroup/{name}'
+  managed_policies:
+    - name: AmazonCodeGuruProfilerFullAccess
+      description: >-
+        Provides full access to CodeGuru Profiler, including permissions to create, update, and
+        delete profiling groups.
+      actions:
+        - 'codeguru-profiler:*'
+        - 'codeguru:*'
+        - 'iam:ListRoles'
+        - 'iam:ListUsers'
+      resource: '*'
+    - name: AmazonCodeGuruProfilerReadOnlyAccess
+      description: >-
+        Grants read-only access to CodeGuru Profiler and related resources in other AWS services.
+      actions:
+        - 'codeguru-profiler:Get*'
+        - 'codeguru-profiler:Describe*'
+        - 'codeguru-profiler:List*'
+        - 'codeguru:*'
+        - 'iam:ListRoles'
+        - 'iam:ListUsers'
+      resource: '*'
+    - name: AmazonCodeGuruProfilerAgentAccess
+      description: >-
+        Added to the execution role of AWS Lambda functions onboarded to CodeGuru Profiler via
+        the Lambda console monitoring page. Allows the agent to create a profiling group, refresh
+        its configuration and submit agent profiles.
+      actions:
+        - 'codeguru-profiler:ConfigureAgent'
+        - 'codeguru-profiler:CreateProfilingGroup'
+        - 'codeguru-profiler:PostAgentProfile'
+      resource: 'arn:aws:codeguru-profiler:*:*:profilingGroup/*'
+      least_privilege: true
+      note: >-
+        This is the policy an autonomous agent workload should be given. It is the only one of
+        the three scoped to a resource ARN rather than '*', and it grants exactly the three
+        operations a running profiler needs — no read of findings, no delete.
+  resource_based_policy:
+    supported: true
+    operations:
+      - PutPermission
+      - GetPolicy
+      - RemovePermission
+    concurrency: revisionId (optimistic lock; ConflictException 409 on a stale revision)
+    note: >-
+      A profiling group can carry its own resource policy granting an actionGroup to named
+      principals, which is how cross-account agent submission is enabled without sharing IAM
+      credentials.
+discovery:
+  openid_configuration: null
+  oauth_authorization_server: null
+  note: >-
+    Probed 2026-09-01 on codeguru-profiler.us-east-1.amazonaws.com (403 SigV4 front door),
+    docs.aws.amazon.com (404) and aws.amazon.com (301 -> 404). No OAuth/OIDC discovery document
+    exists, which is expected for a SigV4 service.
+  see: well-known/amazon-codeguru-profiler-well-known.yml
+docs:
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-ug/security-iam-awsmanpol.html
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/CommonParameters.html
+  - https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PutPermission.html
