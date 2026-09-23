@@ -1,10 +1,7 @@
 {
   "provider": "amazon-codeguru-profiler",
   "sources": [
-    "amazon-codeguru-profiler-internal-api-openapi.yml",
-    "amazon-codeguru-profiler-profilinggroups-api-openapi.yml",
-    "amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml",
-    "amazon-codeguru-profiler-tags-api-openapi.yml"
+    "_original/amazon-codeguru-profiler-openapi-original.yaml"
   ],
   "outputs": [
     "amazon-codeguru-profiler-internal-api-openapi.yml",
@@ -12,11 +9,48 @@
     "amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml",
     "amazon-codeguru-profiler-tags-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-codeguru-profiler-openapi-original.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /profilingGroups/{profilingGroupName}/notificationConfiguration -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /profilingGroups/{profilingGroupName}/notificationConfiguration -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /profilingGroups/{profilingGroupName}/frames/-/metrics -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /profilingGroups/{profilingGroupName}/configureAgent -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /profilingGroups#clientToken -> ProfilingGroups#clientToken",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths DELETE /profilingGroups/{profilingGroupName} -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /profilingGroups/{profilingGroupName} -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths PUT /profilingGroups/{profilingGroupName} -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /internal/findingsReports -> Internal",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /profilingGroups/{profilingGroupName}/policy -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /profilingGroups/{profilingGroupName}/profile -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /internal/profilingGroups/{profilingGroupName}/recommendations#endTime&startTime -> Internal",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /internal/profilingGroups/{profilingGroupName}/findingsReports#endTime&startTime -> Internal",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /profilingGroups/{profilingGroupName}/profileTimes#endTime&period&startTime -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /profilingGroups -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /tags/{resourceArn} -> Tags",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /tags/{resourceArn} -> Tags",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /profilingGroups/{profilingGroupName}/agentProfile#Content-Type -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths PUT /profilingGroups/{profilingGroupName}/policy/{actionGroup} -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths DELETE /profilingGroups/{profilingGroupName}/notificationConfiguration/{channelId} -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths DELETE /profilingGroups/{profilingGroupName}/policy/{actionGroup}#revisionId -> ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /internal/profilingGroups/{profilingGroupName}/anomalies/{anomalyInstanceId}/feedback -> Internal",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths DELETE /tags/{resourceArn}#tagKeys -> Tags",
+    "amazon-codeguru-profiler-openapi-original.yaml: declared missing tag: Internal",
+    "amazon-codeguru-profiler-openapi-original.yaml: declared missing tag: ProfilingGroups",
+    "amazon-codeguru-profiler-openapi-original.yaml: declared missing tag: ProfilingGroups#clientToken",
+    "amazon-codeguru-profiler-openapi-original.yaml: declared missing tag: Tags",
+    "superseded outputs removed: amazon-codeguru-profiler-profiling-groups-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 4 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-codeguru-profiler-internal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-codeguru-profiler-profiling-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-codeguru-profiler-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,9 +1,9 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2019-07-18'
   x-release: v4
   title: Amazon CodeGuru Profiler Internal API
-  description: <p> This section provides documentation for the Amazon CodeGuru Profiler API operations. </p> <p> Amazon CodeGuru Profiler collects runtime performance data from your live applications, and provides recommendations that can help you fine-tune your application performance. Using machine learning algorithms, CodeGuru Profiler can help you find your most expensive lines of code and suggest ways you can improve efficiency and remove CPU bottlenecks. </p> <p> Amazon CodeGuru Profiler provides different visualizations of profiling data to help you identify what code is running on the CPU, see how much time is consumed, and suggest ways to reduce CPU utilization. </p> <note> <p>Amazon CodeGuru Profiler currently supports applications written in all Java virtual machine (JVM) languages and Python. While CodeGuru Profiler supports both visualizations and recommendations for applications written in Java, it can also generate visualizations and a subset of recommendations for applications written in other JVM languages and Python.</p> </note> <p> For more information, see <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html">What is Amazon CodeGuru Profiler</a> in the <i>Amazon CodeGuru Profiler User Guide</i>. </p>
+  description: This section provides documentation for the Amazon CodeGuru Profiler API operations.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
     backgroundColor: '#FFFFFF'
@@ -24,6 +24,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codeguruprofiler-2019-07-18.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -125,7 +126,7 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: GetFindingsReportAccountSummary
-      description: ' Returns a list of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html"> <code>FindingsReportSummary</code> </a> objects that contain analysis results for all profiling groups in your AWS account. '
+      description: Returns a list of FindingsReportSummary objects that contain analysis results for all profiling groups in your AWS account.
       responses:
         '200':
           description: Success
@@ -214,7 +215,7 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     get:
       operationId: GetRecommendations
-      description: ' Returns a list of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Recommendation.html"> <code>Recommendation</code> </a> objects that contain recommendations for a profiling group for a given time period. A list of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Anomaly.html"> <code>Anomaly</code> </a> objects that contains details about anomalies detected in the profiling group for the same time period is also returned. '
+      description: Returns a list of Recommendation objects that contain recommendations for a profiling group for a given time period. A list of Anomaly objects that contains details about anomalies detected in the profiling group for the same time period is also returned.
       responses:
         '200':
           description: Success
@@ -554,7 +555,12 @@ paths:
       - Internal
 components:
   schemas:
-    ValidationException: {}
+    Anomalies:
+      type: array
+      items:
+        $ref: '#/components/schemas/Anomaly'
+    String:
+      type: string
     AnomalyInstances:
       type: array
       items:
@@ -573,126 +579,16 @@ components:
           - $ref: '#/components/schemas/FindingsReportSummaries'
           - description: The return list of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html"> <code>FindingsReportSummary</code> </a> objects taht contain summaries of analysis results for all profiling groups in your AWS account.
       description: The structure representing the GetFindingsReportAccountSummaryResponse.
+    ResourceNotFoundException: {}
     FeedbackType:
       type: string
       enum:
       - Positive
       - Negative
-    ListFindingsReportsResponse:
-      type: object
-      required:
-      - findingsReportSummaries
-      properties:
-        findingsReportSummaries:
-          allOf:
-          - $ref: '#/components/schemas/FindingsReportSummaries'
-          - description: The list of analysis results summaries.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/PaginationToken'
-          - description: The <code>nextToken</code> value to include in a future <code>ListFindingsReports</code> request. When the results of a <code>ListFindingsReports</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.
-      description: The structure representing the ListFindingsReportsResponse.
-    PaginationToken:
+    MetricType:
       type: string
-      pattern: ^[\w-]+$
-      minLength: 1
-      maxLength: 64
-    FindingsReportSummaries:
-      type: array
-      items:
-        $ref: '#/components/schemas/FindingsReportSummary'
-    Double:
-      type: number
-      format: double
-    Recommendations:
-      type: array
-      items:
-        $ref: '#/components/schemas/Recommendation'
-    Pattern:
-      type: object
-      properties:
-        countersToAggregate:
-          allOf:
-          - $ref: '#/components/schemas/Strings'
-          - description: ' A list of the different counters used to determine if there is a match. '
-        description:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The description of the recommendation. This explains a potential inefficiency in a profiled application.
-        id:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The universally unique identifier (UUID) of this pattern.
-        name:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The name for this pattern.
-        resolutionSteps:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: ' A string that contains the steps recommended to address the potential inefficiency. '
-        targetFrames:
-          allOf:
-          - $ref: '#/components/schemas/TargetFrames'
-          - description: A list of frame names that were searched during the analysis that generated a recommendation.
-        thresholdPercent:
-          allOf:
-          - $ref: '#/components/schemas/Percentage'
-          - description: ' The percentage of time an application spends in one method that triggers a recommendation. The percentage of time is the same as the percentage of the total gathered sample counts during analysis. '
-      description: ' A set of rules used to make a recommendation during an analysis. '
-    GetRecommendationsResponse:
-      type: object
-      required:
-      - anomalies
-      - profileEndTime
-      - profileStartTime
-      - profilingGroupName
-      - recommendations
-      properties:
-        anomalies:
-          allOf:
-          - $ref: '#/components/schemas/Anomalies'
-          - description: ' The list of anomalies that the analysis has found for this profile. '
-        profileEndTime:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: ' The end time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
-        profileStartTime:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: ' The start time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
-        profilingGroupName:
-          allOf:
-          - $ref: '#/components/schemas/ProfilingGroupName'
-          - description: The name of the profiling group the analysis data is about.
-        recommendations:
-          allOf:
-          - $ref: '#/components/schemas/Recommendations'
-          - description: The list of recommendations that the analysis found for this profile.
-      description: The structure representing the GetRecommendationsResponse.
-    AnomalyInstance:
-      type: object
-      required:
-      - id
-      - startTime
-      properties:
-        endTime:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: ' The end time of the period during which the metric is flagged as anomalous. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
-        id:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: ' The universally unique identifier (UUID) of an instance of an anomaly in a metric. '
-        startTime:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: ' The start time of the period during which the metric is flagged as anomalous. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
-        userFeedback:
-          allOf:
-          - $ref: '#/components/schemas/UserFeedback'
-          - description: Feedback type on a specific instance of anomaly submitted by the user.
-      description: The specific duration in which the metric is flagged as anomalous.
+      enum:
+      - AggregatedRelativeTotalTime
     Metric:
       type: object
       required:
@@ -713,72 +609,28 @@ components:
           - $ref: '#/components/schemas/MetricType'
           - description: ' A type that specifies how a metric for a frame is analyzed. The supported value <code>AggregatedRelativeTotalTime</code> is an aggregation of the metric value for one frame that is calculated across the occurences of all frames in a profile.'
       description: ' Details about the metric that the analysis used when it detected the anomaly. The metric what is analyzed to create recommendations. It includes the name of the frame that was analyzed and the type and thread states used to derive the metric value for that frame. '
-    Strings:
+    SubmitFeedbackResponse:
+      type: object
+      properties: {}
+      description: The structure representing the SubmitFeedbackResponse.
+    Recommendations:
       type: array
       items:
-        $ref: '#/components/schemas/String'
-    Match:
-      type: object
-      properties:
-        frameAddress:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The location in the profiling graph that contains a recommendation found during analysis.
-        targetFramesIndex:
-          allOf:
-          - $ref: '#/components/schemas/Integer'
-          - description: The target frame that triggered a match.
-        thresholdBreachValue:
-          allOf:
-          - $ref: '#/components/schemas/Double'
-          - description: The value in the profile data that exceeded the recommendation threshold.
-      description: The part of a profile that contains a recommendation found during analysis.
+        $ref: '#/components/schemas/Recommendation'
     TargetFrame:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    Anomaly:
-      type: object
-      required:
-      - instances
-      - metric
-      - reason
-      properties:
-        instances:
-          allOf:
-          - $ref: '#/components/schemas/AnomalyInstances'
-          - description: ' A list of the instances of the detected anomalies during the requested period. '
-        metric:
-          allOf:
-          - $ref: '#/components/schemas/Metric'
-          - description: ' Details about the metric that the analysis used when it detected the anomaly. The metric includes the name of the frame that was analyzed with the type and thread states used to derive the metric value for that frame. '
-        reason:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The reason for which metric was flagged as anomalous.
-      description: ' Details about an anomaly in a specific metric of application profile. The anomaly is detected using analysis of the metric data over a period of time. '
-    FindingsReportId:
-      type: string
-      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
-    TargetFrames:
-      type: array
-      items:
-        $ref: '#/components/schemas/TargetFrame'
-    String:
-      type: string
-    InternalServerException: {}
-    MetricType:
-      type: string
-      enum:
-      - AggregatedRelativeTotalTime
-    ProfilingGroupName:
+    PaginationToken:
       type: string
       pattern: ^[\w-]+$
       minLength: 1
-      maxLength: 255
-    Integer:
-      type: integer
-    ThrottlingException: {}
+      maxLength: 64
+    Percentage:
+      type: number
+      format: double
+      minimum: 0
+      maximum: 100
     UserFeedback:
       type: object
       required:
@@ -789,11 +641,25 @@ components:
           - $ref: '#/components/schemas/FeedbackType'
           - description: Optional <code>Positive</code> or <code>Negative</code> feedback submitted by the user about whether the recommendation is useful or not.
       description: Feedback that can be submitted for each instance of an anomaly by the user. Feedback is be used for improvements in generating recommendations for the application.
-    Percentage:
-      type: number
-      format: double
-      minimum: 0
-      maximum: 100
+    ListFindingsReportsResponse:
+      type: object
+      required:
+      - findingsReportSummaries
+      properties:
+        findingsReportSummaries:
+          allOf:
+          - $ref: '#/components/schemas/FindingsReportSummaries'
+          - description: The list of analysis results summaries.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: The <code>nextToken</code> value to include in a future <code>ListFindingsReports</code> request. When the results of a <code>ListFindingsReports</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.
+      description: The structure representing the ListFindingsReportsResponse.
+    TargetFrames:
+      type: array
+      items:
+        $ref: '#/components/schemas/TargetFrame'
+    ThrottlingException: {}
     FindingsReportSummary:
       type: object
       properties:
@@ -818,15 +684,6 @@ components:
           - $ref: '#/components/schemas/Integer'
           - description: The total number of different recommendations that were found by the analysis.
       description: ' Information about potential recommendations that might be created from the analysis of profiling data. '
-    SubmitFeedbackResponse:
-      type: object
-      properties: {}
-      description: The structure representing the SubmitFeedbackResponse.
-    ResourceNotFoundException: {}
-    Matches:
-      type: array
-      items:
-        $ref: '#/components/schemas/Match'
     Recommendation:
       type: object
       required:
@@ -862,22 +719,160 @@ components:
           - $ref: '#/components/schemas/Matches'
           - description: 'List of the matches with most impact. '
       description: A potential improvement that was found from analyzing the profiling data.
-    Anomalies:
+    Match:
+      type: object
+      properties:
+        frameAddress:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The location in the profiling graph that contains a recommendation found during analysis.
+        targetFramesIndex:
+          allOf:
+          - $ref: '#/components/schemas/Integer'
+          - description: The target frame that triggered a match.
+        thresholdBreachValue:
+          allOf:
+          - $ref: '#/components/schemas/Double'
+          - description: The value in the profile data that exceeded the recommendation threshold.
+      description: The part of a profile that contains a recommendation found during analysis.
+    AnomalyInstance:
+      type: object
+      required:
+      - id
+      - startTime
+      properties:
+        endTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' The end time of the period during which the metric is flagged as anomalous. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        id:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: ' The universally unique identifier (UUID) of an instance of an anomaly in a metric. '
+        startTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' The start time of the period during which the metric is flagged as anomalous. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        userFeedback:
+          allOf:
+          - $ref: '#/components/schemas/UserFeedback'
+          - description: Feedback type on a specific instance of anomaly submitted by the user.
+      description: The specific duration in which the metric is flagged as anomalous.
+    Strings:
       type: array
       items:
-        $ref: '#/components/schemas/Anomaly'
+        $ref: '#/components/schemas/String'
+    InternalServerException: {}
+    Integer:
+      type: integer
+    Matches:
+      type: array
+      items:
+        $ref: '#/components/schemas/Match'
+    ValidationException: {}
+    Pattern:
+      type: object
+      properties:
+        countersToAggregate:
+          allOf:
+          - $ref: '#/components/schemas/Strings'
+          - description: ' A list of the different counters used to determine if there is a match. '
+        description:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The description of the recommendation. This explains a potential inefficiency in a profiled application.
+        id:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The universally unique identifier (UUID) of this pattern.
+        name:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The name for this pattern.
+        resolutionSteps:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: ' A string that contains the steps recommended to address the potential inefficiency. '
+        targetFrames:
+          allOf:
+          - $ref: '#/components/schemas/TargetFrames'
+          - description: A list of frame names that were searched during the analysis that generated a recommendation.
+        thresholdPercent:
+          allOf:
+          - $ref: '#/components/schemas/Percentage'
+          - description: ' The percentage of time an application spends in one method that triggers a recommendation. The percentage of time is the same as the percentage of the total gathered sample counts during analysis. '
+      description: ' A set of rules used to make a recommendation during an analysis. '
+    FindingsReportId:
+      type: string
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
+    ProfilingGroupName:
+      type: string
+      pattern: ^[\w-]+$
+      minLength: 1
+      maxLength: 255
+    Anomaly:
+      type: object
+      required:
+      - instances
+      - metric
+      - reason
+      properties:
+        instances:
+          allOf:
+          - $ref: '#/components/schemas/AnomalyInstances'
+          - description: ' A list of the instances of the detected anomalies during the requested period. '
+        metric:
+          allOf:
+          - $ref: '#/components/schemas/Metric'
+          - description: ' Details about the metric that the analysis used when it detected the anomaly. The metric includes the name of the frame that was analyzed with the type and thread states used to derive the metric value for that frame. '
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The reason for which metric was flagged as anomalous.
+      description: ' Details about an anomaly in a specific metric of application profile. The anomaly is detected using analysis of the metric data over a period of time. '
+    FindingsReportSummaries:
+      type: array
+      items:
+        $ref: '#/components/schemas/FindingsReportSummary'
+    Double:
+      type: number
+      format: double
+    GetRecommendationsResponse:
+      type: object
+      required:
+      - anomalies
+      - profileEndTime
+      - profileStartTime
+      - profilingGroupName
+      - recommendations
+      properties:
+        anomalies:
+          allOf:
+          - $ref: '#/components/schemas/Anomalies'
+          - description: ' The list of anomalies that the analysis has found for this profile. '
+        profileEndTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' The end time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        profileStartTime:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' The start time of the profile the analysis data is about. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+        profilingGroupName:
+          allOf:
+          - $ref: '#/components/schemas/ProfilingGroupName'
+          - description: The name of the profiling group the analysis data is about.
+        recommendations:
+          allOf:
+          - $ref: '#/components/schemas/Recommendations'
+          - description: The list of recommendations that the analysis found for this profile.
+      description: The structure representing the GetRecommendationsResponse.
     Timestamp:
       type: string
       format: date-time
   parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -888,14 +883,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -906,8 +895,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string

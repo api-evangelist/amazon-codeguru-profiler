@@ -1,9 +1,9 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2019-07-18'
   x-release: v4
-  title: Amazon CodeGuru Profiler Internal Profiling Groups#client Token API
-  description: <p> This section provides documentation for the Amazon CodeGuru Profiler API operations. </p> <p> Amazon CodeGuru Profiler collects runtime performance data from your live applications, and provides recommendations that can help you fine-tune your application performance. Using machine learning algorithms, CodeGuru Profiler can help you find your most expensive lines of code and suggest ways you can improve efficiency and remove CPU bottlenecks. </p> <p> Amazon CodeGuru Profiler provides different visualizations of profiling data to help you identify what code is running on the CPU, see how much time is consumed, and suggest ways to reduce CPU utilization. </p> <note> <p>Amazon CodeGuru Profiler currently supports applications written in all Java virtual machine (JVM) languages and Python. While CodeGuru Profiler supports both visualizations and recommendations for applications written in Java, it can also generate visualizations and a subset of recommendations for applications written in other JVM languages and Python.</p> </note> <p> For more information, see <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html">What is Amazon CodeGuru Profiler</a> in the <i>Amazon CodeGuru Profiler User Guide</i>. </p>
+  title: Amazon CodeGuru Profiler Profiling Groups#client Token API
+  description: This section provides documentation for the Amazon CodeGuru Profiler API operations.
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
     backgroundColor: '#FFFFFF'
@@ -24,6 +24,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codeguruprofiler-2019-07-18.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -256,68 +257,10 @@ paths:
       - ProfilingGroups#clientToken
 components:
   schemas:
-    ComputePlatform:
-      type: string
-      enum:
-      - Default
-      - AWSLambda
-    ValidationException: {}
-    Boolean:
-      type: boolean
-    AggregationPeriod:
-      type: string
-      enum:
-      - PT5M
-      - PT1H
-      - P1D
-    ServiceQuotaExceededException: {}
-    AggregatedProfileTime:
-      type: object
-      properties:
-        period:
-          allOf:
-          - $ref: '#/components/schemas/AggregationPeriod'
-          - description: <p> The aggregation period. This indicates the period during which an aggregation profile collects posted agent profiles for a profiling group. Use one of three valid durations that are specified using the ISO 8601 format. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p> <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes </p> </li> </ul>
-        start:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: <p> The time that aggregation of posted agent profiles for a profiling group starts. The aggregation profile contains profiles posted by the agent starting at this time for an aggregation period specified by the <code>period</code> property of the <code>AggregatedProfileTime</code> object. </p> <p> Specify <code>start</code> using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
-      description: ' Specifies the aggregation period and aggregation start time for an aggregated profile. An aggregated profile is used to collect posted agent profiles during an aggregation period. There are three possible aggregation periods (1 day, 1 hour, or 5 minutes). '
-    ProfilingStatus:
-      type: object
-      properties:
-        latestAgentOrchestratedAt:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The date and time when the profiling agent most recently pinged back. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
-        latestAgentProfileReportedAt:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The date and time when the most recent profile was received. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
-        latestAggregatedProfile:
-          allOf:
-          - $ref: '#/components/schemas/AggregatedProfileTime'
-          - description: ' An <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AggregatedProfileTime.html"> <code>AggregatedProfileTime</code> </a> object that contains the aggregation period and start time for an aggregated profile. '
-      description: ' Profiling status includes information about the last time a profile agent pinged back, the last time a profile was received, and the aggregation period and start time for the most recent aggregated profile. '
-    AgentOrchestrationConfig:
-      type: object
-      required:
-      - profilingEnabled
-      properties:
-        profilingEnabled:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: ' A <code>Boolean</code> that specifies whether the profiling agent collects profiling data or not. Set to <code>true</code> to enable profiling. '
-      description: ' Specifies whether profiling is enabled or disabled for a profiling group. It is used by <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a> to enable or disable profiling for a profiling group. '
     String:
       type: string
-    ConflictException: {}
-    InternalServerException: {}
-    ProfilingGroupName:
-      type: string
-      pattern: ^[\w-]+$
-      minLength: 1
-      maxLength: 255
+    Boolean:
+      type: boolean
     ProfilingGroupDescription:
       type: object
       properties:
@@ -354,13 +297,71 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: ' The date and time when the profiling group was last updated. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
       description: ' Contains information about a profiling group. '
+    ServiceQuotaExceededException: {}
+    ConflictException: {}
+    AgentOrchestrationConfig:
+      type: object
+      required:
+      - profilingEnabled
+      properties:
+        profilingEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: ' A <code>Boolean</code> that specifies whether the profiling agent collects profiling data or not. Set to <code>true</code> to enable profiling. '
+      description: ' Specifies whether profiling is enabled or disabled for a profiling group. It is used by <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a> to enable or disable profiling for a profiling group. '
+    AggregationPeriod:
+      type: string
+      enum:
+      - PT5M
+      - PT1H
+      - P1D
     ThrottlingException: {}
+    InternalServerException: {}
+    ProfilingGroupArn:
+      type: string
+    AggregatedProfileTime:
+      type: object
+      properties:
+        period:
+          allOf:
+          - $ref: '#/components/schemas/AggregationPeriod'
+          - description: <p> The aggregation period. This indicates the period during which an aggregation profile collects posted agent profiles for a profiling group. Use one of three valid durations that are specified using the ISO 8601 format. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p> <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes </p> </li> </ul>
+        start:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: <p> The time that aggregation of posted agent profiles for a profiling group starts. The aggregation profile contains profiles posted by the agent starting at this time for an aggregation period specified by the <code>period</code> property of the <code>AggregatedProfileTime</code> object. </p> <p> Specify <code>start</code> using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
+      description: ' Specifies the aggregation period and aggregation start time for an aggregated profile. An aggregated profile is used to collect posted agent profiles during an aggregation period. There are three possible aggregation periods (1 day, 1 hour, or 5 minutes). '
+    ComputePlatform:
+      type: string
+      enum:
+      - Default
+      - AWSLambda
+    ValidationException: {}
+    ProfilingGroupName:
+      type: string
+      pattern: ^[\w-]+$
+      minLength: 1
+      maxLength: 255
     TagsMap:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/String'
-    ProfilingGroupArn:
-      type: string
+    ProfilingStatus:
+      type: object
+      properties:
+        latestAgentOrchestratedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The date and time when the profiling agent most recently pinged back. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
+        latestAgentProfileReportedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The date and time when the most recent profile was received. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
+        latestAggregatedProfile:
+          allOf:
+          - $ref: '#/components/schemas/AggregatedProfileTime'
+          - description: ' An <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AggregatedProfileTime.html"> <code>AggregatedProfileTime</code> </a> object that contains the aggregation period and start time for an aggregated profile. '
+      description: ' Profiling status includes information about the last time a profile agent pinged back, the last time a profile was received, and the aggregation period and start time for the most recent aggregated profile. '
     CreateProfilingGroupResponse:
       type: object
       required:
@@ -375,14 +376,8 @@ components:
       type: string
       format: date-time
   parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -393,14 +388,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -411,8 +400,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
