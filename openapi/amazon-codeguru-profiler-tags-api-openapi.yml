@@ -346,21 +346,38 @@ paths:
       tags:
       - Tags
 components:
+  schemas:
+    InternalServerException: {}
+    UntagResourceResponse:
+      type: object
+      properties: {}
+    ListTagsForResourceResponse:
+      type: object
+      properties:
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/TagsMap'
+          - description: ' The list of tags assigned to the specified resource. This is the list of tags returned in the response. '
+    ValidationException: {}
+    TagResourceResponse:
+      type: object
+      properties: {}
+    ResourceNotFoundException: {}
+    String:
+      type: string
+    TagsMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/String'
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Signature:
       name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -371,14 +388,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -389,29 +406,12 @@ components:
       schema:
         type: string
       required: false
-  schemas:
-    String:
-      type: string
-    TagResourceResponse:
-      type: object
-      properties: {}
-    TagsMap:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object
-      properties: {}
-    ResourceNotFoundException: {}
-    ListTagsForResourceResponse:
-      type: object
-      properties:
-        tags:
-          allOf:
-          - $ref: '#/components/schemas/TagsMap'
-          - description: ' The list of tags assigned to the specified resource. This is the list of tags returned in the response. '
-    InternalServerException: {}
-    ValidationException: {}
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

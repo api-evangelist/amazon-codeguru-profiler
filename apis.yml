@@ -34,7 +34,7 @@ tags:
 - Application Performance
 - Profiling
 - DevOps
-- Machine-Learning
+- Machine Learning
 tags_raw:
 - Amazon
 - AWS
@@ -42,6 +42,7 @@ tags_raw:
 - Profiling
 - DevOps
 - Machine Learning
+- Machine-Learning
 url: https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/apis.yml
 created: '2026-03-16'
 modified: '2026-09-01'
@@ -67,28 +68,6 @@ apis:
     url: collections/amazon-codeguru-profiler-internal-api.postman_collection.json
   - type: OpenCollection
     url: collections/amazon-codeguru-profiler-internal-api.opencollection.json
-- aid: amazon-codeguru-profiler:amazon-codeguru-profiler-profilinggroups-clienttoken-api
-  name: Amazon CodeGuru Profiler ProfilingGroups#clientToken API
-  description: >-
-    The ProfilingGroups#clientToken API from Amazon CodeGuru Profiler — 1 operation(s) for profilinggroups#clienttoken.
-  humanURL: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
-  baseURL: https://codeguru-profiler.us-east-1.amazonaws.com
-  tags:
-  - ProfilingGroups#clientToken
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html
-  - type: APIReference
-    url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
-  - type: Overlay
-    url: overlays/amazon-codeguru-profiler-profilinggroups-clienttoken-api-overlay.yaml
-  - type: Postman
-    url: >-
-      collections/amazon-codeguru-profiler-profilinggroups-clienttoken-api.postman_collection.json
-  - type: OpenCollection
-    url: collections/amazon-codeguru-profiler-profilinggroups-clienttoken-api.opencollection.json
 - aid: amazon-codeguru-profiler:amazon-codeguru-profiler-tags-api
   name: Amazon CodeGuru Profiler Tags API
   description: The Tags API from Amazon CodeGuru Profiler — 2 operation(s) for tags.
@@ -112,7 +91,7 @@ apis:
 - aid: amazon-codeguru-profiler:amazon-codeguru-profiler-profiling-groups-api
   name: Amazon CodeGuru Profiler Profiling Groups API
   description: >-
-    The Profiling Groups API from Amazon CodeGuru Profiler — 12 operation(s) for profiling groups.
+    The Profiling Groups API from Amazon CodeGuru Profiler — 13 operation(s) for profiling groups.
   humanURL: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
   baseURL: https://codeguru-profiler.us-east-1.amazonaws.com
   tags:
@@ -125,10 +104,17 @@ apis:
   - type: APIReference
     url: https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html
   - type: Postman
+    url: >-
+      collections/amazon-codeguru-profiler-profilinggroups-clienttoken-api.postman_collection.json
+  - type: OpenCollection
+    url: collections/amazon-codeguru-profiler-profilinggroups-clienttoken-api.opencollection.json
+  - type: Postman
     url: collections/amazon-codeguru-profiler-profilinggroups-api.postman_collection.json
   - type: OpenCollection
     url: collections/amazon-codeguru-profiler-profilinggroups-api.opencollection.json
 common:
+- type: Overlay
+  url: overlays/amazon-codeguru-profiler-profilinggroups-clienttoken-api-overlay.yaml
 - type: Overlay
   url: overlays/amazon-codeguru-profiler-profilinggroups-api-overlay.yaml
 - type: Website
@@ -269,5 +255,5 @@ x-enrichment:
   status: enriched
   artifacts_added: 19
   pass: local-v1
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product

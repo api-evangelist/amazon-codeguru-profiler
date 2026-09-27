@@ -6,11 +6,10 @@
   "outputs": [
     "amazon-codeguru-profiler-internal-api-openapi.yml",
     "amazon-codeguru-profiler-profilinggroups-api-openapi.yml",
-    "amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml",
     "amazon-codeguru-profiler-tags-api-openapi.yml"
   ],
   "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
+    "deleted 2 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
@@ -21,7 +20,7 @@
     "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /profilingGroups/{profilingGroupName}/notificationConfiguration -> ProfilingGroups",
     "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /profilingGroups/{profilingGroupName}/frames/-/metrics -> ProfilingGroups",
     "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /profilingGroups/{profilingGroupName}/configureAgent -> ProfilingGroups",
-    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /profilingGroups#clientToken -> ProfilingGroups#clientToken",
+    "amazon-codeguru-profiler-openapi-original.yaml: tagged paths POST /profilingGroups#clientToken -> ProfilingGroups",
     "amazon-codeguru-profiler-openapi-original.yaml: tagged paths DELETE /profilingGroups/{profilingGroupName} -> ProfilingGroups",
     "amazon-codeguru-profiler-openapi-original.yaml: tagged paths GET /profilingGroups/{profilingGroupName} -> ProfilingGroups",
     "amazon-codeguru-profiler-openapi-original.yaml: tagged paths PUT /profilingGroups/{profilingGroupName} -> ProfilingGroups",
@@ -42,10 +41,9 @@
     "amazon-codeguru-profiler-openapi-original.yaml: tagged paths DELETE /tags/{resourceArn}#tagKeys -> Tags",
     "amazon-codeguru-profiler-openapi-original.yaml: declared missing tag: Internal",
     "amazon-codeguru-profiler-openapi-original.yaml: declared missing tag: ProfilingGroups",
-    "amazon-codeguru-profiler-openapi-original.yaml: declared missing tag: ProfilingGroups#clientToken",
     "amazon-codeguru-profiler-openapi-original.yaml: declared missing tag: Tags",
-    "superseded outputs removed: amazon-codeguru-profiler-profiling-groups-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 4 total)"
+    "superseded outputs removed: amazon-codeguru-profiler-profiling-groups-api-openapi.yml, amazon-codeguru-profiler-profilinggroups-clienttoken-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 3 total)"
   ],
   "skipped": [
     "amazon-codeguru-profiler-internal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
