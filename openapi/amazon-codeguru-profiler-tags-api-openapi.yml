@@ -347,10 +347,10 @@ paths:
       - Tags
 components:
   schemas:
-    InternalServerException: {}
     UntagResourceResponse:
       type: object
       properties: {}
+    ResourceNotFoundException: {}
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -358,11 +358,11 @@ components:
           allOf:
           - $ref: '#/components/schemas/TagsMap'
           - description: ' The list of tags assigned to the specified resource. This is the list of tags returned in the response. '
-    ValidationException: {}
     TagResourceResponse:
       type: object
       properties: {}
-    ResourceNotFoundException: {}
+    ValidationException: {}
+    InternalServerException: {}
     String:
       type: string
     TagsMap:
@@ -370,26 +370,14 @@ components:
       additionalProperties:
         $ref: '#/components/schemas/String'
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Credential:
       name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -406,8 +394,20 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
