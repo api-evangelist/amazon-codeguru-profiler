@@ -1870,133 +1870,36 @@ paths:
       - Profiling Groups
 components:
   schemas:
-    ProfileTimes:
-      type: array
-      items:
-        $ref: '#/components/schemas/ProfileTime'
-    Principal:
-      type: string
-    AgentOrchestrationConfig:
+    FrameMetricDatum:
       type: object
       required:
-      - profilingEnabled
+      - frameMetric
+      - values
       properties:
-        profilingEnabled:
+        frameMetric:
+          $ref: '#/components/schemas/FrameMetric'
+        values:
           allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: ' A <code>Boolean</code> that specifies whether the profiling agent collects profiling data or not. Set to <code>true</code> to enable profiling. '
-      description: ' Specifies whether profiling is enabled or disabled for a profiling group. It is used by <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a> to enable or disable profiling for a profiling group. '
-    ThrottlingException: {}
-    FrameMetricValues:
-      type: array
-      items:
-        $ref: '#/components/schemas/FrameMetricValue'
-    AddNotificationChannelsResponse:
-      type: object
-      properties:
-        notificationConfiguration:
-          allOf:
-          - $ref: '#/components/schemas/NotificationConfiguration'
-          - description: The new notification configuration for this profiling group.
-      description: The structure representing the AddNotificationChannelsResponse.
-    ProfileTime:
-      type: object
-      properties:
-        start:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The start time of a profile. It is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
-      description: ' Contains the start time of a profile. '
-    FrameMetricData:
-      type: array
-      items:
-        $ref: '#/components/schemas/FrameMetricDatum'
-    ProfilingGroupArn:
-      type: string
-    InternalServerException: {}
-    String:
-      type: string
-    PaginationToken:
-      type: string
-      pattern: ^[\w-]+$
-      minLength: 1
-      maxLength: 64
-    ProfilingStatus:
-      type: object
-      properties:
-        latestAgentOrchestratedAt:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The date and time when the profiling agent most recently pinged back. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
-        latestAgentProfileReportedAt:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: The date and time when the most recent profile was received. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
-        latestAggregatedProfile:
-          allOf:
-          - $ref: '#/components/schemas/AggregatedProfileTime'
-          - description: ' An <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AggregatedProfileTime.html"> <code>AggregatedProfileTime</code> </a> object that contains the aggregation period and start time for an aggregated profile. '
-      description: ' Profiling status includes information about the last time a profile agent pinged back, the last time a profile was received, and the aggregation period and start time for the most recent aggregated profile. '
-    ProfilingGroupNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/ProfilingGroupName'
-    ThreadStates:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    EventPublisher:
-      type: string
-      enum:
-      - AnomalyDetection
-    NotificationConfiguration:
-      type: object
-      properties:
-        channels:
-          allOf:
-          - $ref: '#/components/schemas/Channels'
-          - description: List of up to two channels to be used for sending notifications for events detected from the application profile.
-      description: The configuration for notifications stored for each profiling group. This includes up to to two channels and a list of event publishers associated with each channel.
-    AggregatedProfile:
-      type: string
-    TimestampStructure:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: ' A <code>Timestamp</code>. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
-      description: ' A data type that contains a <code>Timestamp</code> object. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
-    CreateProfilingGroupResponse:
-      type: object
-      required:
-      - profilingGroup
-      properties:
-        profilingGroup:
-          allOf:
-          - $ref: '#/components/schemas/ProfilingGroupDescription'
-          - description: ' The returned <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html"> <code>ProfilingGroupDescription</code> </a> object that contains information about the created profiling group. '
-      description: The structure representing the createProfilingGroupResponse.
-    ProfilingGroupName:
-      type: string
-      pattern: ^[\w-]+$
-      minLength: 1
-      maxLength: 255
-    ChannelId:
+          - $ref: '#/components/schemas/FrameMetricValues'
+          - description: ' A list of values that are associated with a frame metric. '
+      description: ' Information about a frame metric and its values. '
+    RevisionId:
       type: string
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
-    ProfilingGroupDescriptions:
-      type: array
-      items:
-        $ref: '#/components/schemas/ProfilingGroupDescription'
-    Boolean:
-      type: boolean
-    PostAgentProfileResponse:
+    GetProfileResponse:
       type: object
-      properties: {}
-      description: The structure representing the postAgentProfileResponse.
+      required:
+      - profile
+      properties:
+        profile:
+          allOf:
+          - $ref: '#/components/schemas/AggregatedProfile'
+          - description: Information about the profile.
+      description: The structure representing the getProfileResponse.
+    UnprocessedEndTimeMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ListOfTimestamps'
     Channel:
       type: object
       required:
@@ -2016,203 +1919,12 @@ components:
           - $ref: '#/components/schemas/ChannelUri'
           - description: Unique arn of the resource to be used for notifications. We support a valid SNS topic arn as a channel uri.
       description: Notification medium for users to get alerted for events that occur in application profile. We support SNS topic as a notification channel.
-    ConfigureAgentResponse:
-      type: object
-      required:
-      - configuration
-      properties:
-        configuration:
-          allOf:
-          - $ref: '#/components/schemas/AgentConfiguration'
-          - description: ' An <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AgentConfiguration.html"> <code>AgentConfiguration</code> </a> object that specifies if an agent profiles or not and for how long to return profiling data. '
-      description: The structure representing the configureAgentResponse.
-    GetPolicyResponse:
-      type: object
-      required:
-      - policy
-      - revisionId
-      properties:
-        policy:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The JSON-formatted resource-based policy attached to the <code>ProfilingGroup</code>.
-        revisionId:
-          allOf:
-          - $ref: '#/components/schemas/RevisionId'
-          - description: A unique identifier for the current revision of the returned policy.
-      description: The structure representing the <code>getPolicyResponse</code>.
-    AgentConfiguration:
-      type: object
-      required:
-      - periodInSeconds
-      - shouldProfile
-      properties:
-        agentParameters:
-          allOf:
-          - $ref: '#/components/schemas/AgentParameters'
-          - description: '<p> Parameters used by the profiler. The valid parameters are: </p> <ul> <li> <p> <code>MaxStackDepth</code> - The maximum depth of the stacks in the code that is represented in the profile. For example, if CodeGuru Profiler finds a method <code>A</code>, which calls method <code>B</code>, which calls method <code>C</code>, which calls method <code>D</code>, then the depth is 4. If the <code>maxDepth</code> is set to 2, then the profiler evaluates <code>A</code> and <code>B</code>. </p> </li> <li> <p> <code>MemoryUsageLimitPercent</code> - The percentage of memory that is used by the profiler.</p> </li> <li> <p> <code>MinimumTimeForReportingInMilliseconds</code> - The minimum time in milliseconds between sending reports. </p> </li> <li> <p> <code>ReportingIntervalInMilliseconds</code> - The reporting interval in milliseconds used to report profiles. </p> </li> <li> <p> <code>SamplingIntervalInMilliseconds</code> - The sampling interval in milliseconds that is used to profile samples. </p> </li> </ul>'
-        periodInSeconds:
-          allOf:
-          - $ref: '#/components/schemas/Integer'
-          - description: ' How long a profiling agent should send profiling data using <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a>. For example, if this is set to 300, the profiling agent calls <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a> every 5 minutes to submit the profiled data collected during that period. '
-        shouldProfile:
-          allOf:
-          - $ref: '#/components/schemas/Boolean'
-          - description: ' A <code>Boolean</code> that specifies whether the profiling agent collects profiling data or not. Set to <code>true</code> to enable profiling. '
-      description: ' The response of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a> that specifies if an agent profiles or not and for how long to return profiling data. '
+    ProfilingGroupArn:
+      type: string
     AgentParameters:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/String'
-    UpdateProfilingGroupResponse:
-      type: object
-      required:
-      - profilingGroup
-      properties:
-        profilingGroup:
-          allOf:
-          - $ref: '#/components/schemas/ProfilingGroupDescription'
-          - description: ' A <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html"> <code>ProfilingGroupDescription</code> </a> that contains information about the returned updated profiling group. '
-      description: The structure representing the updateProfilingGroupResponse.
-    RemovePermissionResponse:
-      type: object
-      required:
-      - policy
-      - revisionId
-      properties:
-        policy:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: ' The JSON-formatted resource-based policy on the profiling group after the specified permissions were removed. '
-        revisionId:
-          allOf:
-          - $ref: '#/components/schemas/RevisionId'
-          - description: ' A universally unique identifier (UUID) for the revision of the resource-based policy after the specified permissions were removed. The updated JSON-formatted policy is in the <code>policy</code> element of the response. '
-      description: The structure representing the <code>removePermissionResponse</code>.
-    ComputePlatform:
-      type: string
-      enum:
-      - Default
-      - AWSLambda
-    GetProfileResponse:
-      type: object
-      required:
-      - profile
-      properties:
-        profile:
-          allOf:
-          - $ref: '#/components/schemas/AggregatedProfile'
-          - description: Information about the profile.
-      description: The structure representing the getProfileResponse.
-    AggregatedProfileTime:
-      type: object
-      properties:
-        period:
-          allOf:
-          - $ref: '#/components/schemas/AggregationPeriod'
-          - description: <p> The aggregation period. This indicates the period during which an aggregation profile collects posted agent profiles for a profiling group. Use one of three valid durations that are specified using the ISO 8601 format. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p> <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes </p> </li> </ul>
-        start:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: <p> The time that aggregation of posted agent profiles for a profiling group starts. The aggregation profile contains profiles posted by the agent starting at this time for an aggregation period specified by the <code>period</code> property of the <code>AggregatedProfileTime</code> object. </p> <p> Specify <code>start</code> using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
-      description: ' Specifies the aggregation period and aggregation start time for an aggregated profile. An aggregated profile is used to collect posted agent profiles during an aggregation period. There are three possible aggregation periods (1 day, 1 hour, or 5 minutes). '
-    RemoveNotificationChannelResponse:
-      type: object
-      properties:
-        notificationConfiguration:
-          allOf:
-          - $ref: '#/components/schemas/NotificationConfiguration'
-          - description: The new notification configuration for this profiling group.
-      description: The structure representing the RemoveNotificationChannelResponse.
-    FrameMetricDatum:
-      type: object
-      required:
-      - frameMetric
-      - values
-      properties:
-        frameMetric:
-          $ref: '#/components/schemas/FrameMetric'
-        values:
-          allOf:
-          - $ref: '#/components/schemas/FrameMetricValues'
-          - description: ' A list of values that are associated with a frame metric. '
-      description: ' Information about a frame metric and its values. '
-    ChannelUri:
-      type: string
-      description: Channel URI uniquely identifies a Notification Channel. TopicArn is the uri for an SNS channel, emailId is uri for an email channel etc. Currently we only support SNS channels and thus required to be an ARN
-    ValidationException: {}
-    ListOfTimestamps:
-      type: array
-      items:
-        $ref: '#/components/schemas/TimestampStructure'
-    DeleteProfilingGroupResponse:
-      type: object
-      properties: {}
-      description: The structure representing the deleteProfilingGroupResponse.
-    Channels:
-      type: array
-      items:
-        $ref: '#/components/schemas/Channel'
-      minItems: 1
-      maxItems: 2
-    ListProfileTimesResponse:
-      type: object
-      required:
-      - profileTimes
-      properties:
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/PaginationToken'
-          - description: 'The <code>nextToken</code> value to include in a future <code>ListProfileTimes</code> request. When the results of a <code>ListProfileTimes</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return. '
-        profileTimes:
-          allOf:
-          - $ref: '#/components/schemas/ProfileTimes'
-          - description: 'The list of start times of the available profiles for the aggregation period in the specified time range. '
-      description: The structure representing the listProfileTimesResponse.
-    Integer:
-      type: integer
-    FrameMetricValue:
-      type: number
-      format: double
-    EventPublishers:
-      type: array
-      items:
-        $ref: '#/components/schemas/EventPublisher'
-      minItems: 1
-      maxItems: 1
-    UnprocessedEndTimeMap:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/ListOfTimestamps'
-    PutPermissionResponse:
-      type: object
-      required:
-      - policy
-      - revisionId
-      properties:
-        policy:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: ' The JSON-formatted resource-based policy on the profiling group that includes the added permissions. '
-        revisionId:
-          allOf:
-          - $ref: '#/components/schemas/RevisionId'
-          - description: ' A universally unique identifier (UUID) for the revision of the resource-based policy that includes the added permissions. The JSON-formatted policy is in the <code>policy</code> element of the response. '
-      description: The structure representing the <code>putPermissionResponse</code>.
-    ServiceQuotaExceededException: {}
-    GetNotificationConfigurationResponse:
-      type: object
-      required:
-      - notificationConfiguration
-      properties:
-        notificationConfiguration:
-          allOf:
-          - $ref: '#/components/schemas/NotificationConfiguration'
-          - description: The current notification configuration for this profiling group.
-      description: The structure representing the GetNotificationConfigurationResponse.
-    RevisionId:
-      type: string
-      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
     BatchGetFrameMetricDataResponse:
       type: object
       required:
@@ -2248,6 +1960,7 @@ components:
           - $ref: '#/components/schemas/UnprocessedEndTimeMap'
           - description: List of instances which remained unprocessed. This will create a missing time step in the list of end times.
       description: The structure representing the BatchGetFrameMetricDataResponse.
+    ConflictException: {}
     ProfilingGroupDescription:
       type: object
       properties:
@@ -2284,6 +1997,68 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: ' The date and time when the profiling group was last updated. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
       description: ' Contains information about a profiling group. '
+    UpdateProfilingGroupResponse:
+      type: object
+      required:
+      - profilingGroup
+      properties:
+        profilingGroup:
+          allOf:
+          - $ref: '#/components/schemas/ProfilingGroupDescription'
+          - description: ' A <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html"> <code>ProfilingGroupDescription</code> </a> that contains information about the returned updated profiling group. '
+      description: The structure representing the updateProfilingGroupResponse.
+    NotificationConfiguration:
+      type: object
+      properties:
+        channels:
+          allOf:
+          - $ref: '#/components/schemas/Channels'
+          - description: List of up to two channels to be used for sending notifications for events detected from the application profile.
+      description: The configuration for notifications stored for each profiling group. This includes up to to two channels and a list of event publishers associated with each channel.
+    ChannelUri:
+      type: string
+      description: Channel URI uniquely identifies a Notification Channel. TopicArn is the uri for an SNS channel, emailId is uri for an email channel etc. Currently we only support SNS channels and thus required to be an ARN
+    AggregationPeriod:
+      type: string
+      enum:
+      - PT5M
+      - PT1H
+      - P1D
+    ServiceQuotaExceededException: {}
+    TimestampStructure:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: ' A <code>Timestamp</code>. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+      description: ' A data type that contains a <code>Timestamp</code> object. This is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. '
+    InternalServerException: {}
+    AgentConfiguration:
+      type: object
+      required:
+      - periodInSeconds
+      - shouldProfile
+      properties:
+        agentParameters:
+          allOf:
+          - $ref: '#/components/schemas/AgentParameters'
+          - description: '<p> Parameters used by the profiler. The valid parameters are: </p> <ul> <li> <p> <code>MaxStackDepth</code> - The maximum depth of the stacks in the code that is represented in the profile. For example, if CodeGuru Profiler finds a method <code>A</code>, which calls method <code>B</code>, which calls method <code>C</code>, which calls method <code>D</code>, then the depth is 4. If the <code>maxDepth</code> is set to 2, then the profiler evaluates <code>A</code> and <code>B</code>. </p> </li> <li> <p> <code>MemoryUsageLimitPercent</code> - The percentage of memory that is used by the profiler.</p> </li> <li> <p> <code>MinimumTimeForReportingInMilliseconds</code> - The minimum time in milliseconds between sending reports. </p> </li> <li> <p> <code>ReportingIntervalInMilliseconds</code> - The reporting interval in milliseconds used to report profiles. </p> </li> <li> <p> <code>SamplingIntervalInMilliseconds</code> - The sampling interval in milliseconds that is used to profile samples. </p> </li> </ul>'
+        periodInSeconds:
+          allOf:
+          - $ref: '#/components/schemas/Integer'
+          - description: ' How long a profiling agent should send profiling data using <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a>. For example, if this is set to 300, the profiling agent calls <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a> every 5 minutes to submit the profiled data collected during that period. '
+        shouldProfile:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: ' A <code>Boolean</code> that specifies whether the profiling agent collects profiling data or not. Set to <code>true</code> to enable profiling. '
+      description: ' The response of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a> that specifies if an agent profiles or not and for how long to return profiling data. '
+    ListOfTimestamps:
+      type: array
+      items:
+        $ref: '#/components/schemas/TimestampStructure'
     ListProfilingGroupsResponse:
       type: object
       required:
@@ -2302,6 +2077,29 @@ components:
           - $ref: '#/components/schemas/ProfilingGroupDescriptions'
           - description: ' A returned list <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html"> <code>ProfilingGroupDescription</code> </a> objects. A list of <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html"> <code>ProfilingGroupDescription</code> </a> objects is returned only if <code>includeDescription</code> is <code>true</code>, otherwise a list of profiling group names is returned. '
       description: The structure representing the listProfilingGroupsResponse.
+    ConfigureAgentResponse:
+      type: object
+      required:
+      - configuration
+      properties:
+        configuration:
+          allOf:
+          - $ref: '#/components/schemas/AgentConfiguration'
+          - description: ' An <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AgentConfiguration.html"> <code>AgentConfiguration</code> </a> object that specifies if an agent profiles or not and for how long to return profiling data. '
+      description: The structure representing the configureAgentResponse.
+    ValidationException: {}
+    TagsMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/String'
+    FrameMetricData:
+      type: array
+      items:
+        $ref: '#/components/schemas/FrameMetricDatum'
+    ProfilingGroupNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/ProfilingGroupName'
     DescribeProfilingGroupResponse:
       type: object
       required:
@@ -2312,9 +2110,203 @@ components:
           - $ref: '#/components/schemas/ProfilingGroupDescription'
           - description: ' The returned <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html"> <code>ProfilingGroupDescription</code> </a> object that contains information about the requested profiling group. '
       description: The structure representing the describeProfilingGroupResponse.
+    ProfileTime:
+      type: object
+      properties:
+        start:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The start time of a profile. It is specified using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
+      description: ' Contains the start time of a profile. '
+    ResourceNotFoundException: {}
+    CreateProfilingGroupResponse:
+      type: object
+      required:
+      - profilingGroup
+      properties:
+        profilingGroup:
+          allOf:
+          - $ref: '#/components/schemas/ProfilingGroupDescription'
+          - description: ' The returned <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html"> <code>ProfilingGroupDescription</code> </a> object that contains information about the created profiling group. '
+      description: The structure representing the createProfilingGroupResponse.
+    ThrottlingException: {}
+    RemoveNotificationChannelResponse:
+      type: object
+      properties:
+        notificationConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/NotificationConfiguration'
+          - description: The new notification configuration for this profiling group.
+      description: The structure representing the RemoveNotificationChannelResponse.
+    Integer:
+      type: integer
+    PaginationToken:
+      type: string
+      pattern: ^[\w-]+$
+      minLength: 1
+      maxLength: 64
+    Boolean:
+      type: boolean
+    ThreadStates:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
+    PutPermissionResponse:
+      type: object
+      required:
+      - policy
+      - revisionId
+      properties:
+        policy:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: ' The JSON-formatted resource-based policy on the profiling group that includes the added permissions. '
+        revisionId:
+          allOf:
+          - $ref: '#/components/schemas/RevisionId'
+          - description: ' A universally unique identifier (UUID) for the revision of the resource-based policy that includes the added permissions. The JSON-formatted policy is in the <code>policy</code> element of the response. '
+      description: The structure representing the <code>putPermissionResponse</code>.
+    ProfileTimes:
+      type: array
+      items:
+        $ref: '#/components/schemas/ProfileTime'
+    AggregatedProfileTime:
+      type: object
+      properties:
+        period:
+          allOf:
+          - $ref: '#/components/schemas/AggregationPeriod'
+          - description: <p> The aggregation period. This indicates the period during which an aggregation profile collects posted agent profiles for a profiling group. Use one of three valid durations that are specified using the ISO 8601 format. </p> <ul> <li> <p> <code>P1D</code> — 1 day </p> </li> <li> <p> <code>PT1H</code> — 1 hour </p> </li> <li> <p> <code>PT5M</code> — 5 minutes </p> </li> </ul>
+        start:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: <p> The time that aggregation of posted agent profiles for a profiling group starts. The aggregation profile contains profiles posted by the agent starting at this time for an aggregation period specified by the <code>period</code> property of the <code>AggregatedProfileTime</code> object. </p> <p> Specify <code>start</code> using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC. </p>
+      description: ' Specifies the aggregation period and aggregation start time for an aggregated profile. An aggregated profile is used to collect posted agent profiles during an aggregation period. There are three possible aggregation periods (1 day, 1 hour, or 5 minutes). '
+    PostAgentProfileResponse:
+      type: object
+      properties: {}
+      description: The structure representing the postAgentProfileResponse.
+    AddNotificationChannelsResponse:
+      type: object
+      properties:
+        notificationConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/NotificationConfiguration'
+          - description: The new notification configuration for this profiling group.
+      description: The structure representing the AddNotificationChannelsResponse.
+    AgentOrchestrationConfig:
+      type: object
+      required:
+      - profilingEnabled
+      properties:
+        profilingEnabled:
+          allOf:
+          - $ref: '#/components/schemas/Boolean'
+          - description: ' A <code>Boolean</code> that specifies whether the profiling agent collects profiling data or not. Set to <code>true</code> to enable profiling. '
+      description: ' Specifies whether profiling is enabled or disabled for a profiling group. It is used by <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html"> <code>ConfigureAgent</code> </a> to enable or disable profiling for a profiling group. '
+    FrameMetricValue:
+      type: number
+      format: double
+    ProfilingGroupName:
+      type: string
+      pattern: ^[\w-]+$
+      minLength: 1
+      maxLength: 255
+    ComputePlatform:
+      type: string
+      enum:
+      - Default
+      - AWSLambda
+    AggregatedProfile:
+      type: string
+    RemovePermissionResponse:
+      type: object
+      required:
+      - policy
+      - revisionId
+      properties:
+        policy:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: ' The JSON-formatted resource-based policy on the profiling group after the specified permissions were removed. '
+        revisionId:
+          allOf:
+          - $ref: '#/components/schemas/RevisionId'
+          - description: ' A universally unique identifier (UUID) for the revision of the resource-based policy after the specified permissions were removed. The updated JSON-formatted policy is in the <code>policy</code> element of the response. '
+      description: The structure representing the <code>removePermissionResponse</code>.
+    ProfilingStatus:
+      type: object
+      properties:
+        latestAgentOrchestratedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The date and time when the profiling agent most recently pinged back. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
+        latestAgentProfileReportedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: The date and time when the most recent profile was received. Specify using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
+        latestAggregatedProfile:
+          allOf:
+          - $ref: '#/components/schemas/AggregatedProfileTime'
+          - description: ' An <a href="https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AggregatedProfileTime.html"> <code>AggregatedProfileTime</code> </a> object that contains the aggregation period and start time for an aggregated profile. '
+      description: ' Profiling status includes information about the last time a profile agent pinged back, the last time a profile was received, and the aggregation period and start time for the most recent aggregated profile. '
+    EventPublisher:
+      type: string
+      enum:
+      - AnomalyDetection
+    GetPolicyResponse:
+      type: object
+      required:
+      - policy
+      - revisionId
+      properties:
+        policy:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The JSON-formatted resource-based policy attached to the <code>ProfilingGroup</code>.
+        revisionId:
+          allOf:
+          - $ref: '#/components/schemas/RevisionId'
+          - description: A unique identifier for the current revision of the returned policy.
+      description: The structure representing the <code>getPolicyResponse</code>.
+    DeleteProfilingGroupResponse:
+      type: object
+      properties: {}
+      description: The structure representing the deleteProfilingGroupResponse.
+    ListProfileTimesResponse:
+      type: object
+      required:
+      - profileTimes
+      properties:
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/PaginationToken'
+          - description: 'The <code>nextToken</code> value to include in a future <code>ListProfileTimes</code> request. When the results of a <code>ListProfileTimes</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return. '
+        profileTimes:
+          allOf:
+          - $ref: '#/components/schemas/ProfileTimes'
+          - description: 'The list of start times of the available profiles for the aggregation period in the specified time range. '
+      description: The structure representing the listProfileTimesResponse.
     Timestamp:
       type: string
       format: date-time
+    Channels:
+      type: array
+      items:
+        $ref: '#/components/schemas/Channel'
+      minItems: 1
+      maxItems: 2
+    String:
+      type: string
+    ChannelId:
+      type: string
+      pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
+    EventPublishers:
+      type: array
+      items:
+        $ref: '#/components/schemas/EventPublisher'
+      minItems: 1
+      maxItems: 1
     FrameMetric:
       type: object
       required:
@@ -2335,31 +2327,33 @@ components:
           - $ref: '#/components/schemas/MetricType'
           - description: ' A type of aggregation that specifies how a metric for a frame is analyzed. The supported value <code>AggregatedRelativeTotalTime</code> is an aggregation of the metric value for one frame that is calculated across the occurrences of all frames in a profile. '
       description: ' The frame name, metric type, and thread states. These are used to derive the value of the metric for the frame.'
-    ConflictException: {}
+    ProfilingGroupDescriptions:
+      type: array
+      items:
+        $ref: '#/components/schemas/ProfilingGroupDescription'
+    FrameMetricValues:
+      type: array
+      items:
+        $ref: '#/components/schemas/FrameMetricValue'
+    GetNotificationConfigurationResponse:
+      type: object
+      required:
+      - notificationConfiguration
+      properties:
+        notificationConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/NotificationConfiguration'
+          - description: The current notification configuration for this profiling group.
+      description: The structure representing the GetNotificationConfigurationResponse.
     MetricType:
       type: string
       enum:
       - AggregatedRelativeTotalTime
-    ResourceNotFoundException: {}
-    TagsMap:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/String'
-    AggregationPeriod:
+    Principal:
       type: string
-      enum:
-      - PT5M
-      - PT1H
-      - P1D
   parameters:
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -2370,8 +2364,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -2382,14 +2382,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
