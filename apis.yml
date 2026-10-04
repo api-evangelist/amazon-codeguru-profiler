@@ -113,6 +113,9 @@ apis:
   - type: OpenCollection
     url: collections/amazon-codeguru-profiler-profilinggroups-api.opencollection.json
 common:
+- type: CapabilityMap
+  url: capabilities/amazon-codeguru-profiler-capability-edges.yml
+  name: Amazon CodeGuru Profiler Business Capability Map
 - type: Overlay
   url: overlays/amazon-codeguru-profiler-profilinggroups-clienttoken-api-overlay.yaml
 - type: Overlay
