@@ -58,3 +58,23 @@ machine_readable_pricing:
 docs:
   - https://aws.amazon.com/codeguru/profiler/pricing/
   - https://aws.amazon.com/codeguru/profiler/faqs/
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  units: []
+  plans:
+  - name: Free Tier
+    access: other
+    model: metered
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pay-as-you-go
+    access: other
+    model: hybrid
+    model_how: derived
+    units: []
+    periods: []
