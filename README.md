@@ -66,133 +66,263 @@
 
 Amazon CodeGuru Profiler collects runtime performance data from your live applications, providing recommendations to help you reduce CPU utilization, cut costs, and improve application performance. The profiler analyzes your application's CPU and heap usage to identify the most expensive lines of code and offers actionable recommendations.
 
-**URL:** [Visit APIs.json](https://raw.githubusercontent.com/api-evangelist/amazon-codeguru-profiler/refs/heads/main/apis.yml)
+**Areas:** Amazon · AWS · Application Performance · Profiling · DevOps · Machine Learning
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Amazon CodeGuru Profiler on APIs.io
 
-## Tags:
+Everything profiled for Amazon CodeGuru Profiler is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-codeguru-profiler/](https://apis.io/providers/amazon-codeguru-profiler/)** — or go straight to one of the APIs or properties below.
 
- - Amazon, AWS, Application Performance, Profiling, DevOps, Machine Learning
+### APIs (3)
 
-## Timestamps
+- [Amazon CodeGuru Profiler Internal API](https://apis.io/apis/amazon-codeguru-profiler/amazon-codeguru-profiler-internal-api/) — The Internal API from Amazon CodeGuru Profiler — 4 operation(s) for internal.
+- [Amazon CodeGuru Profiler Tags API](https://apis.io/apis/amazon-codeguru-profiler/amazon-codeguru-profiler-tags-api/) — The Tags API from Amazon CodeGuru Profiler — 2 operation(s) for tags.
+- [Amazon CodeGuru Profiler Profiling Groups API](https://apis.io/apis/amazon-codeguru-profiler/amazon-codeguru-profiler-profiling-groups-api/) — The Profiling Groups API from Amazon CodeGuru Profiler — 13 operation(s) for profiling groups.
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Amazon CodeGuru Profiler API
+#### AsyncAPI (1)
 
-The Amazon CodeGuru Profiler REST API.
+Event-driven and webhook contracts.
 
-**Human URL:** [https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html](https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html)
+- [Amazon Codeguru Profiler Notifications](https://apis.io/asyncapis/amazon-codeguru-profiler/amazon-codeguru-profiler-notifications/)
 
-#### Tags:
+#### MCP servers (1)
 
- - Amazon, AWS, Application Performance, Profiling, DevOps
+Model Context Protocol servers that expose the API to agents.
 
-#### Properties
+- [amazon-codeguru-profiler](https://apis.io/servers/amazon-codeguru-profiler/amazon-codeguru-profiler/)
 
-- [Documentation](https://docs.aws.amazon.com/codeguruprofiler/)
-- [APIReference](https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html)
-- [OpenAPI](openapi/amazon-codeguru-profiler-openapi-original.yaml)
+#### Agentic access (1)
 
-## Common Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [GettingStarted](https://docs.aws.amazon.com/codeguru/profiler)
-- [Pricing](https://aws.amazon.com/codeguruprofiler/pricing/)
-- [Console](https://console.aws.amazon.com/codeguruprofiler/)
-- [Portal](https://aws.amazon.com/codeguruprofiler/)
-- [Documentation](https://docs.aws.amazon.com/codeguruprofiler/)
-- [TermsOfService](https://aws.amazon.com/service-terms/)
-- [PrivacyPolicy](https://aws.amazon.com/privacy/)
-- [StatusPage](https://health.aws.amazon.com/health/status)
+- [Amazon Codeguru Profiler Agentic Access](https://apis.io/agentic-access/amazon-codeguru-profiler/amazon-codeguru-profiler-agentic-access/)
+
+#### JSON Schema (122)
+
+The data models the API reads and writes.
+
+- [ActionGroup](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-action-group/)
+- [AddNotificationChannelsRequest](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-add-notification-channels-request/)
+- [AddNotificationChannelsResponse](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-add-notification-channels-response/)
+- [AgentConfiguration](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-configuration/)
+- [AgentOrchestrationConfig](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-orchestration-config/)
+- [AgentParameterField](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-parameter-field/)
+- [AgentParameters](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-parameters/)
+- [AgentProfile](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-profile/)
+- [AggregatedProfile](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-aggregated-profile/)
+- [AggregatedProfileTime](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-aggregated-profile-time/)
+- [AggregationPeriod](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-aggregation-period/)
+- [Anomalies](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-anomalies/)
+- [Anomaly](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-anomaly/)
+- [AnomalyInstance](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-anomaly-instance/)
+- [AnomalyInstanceId](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-anomaly-instance-id/)
+- [AnomalyInstances](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-anomaly-instances/)
+- [BatchGetFrameMetricDataRequest](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-batch-get-frame-metric-data-request/)
+- [BatchGetFrameMetricDataResponse](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-batch-get-frame-metric-data-response/)
+- [Boolean](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-boolean/)
+- [Channel](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-channel/)
+- [ChannelId](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-channel-id/)
+- [ChannelUri](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-channel-uri/)
+- [Channels](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-channels/)
+- [ClientToken](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-client-token/)
+- [ComputePlatform](https://apis.io/schemas/amazon-codeguru-profiler/amazon-codeguru-profiler-compute-platform/)
+- …and 97 more published on APIs.io
+
+#### JSON Structure (122)
+
+Data models expressed in JSON Structure.
+
+- [Amazon Codeguru Profiler Action Group Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-action-group-structure/)
+- [Amazon Codeguru Profiler Add Notification Channels Request Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-add-notification-channels-request-structure/)
+- [Amazon Codeguru Profiler Add Notification Channels Response Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-add-notification-channels-response-structure/)
+- [Amazon Codeguru Profiler Agent Configuration Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-configuration-structure/)
+- [Amazon Codeguru Profiler Agent Orchestration Config Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-orchestration-config-structure/)
+- [Amazon Codeguru Profiler Agent Parameter Field Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-parameter-field-structure/)
+- [Amazon Codeguru Profiler Agent Parameters Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-parameters-structure/)
+- [Amazon Codeguru Profiler Agent Profile Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-profile-structure/)
+- [Amazon Codeguru Profiler Aggregated Profile Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-aggregated-profile-structure/)
+- [Amazon Codeguru Profiler Aggregated Profile Time Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-aggregated-profile-time-structure/)
+- [Amazon Codeguru Profiler Aggregation Period Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-aggregation-period-structure/)
+- [Amazon Codeguru Profiler Anomalies Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-anomalies-structure/)
+- [Amazon Codeguru Profiler Anomaly Instance Id Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-anomaly-instance-id-structure/)
+- [Amazon Codeguru Profiler Anomaly Instance Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-anomaly-instance-structure/)
+- [Amazon Codeguru Profiler Anomaly Instances Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-anomaly-instances-structure/)
+- [Amazon Codeguru Profiler Anomaly Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-anomaly-structure/)
+- [Amazon Codeguru Profiler Batch Get Frame Metric Data Request Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-batch-get-frame-metric-data-request-structure/)
+- [Amazon Codeguru Profiler Batch Get Frame Metric Data Response Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-batch-get-frame-metric-data-response-structure/)
+- [Amazon Codeguru Profiler Boolean Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-boolean-structure/)
+- [Amazon Codeguru Profiler Channel Id Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-channel-id-structure/)
+- [Amazon Codeguru Profiler Channel Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-channel-structure/)
+- [Amazon Codeguru Profiler Channel Uri Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-channel-uri-structure/)
+- [Amazon Codeguru Profiler Channels Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-channels-structure/)
+- [Amazon Codeguru Profiler Client Token Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-client-token-structure/)
+- [Amazon Codeguru Profiler Compute Platform Structure](https://apis.io/json-structure/amazon-codeguru-profiler/amazon-codeguru-profiler-compute-platform-structure/)
+- …and 97 more published on APIs.io
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Codeguru Profiler Context](https://apis.io/jsonld/amazon-codeguru-profiler/amazon-codeguru-profiler-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon Codeguru Profiler Vocabulary](https://apis.io/vocabularies/amazon-codeguru-profiler/amazon-codeguru-profiler-vocabulary/)
+
+#### Examples (69)
+
+Example requests and responses.
+
+- [Amazon Codeguru Profiler Add Notification Channels Request Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-add-notification-channels-request-example/)
+- [Amazon Codeguru Profiler Add Notification Channels Response Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-add-notification-channels-response-example/)
+- [Amazon Codeguru Profiler Agent Configuration Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-configuration-example/)
+- [Amazon Codeguru Profiler Agent Orchestration Config Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-orchestration-config-example/)
+- [Amazon Codeguru Profiler Agent Parameters Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-agent-parameters-example/)
+- [Amazon Codeguru Profiler Aggregated Profile Time Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-aggregated-profile-time-example/)
+- [Amazon Codeguru Profiler Anomaly Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-anomaly-example/)
+- [Amazon Codeguru Profiler Anomaly Instance Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-anomaly-instance-example/)
+- [Amazon Codeguru Profiler Batch Get Frame Metric Data Request Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-batch-get-frame-metric-data-request-example/)
+- [Amazon Codeguru Profiler Batch Get Frame Metric Data Response Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-batch-get-frame-metric-data-response-example/)
+- [Amazon Codeguru Profiler Channel Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-channel-example/)
+- [Amazon Codeguru Profiler Configure Agent Request Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-configure-agent-request-example/)
+- [Amazon Codeguru Profiler Configure Agent Response Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-configure-agent-response-example/)
+- [Amazon Codeguru Profiler Create Profiling Group Request Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-create-profiling-group-request-example/)
+- [Amazon Codeguru Profiler Create Profiling Group Response Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-create-profiling-group-response-example/)
+- [Amazon Codeguru Profiler Delete Profiling Group Request Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-delete-profiling-group-request-example/)
+- [Amazon Codeguru Profiler Delete Profiling Group Response Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-delete-profiling-group-response-example/)
+- [Amazon Codeguru Profiler Describe Profiling Group Request Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-describe-profiling-group-request-example/)
+- [Amazon Codeguru Profiler Describe Profiling Group Response Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-describe-profiling-group-response-example/)
+- [Amazon Codeguru Profiler Findings Report Summary Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-findings-report-summary-example/)
+- [Amazon Codeguru Profiler Frame Metric Datum Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-frame-metric-datum-example/)
+- [Amazon Codeguru Profiler Frame Metric Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-frame-metric-example/)
+- [Amazon Codeguru Profiler Get Findings Report Account Summary Request Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-get-findings-report-account-summary-request-example/)
+- [Amazon Codeguru Profiler Get Findings Report Account Summary Response Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-get-findings-report-account-summary-response-example/)
+- [Amazon Codeguru Profiler Get Notification Configuration Request Example](https://apis.io/examples/amazon-codeguru-profiler/amazon-codeguru-profiler-get-notification-configuration-request-example/)
+- …and 44 more published on APIs.io
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Amazon CodeGuru Profiler Internal API](https://apis.io/collections/amazon-codeguru-profiler/open-amazon-codeguru-profiler-internal-api/)
+- [Amazon CodeGuru Profiler Internal ProfilingGroups API](https://apis.io/collections/amazon-codeguru-profiler/open-amazon-codeguru-profiler-profilinggroups-api/)
+- [Amazon CodeGuru Profiler Internal ProfilingGroups#clientToken API](https://apis.io/collections/amazon-codeguru-profiler/open-amazon-codeguru-profiler-profilinggroups-clienttoken-api/)
+- [Amazon CodeGuru Profiler Internal Tags API](https://apis.io/collections/amazon-codeguru-profiler/open-amazon-codeguru-profiler-tags-api/)
+
+#### Overlays (8)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Amazon Codeguru Profiler Internal Api Overlay](https://apis.io/overlays/amazon-codeguru-profiler/amazon-codeguru-profiler-internal-api-overlay/)
+- [Amazon Codeguru Profiler Internal Api Phrasing Overlay](https://apis.io/overlays/amazon-codeguru-profiler/amazon-codeguru-profiler-internal-api-phrasing-overlay/)
+- [Amazon Codeguru Profiler Openapi Original Overlay](https://apis.io/overlays/amazon-codeguru-profiler/amazon-codeguru-profiler-openapi-original-overlay/)
+- [Amazon Codeguru Profiler Profiling Groups Api Phrasing Overlay](https://apis.io/overlays/amazon-codeguru-profiler/amazon-codeguru-profiler-profiling-groups-api-phrasing-overlay/)
+- [Amazon Codeguru Profiler Profilinggroups Api Overlay](https://apis.io/overlays/amazon-codeguru-profiler/amazon-codeguru-profiler-profilinggroups-api-overlay/)
+- [Amazon Codeguru Profiler Profilinggroups Clienttoken Api Overlay](https://apis.io/overlays/amazon-codeguru-profiler/amazon-codeguru-profiler-profilinggroups-clienttoken-api-overlay/)
+- [Amazon Codeguru Profiler Tags Api Overlay](https://apis.io/overlays/amazon-codeguru-profiler/amazon-codeguru-profiler-tags-api-overlay/)
+- [Amazon Codeguru Profiler Tags Api Phrasing Overlay](https://apis.io/overlays/amazon-codeguru-profiler/amazon-codeguru-profiler-tags-api-phrasing-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon CodeGuru Profiler — jsonschema rules](https://apis.io/rules/amazon-codeguru-profiler/amazon-codeguru-profiler-jsonschema-spectral-rules/)
+- [Amazon CodeGuru Profiler API Rules](https://apis.io/rules/amazon-codeguru-profiler/amazon-codeguru-profiler-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Codeguru Profiler Authentication](https://apis.io/security/amazon-codeguru-profiler/amazon-codeguru-profiler-authentication/)
+- [Amazon Codeguru Profiler Domain Security](https://apis.io/security/amazon-codeguru-profiler/amazon-codeguru-profiler-domain-security/)
+- [Amazon Codeguru Profiler Vulnerability Disclosure](https://apis.io/security/amazon-codeguru-profiler/amazon-codeguru-profiler-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Codeguru Profiler Plans Pricing](https://apis.io/plans/amazon-codeguru-profiler/amazon-codeguru-profiler-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Codeguru Profiler Rate Limits](https://apis.io/rate-limits/amazon-codeguru-profiler/amazon-codeguru-profiler-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://aws.amazon.com/codeguru/profiler/)
+- [Documentation](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html)
+- [Getting started](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/setting-up.html)
+- [API reference](https://docs.aws.amazon.com/codeguru/latest/profiler-api/Welcome.html)
+- [Pricing](https://aws.amazon.com/codeguru/profiler/pricing/)
+- [Sign up](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html)
+- [Support](https://aws.amazon.com/contact-us/)
 - [Blog](https://aws.amazon.com/blogs/devops/)
-- [SignUp](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html)
-- [GitHubOrganization](https://github.com/aws)
+- [Compliance](https://aws.amazon.com/compliance/programs/)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Application Profiling | Continuously profile application CPU utilization and heap usage in production without significant overhead. |
-| AI-Powered Recommendations | Receive actionable recommendations from machine learning models identifying expensive code paths and resource inefficien |
-| Flame Graphs | Visualize CPU usage with flame graphs that highlight the most resource-intensive code paths. |
-| Anomaly Detection | Automatically detect anomalies in application performance and CPU utilization patterns. |
-| Java and Python Support | Profile JVM-based applications and Python applications using language-specific profiling agents. |
+**Kin Score 73.7** — exemplar · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 69.2 |
+| Contract governance | 45.5 |
+| Operational transparency | 81.6 |
+| Developer ergonomics | 81.5 |
+| Access clarity | 73.7 |
 
-| Name | Description |
-|------|-------------|
-| Production Performance Optimization | Identify and eliminate the most expensive code paths consuming CPU in live production applications. |
-| Cost Reduction | Reduce compute costs by optimizing code that consumes excessive CPU time and cloud resources. |
-| Latency Investigation | Investigate application latency issues by profiling which code paths contribute most to request processing time. |
+**Agent readiness 40.3** — agent-native
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-| Name | Description |
-|------|-------------|
-| AWS Lambda | Profile Lambda function execution to identify performance bottlenecks. |
-| Amazon ECS | Profile containerized applications running on ECS. |
-| Amazon EC2 | Profile applications running on EC2 instances. |
-| AWS CodeGuru Reviewer | Combine profiling insights with code review recommendations. |
+**Regulatory alignment 32.7** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-codeguru-profiler/](https://apis.io/providers/amazon-codeguru-profiler/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [amazon-codeguru-profiler-openapi-original](openapi/amazon-codeguru-profiler-openapi-original.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon CodeGuru Profiler: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-122 JSON Schema files generated from the OpenAPI specification.
-
-- [amazon-codeguru-profiler-action-group-schema](json-schema/amazon-codeguru-profiler-action-group-schema.json)
-- [amazon-codeguru-profiler-add-notification-channels-request-schema](json-schema/amazon-codeguru-profiler-add-notification-channels-request-schema.json)
-- [amazon-codeguru-profiler-add-notification-channels-response-schema](json-schema/amazon-codeguru-profiler-add-notification-channels-response-schema.json)
-- [amazon-codeguru-profiler-agent-configuration-schema](json-schema/amazon-codeguru-profiler-agent-configuration-schema.json)
-- [amazon-codeguru-profiler-agent-orchestration-config-schema](json-schema/amazon-codeguru-profiler-agent-orchestration-config-schema.json)
-- ...and 117 more in [json-schema/](json-schema/)
-
-### JSON Structure
-
-122 JSON Structure files in [json-structure/](json-structure/).
-
-### JSON-LD
-
-- [amazon-codeguru-profiler-context](json-ld/amazon-codeguru-profiler-context.jsonld)
-
-### Examples
-
-122 example JSON files in [examples/](examples/).
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [codeguruprofiler](capabilities/shared/codeguruprofiler.yaml) — 23 operations
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Amazon CodeGuru Profiler Application Performance Profiling](capabilities/amazon-codeguru-profiler-application-performance.yaml) | codeguruprofiler | 8 | DevOps Engineer |
-
-## Vocabulary
-
-- [amazon-codeguru-profiler-vocabulary](vocabulary/amazon-codeguru-profiler-vocabulary.yaml) — Unified taxonomy mapping 4 resources, 5 actions, 1 workflows, and 3 personas
-
-## Rules
-
-- [amazon-codeguru-profiler-spectral-rules](rules/amazon-codeguru-profiler-spectral-rules.yml) — 10 rules enforcing Amazon CodeGuru Profiler API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-codeguru-profiler/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
